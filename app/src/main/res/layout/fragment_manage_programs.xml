@@ -65,11 +65,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"/>
-
-
-
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="auto"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:layout_marginEnd="30dp"
+        android:tint="?attr/colorPrimary"
+        android:layout_marginBottom="30dp"
+        app:rippleColor="?attr/colorPrimary"
+        android:contentDescription="@string/addNewProgram"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 

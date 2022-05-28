@@ -43,6 +43,10 @@ class ManageProgramsFragment : Fragment() {
             }
         }
 
+        binding.fab.setOnClickListener {
+            //go to addEdit programs
+        }
+
     }
 
     override fun onDestroy() {
