@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/drawable/bg_search_bar.xml" value="0.3675" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_manage_programs.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_manage_programs.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar.xml" value="0.3009833262077811" />
       </map>
     </option>
