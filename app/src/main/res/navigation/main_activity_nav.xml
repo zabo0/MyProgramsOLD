@@ -12,10 +12,12 @@
         tools:layout="@layout/fragment_manage_programs" >
         <action
             android:id="@+id/action_manageProgramsFragment_to_detailsProgramFragment"
-            app:destination="@id/detailsProgramFragment" />
+            app:destination="@id/detailsProgramFragment"
+            app:popUpTo="@id/detailsProgramFragment" />
         <action
             android:id="@+id/action_manageProgramsFragment_to_addEditProgramFragment"
-            app:destination="@id/addEditProgramFragment" />
+            app:destination="@id/addEditProgramFragment"
+            app:popUpTo="@id/addEditProgramFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsProgramFragment"
@@ -27,7 +29,8 @@
             app:destination="@id/manageProgramsFragment" />
         <action
             android:id="@+id/action_detailsProgramFragment_to_addEditProgramFragment"
-            app:destination="@id/addEditProgramFragment" />
+            app:destination="@id/addEditProgramFragment"
+            app:popUpTo="@id/addEditProgramFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditProgramFragment"
