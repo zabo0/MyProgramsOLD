@@ -31,6 +31,9 @@
             android:id="@+id/action_detailsProgramFragment_to_addEditProgramFragment"
             app:destination="@id/addEditProgramFragment"
             app:popUpTo="@id/addEditProgramFragment" />
+        <argument
+            android:name="programID"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addEditProgramFragment"

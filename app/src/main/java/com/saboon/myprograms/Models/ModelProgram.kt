@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class ModelProgram(
     @PrimaryKey
-    val id: String,
+    var id: String,
 
     @ColumnInfo(name = "name")
     val name: String,

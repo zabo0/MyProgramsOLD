@@ -60,8 +60,8 @@ class AddEditProgramFragment : Fragment() {
                 }
 
                 FROM_DETAILS_PROGRAM -> {
-                    val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment()
-                    it.findNavController().navigate(action)
+//                    val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment()
+//                    it.findNavController().navigate(action)
                 }
             }
         }
@@ -75,8 +75,8 @@ class AddEditProgramFragment : Fragment() {
                 }
 
                 FROM_DETAILS_PROGRAM -> {
-                    val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment()
-                    it.findNavController().navigate(action)
+//                    val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment()
+//                    it.findNavController().navigate(action)
                 }
             }
         }

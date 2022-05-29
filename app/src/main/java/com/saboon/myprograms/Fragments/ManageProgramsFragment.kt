@@ -96,8 +96,7 @@ class ManageProgramsFragment : Fragment() {
 
     fun buttons(){
         binding.goToSettings.setOnClickListener {
-            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment()
-            it.findNavController().navigate(action)
+           //go to settings
         }
 
         binding.fab.setOnClickListener {
