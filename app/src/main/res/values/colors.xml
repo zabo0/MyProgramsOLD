@@ -3,10 +3,14 @@
     <color name="blue">#006E7F</color>
     <color name="blue_200">#00A9C3</color>
 
-    <color name="orange">#EE5007</color>
-    <color name="orange_200">#E18C65</color>
+    <color name="orange">#EC7842</color>
+    <color name="orange_200">#E0C4B8</color>
+
+    <color name="night">#222222</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="hint">#878787</color>
 </resources>
 
