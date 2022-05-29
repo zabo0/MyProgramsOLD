@@ -35,6 +35,17 @@ class ManageProgramsFragment : Fragment() {
 
     }
 
+
+    fun buttons(){
+        binding.goToSettings.setOnClickListener {
+            //go to settigns
+        }
+
+        binding.fab.setOnClickListener {
+            //go to add edit program
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
