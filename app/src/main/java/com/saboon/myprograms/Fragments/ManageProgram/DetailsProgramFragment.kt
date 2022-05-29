@@ -1,4 +1,4 @@
-package com.saboon.myprograms.Fragments
+package com.saboon.myprograms.Fragments.ManageProgram
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
 import com.saboon.myprograms.ViewModels.DetailsProgramViewModel
 import com.saboon.myprograms.databinding.FragmentDetailsProgramBinding
-import com.saboon.myprograms.databinding.FragmentManageProgramsBinding
 
 
 class DetailsProgramFragment : Fragment() {
