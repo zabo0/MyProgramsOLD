@@ -79,7 +79,7 @@ class DetailsProgramFragment : Fragment() {
         }
 
         binding.edit.setOnClickListener {
-            val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS_PROGRAM)
+            val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS_PROGRAM, program.id)
             it.findNavController().navigate(action)
         }
 

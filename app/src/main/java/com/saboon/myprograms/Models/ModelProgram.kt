@@ -10,11 +10,11 @@ data class ModelProgram(
     var id: String,
 
     @ColumnInfo(name = "name")
-    val name: String,
+    var name: String,
 
     @ColumnInfo(name = "dateAdded")
-    val dateCreated: String,
+    var dateCreated: String,
 
     @ColumnInfo(name = "dateEdited")
-    val dateEdited: String,
+    var dateEdited: String,
 )

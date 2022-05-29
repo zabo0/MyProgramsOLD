@@ -100,7 +100,7 @@ class ManageProgramsFragment : Fragment() {
         }
 
         binding.fab.setOnClickListener {
-            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToAddEditProgramFragment(FROM_MANAGE_PROGRAMS)
+            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToAddEditProgramFragment(FROM_MANAGE_PROGRAMS,null)
             it.findNavController().navigate(action)
         }
     }

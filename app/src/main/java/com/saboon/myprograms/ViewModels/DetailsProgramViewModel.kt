@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 class DetailsProgramViewModel(application: Application):BaseViewModel(application) {
 
     var program = MutableLiveData<ModelProgram>()
-    var states = MutableLiveData<ModelStates>()
 
 
     fun getProgram(programID: String){

@@ -49,5 +49,9 @@
         <argument
             android:name="from"
             app:argType="string" />
+        <argument
+            android:name="programID"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

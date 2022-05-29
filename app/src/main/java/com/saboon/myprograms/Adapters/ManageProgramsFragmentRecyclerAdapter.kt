@@ -39,7 +39,7 @@ class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>)
         holder.editedDate.text = dateEdited
 
         holder.itemView.setOnClickListener {
-            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment()
+            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment(programList[position].id)
             it.findNavController().navigate(action)
         }
     }
