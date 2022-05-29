@@ -9,5 +9,18 @@
         android:id="@+id/manageProgramsFragment"
         android:name="com.saboon.myprograms.Fragments.ManageProgramsFragment"
         android:label="fragment_manage_programs"
-        tools:layout="@layout/fragment_manage_programs" />
+        tools:layout="@layout/fragment_manage_programs" >
+        <action
+            android:id="@+id/action_manageProgramsFragment_to_detailsProgramFragment"
+            app:destination="@id/detailsProgramFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsProgramFragment"
+        android:name="com.saboon.myprograms.Fragments.DetailsProgramFragment"
+        android:label="fragment_details_program"
+        tools:layout="@layout/fragment_details_program" >
+        <action
+            android:id="@+id/action_detailsProgramFragment_to_manageProgramsFragment"
+            app:destination="@id/manageProgramsFragment" />
+    </fragment>
 </navigation>
