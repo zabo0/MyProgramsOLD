@@ -16,4 +16,6 @@
     <string name="addProgramName">Program Name</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="emptyText">There is no Program</string>
+    <string name="errorText">There is a problem</string>
 </resources>
