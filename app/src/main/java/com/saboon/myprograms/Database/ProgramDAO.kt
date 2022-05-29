@@ -13,7 +13,7 @@ interface ProgramDAO {
     suspend fun insertProgram(program: ModelProgram)
 
     @Query("SELECT * FROM ModelProgram")
-    suspend fun getAllProgram(): List<ModelProgram>
+    suspend fun getAllPrograms(): List<ModelProgram>
 
     @Query("SELECT * FROM ModelProgram WHERE name LIKE :filter")
     suspend fun getAllProgramByFilter(filter: String): List<ModelProgram>

@@ -11,7 +11,7 @@ import com.saboon.myprograms.Models.ModelSubjectTime
 
 
 @Database(entities = arrayOf(ModelProgram::class, ModelSubject::class, ModelSubjectTime::class, ModelStates::class), version = 1)
-abstract class Database: RoomDatabase() {
+abstract class DatabaseMyPrograms: RoomDatabase() {
 
 
     abstract fun programDAO() : ProgramDAO
@@ -21,7 +21,7 @@ abstract class Database: RoomDatabase() {
 
     companion object{
         @Volatile
-        private var instance : com.saboon.myprograms.Database.Database? = null
+        private var instance : DatabaseMyPrograms? = null
 
         private val lock = Any()
         operator fun invoke(context: Context) = instance ?: synchronized(lock){
@@ -34,7 +34,7 @@ abstract class Database: RoomDatabase() {
 
         private fun makeDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            com.saboon.myprograms.Database.Database::class.java, "MyProgramsDatabase"
+            DatabaseMyPrograms::class.java, "MyProgramsDatabase"
         ).build()
 
         //.enableMultiInstanceInvalidation()
