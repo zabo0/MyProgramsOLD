@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-class BaseViewModel(app: Application): AndroidViewModel(app), CoroutineScope {
+abstract class BaseViewModel(app: Application): AndroidViewModel(app), CoroutineScope {
 
 
     private val job = Job()
