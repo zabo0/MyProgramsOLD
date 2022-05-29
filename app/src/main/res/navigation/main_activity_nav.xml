@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_manageProgramsFragment_to_detailsProgramFragment"
             app:destination="@id/detailsProgramFragment" />
+        <action
+            android:id="@+id/action_manageProgramsFragment_to_addEditProgramFragment"
+            app:destination="@id/addEditProgramFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsProgramFragment"
@@ -22,5 +25,23 @@
         <action
             android:id="@+id/action_detailsProgramFragment_to_manageProgramsFragment"
             app:destination="@id/manageProgramsFragment" />
+        <action
+            android:id="@+id/action_detailsProgramFragment_to_addEditProgramFragment"
+            app:destination="@id/addEditProgramFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditProgramFragment"
+        android:name="com.saboon.myprograms.Fragments.AddEditProgramFragment"
+        android:label="fragment_add_edit_program"
+        tools:layout="@layout/fragment_add_edit_program" >
+        <action
+            android:id="@+id/action_addEditProgramFragment_to_detailsProgramFragment"
+            app:destination="@id/detailsProgramFragment" />
+        <action
+            android:id="@+id/action_addEditProgramFragment_to_manageProgramsFragment"
+            app:destination="@id/manageProgramsFragment" />
+        <argument
+            android:name="from"
+            app:argType="string" />
     </fragment>
 </navigation>

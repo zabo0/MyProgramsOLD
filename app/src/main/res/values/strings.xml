@@ -12,4 +12,8 @@
     <string name="detailsProgram">Details</string>
     <string name="programDateAdded">Creation date:</string>
     <string name="programDateEdited">Last modified date:</string>
+    <string name="addEditProgram">Add New Program</string>
+    <string name="addProgramName">Program Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 </resources>

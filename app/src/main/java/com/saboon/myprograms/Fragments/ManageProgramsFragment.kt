@@ -6,13 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.FROM_MANAGE_PROGRAMS
 import com.saboon.myprograms.databinding.FragmentManageProgramsBinding
 
 class ManageProgramsFragment : Fragment() {
 
     private var _binding: FragmentManageProgramsBinding ?= null
     private val binding get() = _binding!!
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +44,12 @@ class ManageProgramsFragment : Fragment() {
 
     fun buttons(){
         binding.goToSettings.setOnClickListener {
-            //go to settigns
+            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment()
+            it.findNavController().navigate(action)
         }
 
         binding.fab.setOnClickListener {
-            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment()
+            val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToAddEditProgramFragment(FROM_MANAGE_PROGRAMS)
             it.findNavController().navigate(action)
         }
     }

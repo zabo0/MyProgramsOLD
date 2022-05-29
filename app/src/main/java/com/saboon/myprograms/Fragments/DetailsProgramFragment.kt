@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
 import com.saboon.myprograms.databinding.FragmentDetailsProgramBinding
 import com.saboon.myprograms.databinding.FragmentManageProgramsBinding
 
@@ -15,6 +16,8 @@ class DetailsProgramFragment : Fragment() {
 
     private var _binding: FragmentDetailsProgramBinding?=null
     private val binding get() = _binding!!
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,11 @@ class DetailsProgramFragment : Fragment() {
     fun buttons(){
         binding.textViewDetailsGoToBack.setOnClickListener {
             val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
+            it.findNavController().navigate(action)
+        }
+
+        binding.edit.setOnClickListener {
+            val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS_PROGRAM)
             it.findNavController().navigate(action)
         }
     }
