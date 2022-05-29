@@ -12,6 +12,7 @@ abstract class DatabaseMyPrograms: RoomDatabase() {
 
 
     abstract fun programDAO() : ProgramDAO
+    abstract fun subjectDAO() : SubjectDAO
 
 
     //\\--SINGLETON--//\\

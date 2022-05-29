@@ -50,7 +50,7 @@ xmlns:tools="http://schemas.android.com/tools"
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/manage_editText_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -73,7 +73,7 @@ xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/manage_editText_search" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -109,7 +109,7 @@ xmlns:tools="http://schemas.android.com/tools"
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/emptyText"
+            android:text="@string/emptyTextManageProgram"
             android:textColor="?attr/colorPrimary"
             android:textSize="18sp" />
     </LinearLayout>

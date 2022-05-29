@@ -13,13 +13,13 @@ interface SubjectDAO {
     suspend fun insert(subject: ModelSubject)
 
     @Query("SELECT * FROM ModelSubject")
-    suspend fun getAllSubjects()
+    suspend fun getAllSubjects(): List<ModelSubject>
 
     @Query("SELECT * FROM ModelSubject WHERE subjectName = :subjectName")
-    suspend fun getAllSubjectByFilter(subjectName: String)
+    suspend fun getAllSubjectByFilter(subjectName: String): List<ModelSubject>
 
     @Query("SELECT * FROM ModelSubject WHERE id = :subjectID")
-    suspend fun getSubject(subjectID: String)
+    suspend fun getSubject(subjectID: String): ModelSubject
 
     @Query("DELETE FROM ModelSubject WHERE id = :subjectID")
     suspend fun deleteSubject(subjectID: String)

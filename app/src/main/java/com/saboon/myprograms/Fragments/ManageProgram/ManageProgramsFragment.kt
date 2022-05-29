@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.saboon.myprograms.Adapters.ManageProgramsFragmentRecyclerAdapter
+import com.saboon.myprograms.Adapters.ManageProgram.ManageProgramsFragmentRecyclerAdapter
 import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Utils.FROM_MANAGE_PROGRAMS
-import com.saboon.myprograms.ViewModels.ManageProgramsViewModel
+import com.saboon.myprograms.ViewModels.ManageProgramVM.ManageProgramsViewModel
 import com.saboon.myprograms.databinding.FragmentManageProgramsBinding
 
 class ManageProgramsFragment : Fragment() {

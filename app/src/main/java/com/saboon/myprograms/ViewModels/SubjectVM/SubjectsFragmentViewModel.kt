@@ -1,34 +1,31 @@
-package com.saboon.myprograms.ViewModels
+package com.saboon.myprograms.ViewModels.SubjectVM
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Models.ModelStates
+import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.ViewModels.BaseViewModel
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.util.logging.Filter
 
-class ManageProgramsViewModel(application: Application): BaseViewModel(application) {
+class SubjectsFragmentViewModel(application: Application): BaseViewModel(application) {
 
-
-    var programs = MutableLiveData <List<ModelProgram>?>()
+    var subjects = MutableLiveData<List<ModelSubject>?>()
     var loading = MutableLiveData<Boolean>()
     var empty = MutableLiveData<Boolean>()
     var error = MutableLiveData<Boolean>()
 
-    fun getAllPrograms(){
+
+    fun getAllSubject(){
         loading.value = true
-
         launch {
-            val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllPrograms()
+            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects()
 
-            if (programList.isEmpty()){
+            if (subjectList.isEmpty()){
                 loading.value = false
                 empty.value = true
                 error.value = false
             }else{
-                programs.value = programList
+                subjects.value = subjectList
 
                 loading.value = false
                 empty.value = false
@@ -37,17 +34,17 @@ class ManageProgramsViewModel(application: Application): BaseViewModel(applicati
         }
     }
 
-    fun getAllProgramsByFilter(filter: String){
+    fun getAllSubjectByFilter(filter:String){
         loading.value = true
         launch {
-            val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllProgramByFilter(filter)
+            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjectByFilter(filter)
 
-            if (programList.isEmpty()){
+            if (subjectList.isEmpty()){
                 loading.value = false
                 empty.value = true
                 error.value = false
             }else{
-                programs.value = programList
+                subjects.value = subjectList
 
                 loading.value = false
                 empty.value = false
@@ -55,5 +52,4 @@ class ManageProgramsViewModel(application: Application): BaseViewModel(applicati
             }
         }
     }
-
 }

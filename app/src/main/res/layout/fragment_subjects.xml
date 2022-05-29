@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.SubjectProgram.MainFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.SubjectProgram.SubjectsFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -19,16 +18,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/subject_main_textView_chooseProgram"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="Program Name"
+            android:text="@string/allSubjectText"
             android:textColor="?attr/colorOnPrimary"
-            android:textSize="22sp"
-            app:drawableStartCompat="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:drawableTint="?attr/colorOnPrimary" />
+            android:textSize="22sp" />
 
 
         <LinearLayout
@@ -39,26 +35,56 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/subject_main_imageView_goToAllSubjects"
+                android:id="@+id/subject_main_imageView_addNewSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_baseline_menu_book_24"
+                android:src="@drawable/ic_baseline_add_24"
                 app:tint="?attr/colorOnPrimary" />
         </LinearLayout>
     </LinearLayout>
 
 
+    <EditText
+        android:id="@+id/subject_editText_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_search_bar"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        android:drawableTint="@color/hint"
+        android:hint="@string/search"
+        android:padding="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subject_main_recycler"
+        android:id="@+id/subject_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/subject_editText_search"
+        tools:layout_editor_absoluteX="10dp" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout_empty"
@@ -81,7 +107,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/emptyTextManageProgram"
+            android:text="@string/emptyTextAllSubject"
             android:textColor="?attr/colorPrimary"
             android:textSize="18sp" />
     </LinearLayout>

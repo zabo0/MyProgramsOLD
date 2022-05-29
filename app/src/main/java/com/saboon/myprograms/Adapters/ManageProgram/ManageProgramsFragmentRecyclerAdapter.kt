@@ -1,4 +1,4 @@
-package com.saboon.myprograms.Adapters
+package com.saboon.myprograms.Adapters.ManageProgram
 
 import android.view.LayoutInflater
 import android.view.View
@@ -22,8 +22,8 @@ class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManageProgramViewHolder {
-        val _view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row_manage_program,parent,false)
-        return ManageProgramViewHolder(_view)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row_manage_program,parent,false)
+        return ManageProgramViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ManageProgramViewHolder, position: Int) {

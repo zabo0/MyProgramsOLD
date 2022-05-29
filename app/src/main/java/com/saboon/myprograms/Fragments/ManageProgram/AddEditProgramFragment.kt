@@ -13,7 +13,7 @@ import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
 import com.saboon.myprograms.Utils.FROM_MANAGE_PROGRAMS
 import com.saboon.myprograms.Utils.IDGenerator
-import com.saboon.myprograms.ViewModels.AddEditProgramViewModel
+import com.saboon.myprograms.ViewModels.ManageProgramVM.AddEditProgramViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditProgramBinding
 import java.text.SimpleDateFormat
 import java.util.*
