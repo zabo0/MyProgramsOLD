@@ -66,6 +66,7 @@ class AddEditProgramFragment : Fragment() {
 
 
 
+
         observer()
         buttons()
     }
@@ -101,13 +102,9 @@ class AddEditProgramFragment : Fragment() {
                     val name = binding.editTextProgramName.text.toString()
                     val id = IDGenerator().generateProgramID(name)
                     val dateCreated = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
-                    val dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+                    val dateEdited = dateCreated
 
-
-                    program.id = id
-                    program.name = name
-                    program.dateCreated = dateCreated
-                    program.dateEdited = dateEdited
+                    val program = ModelProgram(id,name,dateCreated,dateEdited)
 
                     viewModel.storeProgram(program){
                         val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment(program.id)
@@ -116,10 +113,13 @@ class AddEditProgramFragment : Fragment() {
                 }
 
                 FROM_DETAILS_PROGRAM -> {
-                    // TODO: set update
-                    Toast.makeText(activity,"updated",Toast.LENGTH_LONG).show()
-                    val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment(program.id)
-                    it.findNavController().navigate(action)
+                    val newName = binding.editTextProgramName.text.toString()
+                    val newDateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+
+                    viewModel.updateProgram(program.id, newName, newDateEdited){
+                        val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment(program.id)
+                        findNavController().navigate(action)
+                    }
                 }
             }
         }

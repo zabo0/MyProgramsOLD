@@ -25,7 +25,10 @@ class AddEditProgramViewModel(application: Application):BaseViewModel(applicatio
         }
     }
 
-    fun updateProgram(){
-
+    fun updateProgram(programID: String, newName:String, newDateEdited:String, callback: (Boolean) -> Unit){
+        launch {
+            DatabaseMyPrograms(getApplication()).programDAO().updateProgram(programID,newName,newDateEdited)
+            callback(true)
+        }
     }
 }

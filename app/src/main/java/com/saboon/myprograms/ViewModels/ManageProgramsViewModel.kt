@@ -13,55 +13,46 @@ class ManageProgramsViewModel(application: Application): BaseViewModel(applicati
 
 
     var programs = MutableLiveData <List<ModelProgram>?>()
-    var states = MutableLiveData<ModelStates>()
+    var loading = MutableLiveData<Boolean>()
+    var empty = MutableLiveData<Boolean>()
+    var error = MutableLiveData<Boolean>()
 
     fun getAllPrograms(){
-        states.value?.loading = true
-        try {
-            launch {
-                val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllPrograms()
+        loading.value = true
 
-                if (programList.isEmpty()){
-                    states.value?.loading = false
-                    states.value?.empty = true
-                    states.value?.error = false
-                }else{
-                    programs.value = programList
+        launch {
+            val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllPrograms()
 
-                    states.value?.loading = false
-                    states.value?.empty = false
-                    states.value?.error = false
-                }
+            if (programList.isEmpty()){
+                loading.value = false
+                empty.value = true
+                error.value = false
+            }else{
+                programs.value = programList
+
+                loading.value = false
+                empty.value = false
+                error.value = false
             }
-        }catch (e:Exception){
-            states.value?.loading = false
-            states.value?.empty = false
-            states.value?.error = true
         }
     }
 
     fun getAllProgramsByFilter(filter: String){
-        states.value?.loading = true
-        try {
-            launch {
-                val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllProgramByFilter(filter)
+        loading.value = true
+        launch {
+            val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllProgramByFilter(filter)
 
-                if (programList.isEmpty()){
-                    states.value?.loading = false
-                    states.value?.empty = true
-                    states.value?.error = false
-                }else{
-                    programs.value = programList
+            if (programList.isEmpty()){
+                loading.value = false
+                empty.value = true
+                error.value = false
+            }else{
+                programs.value = programList
 
-                    states.value?.loading = false
-                    states.value?.empty = false
-                    states.value?.error = false
-                }
+                loading.value = false
+                empty.value = false
+                error.value = false
             }
-        }catch (e:Exception){
-            states.value?.loading = false
-            states.value?.empty = false
-            states.value?.error = true
         }
     }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Adapters.ManageProgramsFragmentRecyclerAdapter
 import com.saboon.myprograms.Models.ModelProgram
@@ -47,48 +48,53 @@ class ManageProgramsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ManageProgramsViewModel::class.java)
         viewModel.getAllPrograms()
+        binding.recyclerViewManageProgramsFragment.layoutManager = LinearLayoutManager(context)
 
         observer()
 
-        binding.recyclerViewManageProgramsFragment.layoutManager = LinearLayoutManager(context)
-        binding.recyclerViewManageProgramsFragment.adapter = ManageProgramsFragmentRecyclerAdapter(programList)
 
         buttons()
     }
 
     fun observer(){
 
-        viewModel.states.observe(viewLifecycleOwner, Observer {
-            it.let {
-                if (it.loading){
-                    binding.recyclerViewManageProgramsFragment.visibility = View.GONE
-                    binding.progressBarLoading.visibility = View.VISIBLE
-                    binding.linearLayoutEmpty.visibility = View.GONE
-                    binding.linearLayoutError.visibility = View.GONE
-                }
-                else if (it.empty){
-                    binding.recyclerViewManageProgramsFragment.visibility = View.GONE
-                    binding.progressBarLoading.visibility = View.GONE
-                    binding.linearLayoutEmpty.visibility = View.VISIBLE
-                    binding.linearLayoutError.visibility = View.GONE
-                }
-                else if (it.error){
-                    binding.recyclerViewManageProgramsFragment.visibility = View.GONE
-                    binding.progressBarLoading.visibility = View.GONE
-                    binding.linearLayoutEmpty.visibility = View.GONE
-                    binding.linearLayoutError.visibility = View.VISIBLE
-                }
-                else{
-                    viewModel.programs.observe(viewLifecycleOwner, Observer {
-                        it.let {
-                            programList = it!!
-                            binding.recyclerViewManageProgramsFragment.visibility = View.VISIBLE
-                            binding.progressBarLoading.visibility = View.GONE
-                            binding.linearLayoutEmpty.visibility = View.GONE
-                            binding.linearLayoutError.visibility = View.GONE
-                        }
-                    })
-                }
+
+        viewModel.programs.observe(viewLifecycleOwner, Observer {
+            if(it != null) {
+                programList = it
+                binding.recyclerViewManageProgramsFragment.visibility = View.VISIBLE
+                binding.progressBarLoading.visibility = View.GONE
+                binding.linearLayoutEmpty.visibility = View.GONE
+                binding.linearLayoutError.visibility = View.GONE
+                binding.recyclerViewManageProgramsFragment.adapter = ManageProgramsFragmentRecyclerAdapter(programList)
+                binding.recyclerViewManageProgramsFragment.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            }
+        })
+
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                binding.recyclerViewManageProgramsFragment.visibility = View.GONE
+                binding.progressBarLoading.visibility = View.VISIBLE
+                binding.linearLayoutEmpty.visibility = View.GONE
+                binding.linearLayoutError.visibility = View.GONE
+            }
+        })
+
+        viewModel.empty.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                binding.recyclerViewManageProgramsFragment.visibility = View.GONE
+                binding.progressBarLoading.visibility = View.GONE
+                binding.linearLayoutEmpty.visibility = View.VISIBLE
+                binding.linearLayoutError.visibility = View.GONE
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                binding.recyclerViewManageProgramsFragment.visibility = View.GONE
+                binding.progressBarLoading.visibility = View.GONE
+                binding.linearLayoutEmpty.visibility = View.GONE
+                binding.linearLayoutError.visibility = View.VISIBLE
             }
         })
     }

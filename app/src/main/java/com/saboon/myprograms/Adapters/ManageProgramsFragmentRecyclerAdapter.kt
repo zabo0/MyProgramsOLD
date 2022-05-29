@@ -16,14 +16,14 @@ class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>)
 
 
     class ManageProgramViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val programName: TextView = view.findViewById(R.id.editText_programName)
-        val editedDate: TextView = view.findViewById(R.id.textView_dateEdited)
+        val programName: TextView = view.findViewById(R.id.manage_recycler_textView_programName)
+        val editedDate: TextView = view.findViewById(R.id.manage_recycler_textView_dateEdited)
         val goToDetails: ImageView = view.findViewById(R.id.imageView_goToDetails)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManageProgramViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row_manage_program,parent,false)
-        return ManageProgramViewHolder(view)
+        val _view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row_manage_program,parent,false)
+        return ManageProgramViewHolder(_view)
     }
 
     override fun onBindViewHolder(holder: ManageProgramViewHolder, position: Int) {

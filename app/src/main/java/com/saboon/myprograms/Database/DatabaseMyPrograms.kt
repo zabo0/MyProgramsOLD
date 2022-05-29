@@ -4,13 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Models.ModelStates
-import com.saboon.myprograms.Models.ModelSubject
-import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.Models.*
 
 
-@Database(entities = arrayOf(ModelProgram::class, ModelSubject::class, ModelSubjectTime::class, ModelStates::class), version = 1)
+@Database(entities = arrayOf(ModelProgram::class, ModelSubject::class, ModelSubjectTime::class, ModelSharedPref::class), version = 1)
 abstract class DatabaseMyPrograms: RoomDatabase() {
 
 
