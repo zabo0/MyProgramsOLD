@@ -1,7 +1,8 @@
-package com.saboon.myprograms
+package com.saboon.myprograms.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.saboon.myprograms.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

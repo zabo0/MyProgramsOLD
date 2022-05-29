@@ -3,18 +3,8 @@
     <color name="blue">#006E7F</color>
     <color name="blue_200">#00A9C3</color>
 
-    <color name="yellow">#F8CB2E</color>
-    <color name="yellow_200">#FFF6D8</color>
-
     <color name="orange">#EE5007</color>
     <color name="orange_200">#E18C65</color>
-
-
-    <color name="night_blue">#2D4263</color>
-    <color name="night_blue_200">#182D50</color>
-
-    <color name="krem">#ECDBBA</color>
-    <color name="krem_200">#7E7563</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

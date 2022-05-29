@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/manageProgramsFragment">
+
+    <fragment
+        android:id="@+id/manageProgramsFragment"
+        android:name="com.saboon.myprograms.Fragments.ManageProgramsFragment"
+        android:label="fragment_manage_programs"
+        tools:layout="@layout/fragment_manage_programs" />
+</navigation>

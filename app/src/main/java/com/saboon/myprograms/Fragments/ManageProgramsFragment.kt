@@ -33,20 +33,6 @@ class ManageProgramsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.manageProgramsTopAppBar.setOnMenuItemClickListener {
-            when(it.itemId){
-                R.id.goToSettings -> {
-                    //go to settings
-                    true
-                }
-                else -> false
-            }
-        }
-
-        binding.fab.setOnClickListener {
-            //go to addEdit programs
-        }
-
     }
 
     override fun onDestroy() {
