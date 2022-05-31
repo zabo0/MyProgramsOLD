@@ -24,6 +24,11 @@ class SubjectsFragmentRecyclerAdapter(val subjectList: List<ModelSubject>): Recy
         holder.lecturerName.text = subjectList[position].lecturerName
         holder.subjectName.text = subjectList[position].subjectName
         holder.dateEdited.text = subjectList[position].dateEdited
+
+
+
+
+
     }
 
     override fun getItemCount(): Int {
