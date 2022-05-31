@@ -20,4 +20,7 @@
     <string name="errorText">There is a problem</string>
     <string name="allSubjectText">All Subjects</string>
     <string name="emptyTextAllSubject">There is no subject</string>
+    <string name="addTimeText">Add new time</string>
+    <string name="emptyTextManageTime">There is no Time</string>
+    <string name="times">Times</string>
 </resources>
