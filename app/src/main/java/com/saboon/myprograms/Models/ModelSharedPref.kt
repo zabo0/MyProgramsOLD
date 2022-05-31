@@ -11,6 +11,6 @@ data class ModelSharedPref(
     @PrimaryKey
     val id: String,
 
-    @ColumnInfo(name = "lastID")
-    val lastID: String
+    @ColumnInfo(name = "lastProgramID")
+    val lastProgramID: String
 )

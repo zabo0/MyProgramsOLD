@@ -8,6 +8,7 @@ import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.R
 
 class MainFragmentRecyclerAdapter:RecyclerView.Adapter<MainFragmentRecyclerAdapter.MainFragmentViewHolder>() {
+
     class MainFragmentViewHolder(view: View):RecyclerView.ViewHolder(view) {
 
     }

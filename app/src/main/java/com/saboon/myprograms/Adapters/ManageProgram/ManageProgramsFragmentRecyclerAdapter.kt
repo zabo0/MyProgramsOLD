@@ -1,5 +1,8 @@
 package com.saboon.myprograms.Adapters.ManageProgram
 
+import android.app.Application
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,13 +10,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.saboon.myprograms.Fragments.ManageProgramsFragmentDirections
+import com.saboon.myprograms.Activities.MainActivity
+import com.saboon.myprograms.Activities.SubjectProgramActivity
+import com.saboon.myprograms.Fragments.ManageProgram.ManageProgramsFragmentDirections
 import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.ModelSharedPref
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.SHARED_PREF_ID
+import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import java.text.SimpleDateFormat
 
-class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>):RecyclerView.Adapter<ManageProgramsFragmentRecyclerAdapter.ManageProgramViewHolder>() {
-
+class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>, val application: Application):RecyclerView.Adapter<ManageProgramsFragmentRecyclerAdapter.ManageProgramViewHolder>() {
 
     class ManageProgramViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val programName: TextView = view.findViewById(R.id.manage_recycler_textView_programName)
@@ -38,9 +45,20 @@ class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>)
 
         holder.editedDate.text = dateEdited
 
-        holder.itemView.setOnClickListener {
+        holder.goToDetails.setOnClickListener {
             val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment(programList[position].id)
             it.findNavController().navigate(action)
+        }
+
+        holder.itemView.setOnClickListener {view ->
+
+            val sharedPref = ModelSharedPref(SHARED_PREF_ID, programList[position].id)
+            MainFragmentViewModel(application).setLastProgramID(sharedPref){
+                if (it){
+                    val intent = Intent(view.context, SubjectProgramActivity::class.java)
+                    view.context.startActivity(intent)
+                }
+            }
         }
     }
 

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
 import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.ModelSharedPref
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.Models.ModelSubjectTime
 import com.saboon.myprograms.ViewModels.BaseViewModel
@@ -14,6 +15,7 @@ class MainFragmentViewModel(application: Application):BaseViewModel(application)
     val program = MutableLiveData<ModelProgram>()
     val subjects = MutableLiveData<List<ModelSubject>?>()
     val subjectTimes = MutableLiveData<List<ModelSubjectTime>?>()
+    val sharedPref = MutableLiveData<ModelSharedPref?>()
     val loading = MutableLiveData<Boolean>()
     val empty = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
@@ -24,10 +26,44 @@ class MainFragmentViewModel(application: Application):BaseViewModel(application)
         loading.value = true
         launch {
             program.value = DatabaseMyPrograms(getApplication()).programDAO().getProgram(programID)
-            subjects.value = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects()
-            subjectTimes.value
+            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects()
+            val subjectTimeList = DatabaseMyPrograms(getApplication()).subjectTimeDAO().getAllSubjectTimes(programID)
 
 
+            if (subjectList.isEmpty()){
+                loading.value = false
+                empty.value = true
+                error.value = false
+            }else{
+                subjects.value = subjectList
+                if (subjectTimeList.isEmpty()){
+                    subjectTimes.value = subjectTimeList
+                    loading.value = false
+                    empty.value = false
+                    error.value = false
+                }
+            }
+        }
+    }
+
+    fun getLastProgramID(sharedPrefID:String, callback:(Boolean) -> Unit){
+        launch {
+            sharedPref.value = DatabaseMyPrograms(getApplication()).sharedPrefDAO().getSharedPref(sharedPrefID)
+            callback(true)
+        }
+    }
+
+    fun setLastProgramID(sharedPref: ModelSharedPref, callback: (Boolean) -> Unit){
+        deleteLastProgram(sharedPref)
+        launch {
+            DatabaseMyPrograms(getApplication()).sharedPrefDAO().insert(sharedPref)
+            callback(true)
+        }
+    }
+
+    fun deleteLastProgram(sharedPref: ModelSharedPref){
+        launch {
+            DatabaseMyPrograms(getApplication()).sharedPrefDAO().deleteLastProgramID(sharedPref.id)
         }
     }
 

@@ -68,7 +68,7 @@ class ManageProgramsFragment : Fragment() {
                 binding.progressBarLoading.visibility = View.GONE
                 binding.linearLayoutEmpty.visibility = View.GONE
                 binding.linearLayoutError.visibility = View.GONE
-                binding.recyclerViewManageProgramsFragment.adapter = ManageProgramsFragmentRecyclerAdapter(programList)
+                binding.recyclerViewManageProgramsFragment.adapter = ManageProgramsFragmentRecyclerAdapter(programList, requireActivity().application)
                 binding.recyclerViewManageProgramsFragment.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             }
         })

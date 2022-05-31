@@ -16,5 +16,5 @@ data class ModelProgram(
     var dateCreated: String,
 
     @ColumnInfo(name = "dateEdited")
-    var dateEdited: String,
+    var dateEdited: String
 )

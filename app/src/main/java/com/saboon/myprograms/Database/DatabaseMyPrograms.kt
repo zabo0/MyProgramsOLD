@@ -7,12 +7,14 @@ import androidx.room.RoomDatabase
 import com.saboon.myprograms.Models.*
 
 
-@Database(entities = arrayOf(ModelProgram::class, ModelSubject::class, ModelSubjectTime::class, ModelSharedPref::class), version = 1)
+@Database(entities = arrayOf(ModelProgram::class, ModelSubject::class, ModelSubjectTime::class, ModelSharedPref::class), version = 2)
 abstract class DatabaseMyPrograms: RoomDatabase() {
 
 
     abstract fun programDAO() : ProgramDAO
     abstract fun subjectDAO() : SubjectDAO
+    abstract fun subjectTimeDAO(): SubjectTimeDAO
+    abstract fun sharedPrefDAO(): SharedPrefDAO
 
 
     //\\--SINGLETON--//\\

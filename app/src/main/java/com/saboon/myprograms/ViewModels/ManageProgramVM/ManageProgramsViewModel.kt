@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
 import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.ModelSharedPref
 import com.saboon.myprograms.ViewModels.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -53,5 +54,6 @@ class ManageProgramsViewModel(application: Application): BaseViewModel(applicati
             }
         }
     }
+
 
 }
