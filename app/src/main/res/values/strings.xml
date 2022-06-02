@@ -23,4 +23,7 @@
     <string name="addTimeText">Add new time</string>
     <string name="emptyTextManageTime">There is no Time</string>
     <string name="times">Times</string>
+    <string name="editText_subjectTextHint">Subject Name</string>
+    <string name="editText_lecturerTextHint">Lecturer Name</string>
+    <string name="maxAbsenteeismHint">Max. Absenteeism</string>
 </resources>
