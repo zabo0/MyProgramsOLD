@@ -23,5 +23,46 @@
         <action
             android:id="@+id/action_subjectsFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_subjectsFragment_to_addEditSubjectFragment"
+            app:destination="@id/addEditSubjectFragment"
+            app:popUpTo="@id/addEditSubjectFragment" />
+        <argument
+            android:name="programID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_subjectsFragment_to_subjectDetailsFragment"
+            app:destination="@id/subjectDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditSubjectFragment"
+        android:name="com.saboon.myprograms.Fragments.SubjectProgram.AddEditSubjectFragment"
+        android:label="fragment_add_edit_subject"
+        tools:layout="@layout/fragment_add_edit_subject" >
+        <argument
+            android:name="programID"
+            app:argType="string" />
+        <argument
+            android:name="subjectID"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addEditSubjectFragment_to_subjectDetailsFragment"
+            app:destination="@id/subjectDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subjectDetailsFragment"
+        android:name="com.saboon.myprograms.Fragments.SubjectProgram.SubjectDetailsFragment"
+        android:label="fragment_subject_details"
+        tools:layout="@layout/fragment_subject_details" >
+        <action
+            android:id="@+id/action_subjectDetailsFragment_to_subjectsFragment"
+            app:destination="@id/subjectsFragment" />
+        <action
+            android:id="@+id/action_subjectDetailsFragment_to_addEditSubjectFragment"
+            app:destination="@id/addEditSubjectFragment" />
+        <argument
+            android:name="subjectID"
+            app:argType="string" />
     </fragment>
 </navigation>

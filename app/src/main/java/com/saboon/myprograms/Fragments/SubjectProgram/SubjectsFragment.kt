@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.saboon.myprograms.Adapters.SubjectProgram.MainFragmentRecyclerAdapter
 import com.saboon.myprograms.Adapters.SubjectProgram.SubjectsFragmentRecyclerAdapter
 import com.saboon.myprograms.Models.ModelSubject
-import com.saboon.myprograms.R
-import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectsBinding
 
@@ -26,6 +24,8 @@ class SubjectsFragment : Fragment() {
     lateinit var viewModel: SubjectsFragmentViewModel
 
     lateinit var subjectList: List<ModelSubject>
+
+    lateinit var programID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,12 @@ class SubjectsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        arguments.let {
+            if (it!=null){
+                programID = it.getString("programID").toString()
+            }
+        }
+
 
         viewModel = ViewModelProvider(this).get(SubjectsFragmentViewModel::class.java)
         viewModel.getAllSubject()
@@ -53,6 +59,7 @@ class SubjectsFragment : Fragment() {
         binding.subjectRecycler.layoutManager = LinearLayoutManager(context)
 
         observer()
+        buttons()
     }
 
     fun observer(){
@@ -100,6 +107,14 @@ class SubjectsFragment : Fragment() {
         })
     }
 
+
+
+    fun buttons(){
+        binding.fab.setOnClickListener {
+            val actionToNew = SubjectsFragmentDirections.actionSubjectsFragmentToAddEditSubjectFragment(programID,null)
+            it.findNavController().navigate(actionToNew)
+        }
+    }
 
 
     override fun onDestroy() {

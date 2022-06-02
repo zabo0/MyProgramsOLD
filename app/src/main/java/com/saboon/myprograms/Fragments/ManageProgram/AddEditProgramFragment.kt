@@ -98,7 +98,7 @@ class AddEditProgramFragment : Fragment() {
         binding.buttonSave.setOnClickListener {
             when(from){
                 FROM_MANAGE_PROGRAMS -> {
-                    val name = binding.editTextProgramName.text.toString()
+                    val name = binding.editTextProgramName.text.toString().trimEnd()
                     val id = IDGenerator().generateProgramID(name)
                     val dateCreated = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
                     val dateEdited = dateCreated
@@ -112,7 +112,7 @@ class AddEditProgramFragment : Fragment() {
                 }
 
                 FROM_DETAILS_PROGRAM -> {
-                    val newName = binding.editTextProgramName.text.toString()
+                    val newName = binding.editTextProgramName.text.toString().trimEnd()
                     val newDateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
 
                     viewModel.updateProgram(program.id, newName, newDateEdited){

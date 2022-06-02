@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Activities.MainActivity
 import com.saboon.myprograms.Models.ModelProgram
@@ -77,7 +78,8 @@ class MainFragment : Fragment() {
 
         viewModel.program.observe(viewLifecycleOwner, Observer {
             if (it != null){
-                binding.subjectMainTextViewChooseProgram.text = it.name
+                program = it
+                binding.subjectMainTextViewChooseProgram.text = program.name
             }
         })
 
@@ -95,7 +97,8 @@ class MainFragment : Fragment() {
 
     fun buttons(){
         binding.subjectMainImageViewGoToAllSubjects.setOnClickListener {
-            //go to all subject
+            val actionToSubjects = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
+            it.findNavController().navigate(actionToSubjects)
         }
 
         binding.subjectMainTextViewChooseProgram.setOnClickListener {

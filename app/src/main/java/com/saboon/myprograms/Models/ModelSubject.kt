@@ -13,19 +13,19 @@ data class ModelSubject(
     val dateAdded: String,
 
     @ColumnInfo(name = "dateEdited")
-    val dateEdited: String,
+    var dateEdited: String,
 
     @ColumnInfo(name = "subjectName")
-    val subjectName: String?,
+    var subjectName: String?,
 
     @ColumnInfo(name = "lecturerName")
-    val lecturerName: String?,
+    var lecturerName: String?,
 
     @ColumnInfo(name = "color")
     val color: String,
 
     @ColumnInfo(name = "absenteeism")
-    val absenteeism: String,
+    var absenteeism: String,
 
     @ColumnInfo(name = "belowProgram")
     val belowProgram: String

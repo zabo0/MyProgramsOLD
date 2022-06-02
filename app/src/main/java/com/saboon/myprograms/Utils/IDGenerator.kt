@@ -12,11 +12,11 @@ class IDGenerator {
     }
 
 
-    fun generateLessonID(programName: String, subjectName: String): String{
+    fun generateSubjectID(programName: String, subjectName: String): String{
         val progName = programName.filter { !it.isWhitespace() }
         val sbjName = subjectName.filter { !it.isWhitespace() }
         val randomID = UUID.randomUUID().toString()
-        val id = "${progName}_${sbjName}_${randomID}"
+        val id = "${sbjName}_${progName}_${randomID}"
         return id
 
     }
@@ -26,7 +26,7 @@ class IDGenerator {
         val sbjName = subjectName.filter { !it.isWhitespace() }
         val time = day_timeStart.filter { !it.isWhitespace() }
         val randomID = UUID.randomUUID().toString()
-        val id = "${progName}_${sbjName}_${time}_${randomID}"
+        val id = "${time}_${sbjName}_${progName}_${randomID}"
         return id
     }
 

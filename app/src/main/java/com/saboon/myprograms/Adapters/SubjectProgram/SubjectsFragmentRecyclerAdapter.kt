@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.saboon.myprograms.Fragments.SubjectProgram.SubjectsFragmentDirections
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.R
 
@@ -24,6 +26,11 @@ class SubjectsFragmentRecyclerAdapter(val subjectList: List<ModelSubject>): Recy
         holder.lecturerName.text = subjectList[position].lecturerName
         holder.subjectName.text = subjectList[position].subjectName
         holder.dateEdited.text = subjectList[position].dateEdited
+
+        holder.itemView.setOnClickListener {
+            val action = SubjectsFragmentDirections.actionSubjectsFragmentToSubjectDetailsFragment(subjectList[position].id)
+            it.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

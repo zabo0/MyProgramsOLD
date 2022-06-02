@@ -120,16 +120,17 @@
 <!--        app:drawableRightCompat="@drawable/ic_baseline_add_24"-->
 <!--        app:drawableTint="?attr/colorSecondary" />-->
 
-
     <TextView
+        android:id="@+id/subject_details_textView_addTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/times"
+        android:text="@string/addNewTimes"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:textSize="18sp"
-        app:drawableEndCompat="@drawable/ic_baseline_access_alarm_24" />
+        app:drawableEndCompat="@drawable/ic_baseline_add_24"
+        app:drawableTint="?attr/colorPrimary" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -146,18 +147,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="30dp"
-            android:src="@drawable/ic_baseline_add_24"
-            app:fabSize="auto"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
 
         <LinearLayout
@@ -221,8 +210,6 @@
                 android:textColor="@color/red"
                 android:textSize="18sp" />
         </LinearLayout>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
