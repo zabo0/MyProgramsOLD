@@ -69,7 +69,7 @@ class AddEditSubjectFragment : Fragment() {
     }
 
 
-    fun observer(){
+    private fun observer(){
         viewModel.subject.observe(viewLifecycleOwner, Observer {
             if( it!= null){
                 subject = it
@@ -88,7 +88,7 @@ class AddEditSubjectFragment : Fragment() {
 
     }
 
-    fun buttons(){
+    private fun buttons(){
         binding.buttonSave.setOnClickListener { view ->
            if (isNewSubject){
                val newSubject = newSubject()
@@ -97,16 +97,31 @@ class AddEditSubjectFragment : Fragment() {
                    view.findNavController().navigate(action)
                }
            }else{
-                viewModel.updateSubject(subject){
-                    val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id)
-                    view.findNavController().navigate(action)
-                }
+               subject.subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
+               subject.lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
+               subject.absenteeism = binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
+               subject.dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+
+               viewModel.updateSubject(subject){
+                   val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id)
+                   view.findNavController().navigate(action)
+               }
            }
+        }
+
+        binding.textViewAddEditSubjectGoToBack.setOnClickListener {
+            if (isNewSubject){
+                val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectsFragment(program.id)
+                it.findNavController().navigate(action)
+            }else{
+                val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id)
+                it.findNavController().navigate(action)
+            }
         }
     }
 
 
-    fun newSubject():ModelSubject{
+    private fun newSubject():ModelSubject{
         val subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
         val lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
         val color = "#FF0000"
@@ -117,25 +132,6 @@ class AddEditSubjectFragment : Fragment() {
         val id = IDGenerator().generateSubjectID(program.name,subjectName)
 
         return ModelSubject(id,dateAdded,dateEdited,subjectName,lecturerName,color, maxAbsenteeism,belowProgID)
-    }
-
-    fun updateSubject(){
-//        val subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
-//        val lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
-//        val color = subject.color
-//        val maxAbsenteeism = binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
-//        val dateAdded = subject.dateAdded
-//        val dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
-//        val belowProgID = subject.belowProgram
-//        val id = subject.id
-
-
-        subject.subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
-        subject.lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
-        subject.absenteeism = binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
-        subject.dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
-
-//        return ModelSubject(id,dateAdded,dateEdited,subjectName,lecturerName,color, maxAbsenteeism,belowProgID)
     }
 
 

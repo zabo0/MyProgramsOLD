@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="@string/maxAbsenteeismHint"
+            android:hint="@string/absenteeismHint"
             app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_baseline_done_24">
 

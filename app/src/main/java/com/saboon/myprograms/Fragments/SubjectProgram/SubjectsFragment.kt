@@ -54,7 +54,7 @@ class SubjectsFragment : Fragment() {
 
 
         viewModel = ViewModelProvider(this).get(SubjectsFragmentViewModel::class.java)
-        viewModel.getAllSubject()
+        viewModel.getAllSubject(programID)
 
         binding.subjectRecycler.layoutManager = LinearLayoutManager(context)
 
@@ -113,6 +113,11 @@ class SubjectsFragment : Fragment() {
         binding.fab.setOnClickListener {
             val actionToNew = SubjectsFragmentDirections.actionSubjectsFragmentToAddEditSubjectFragment(programID,null)
             it.findNavController().navigate(actionToNew)
+        }
+
+        binding.subjectSubjectsTextViewGoToBack.setOnClickListener {
+            val action = SubjectsFragmentDirections.actionSubjectsFragmentToMainFragment()
+            it.findNavController().navigate(action)
         }
     }
 

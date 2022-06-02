@@ -15,10 +15,10 @@ class SubjectsFragmentViewModel(application: Application): BaseViewModel(applica
     var error = MutableLiveData<Boolean>()
 
 
-    fun getAllSubject(){
+    fun getAllSubject(belowProgramID: String){
         loading.value = true
         launch {
-            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects()
+            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects(belowProgramID)
 
             if (subjectList.isEmpty()){
                 loading.value = false

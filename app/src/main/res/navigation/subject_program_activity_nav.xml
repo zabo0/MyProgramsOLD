@@ -32,7 +32,8 @@
             app:argType="string" />
         <action
             android:id="@+id/action_subjectsFragment_to_subjectDetailsFragment"
-            app:destination="@id/subjectDetailsFragment" />
+            app:destination="@id/subjectDetailsFragment"
+            app:popUpTo="@id/subjectDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditSubjectFragment"
@@ -48,7 +49,11 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_addEditSubjectFragment_to_subjectDetailsFragment"
-            app:destination="@id/subjectDetailsFragment" />
+            app:destination="@id/subjectDetailsFragment"
+            app:popUpTo="@id/subjectDetailsFragment" />
+        <action
+            android:id="@+id/action_addEditSubjectFragment_to_subjectsFragment"
+            app:destination="@id/subjectsFragment" />
     </fragment>
     <fragment
         android:id="@+id/subjectDetailsFragment"

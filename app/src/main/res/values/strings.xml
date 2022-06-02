@@ -24,5 +24,7 @@
     <string name="addNewTimes">Add new time</string>
     <string name="editText_subjectTextHint">Subject Name</string>
     <string name="editText_lecturerTextHint">Lecturer Name</string>
-    <string name="maxAbsenteeismHint">Max. Absenteeism</string>
+    <string name="absenteeismHint">Absenteeism</string>
+    <string name="absenteeismText">Absenteeism:</string>
+    <string name="subjectDetails">Subject Details</string>
 </resources>

@@ -26,7 +26,7 @@ class MainFragmentViewModel(application: Application):BaseViewModel(application)
         loading.value = true
         launch {
             program.value = DatabaseMyPrograms(getApplication()).programDAO().getProgram(programID)
-            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects()
+            val subjectList = DatabaseMyPrograms(getApplication()).subjectDAO().getAllSubjects(programID)
             val subjectTimeList = DatabaseMyPrograms(getApplication()).subjectTimeDAO().getAllSubjectTimes(programID)
 
 
