@@ -27,4 +27,6 @@
     <string name="absenteeismHint">Absenteeism</string>
     <string name="absenteeismText">Absenteeism:</string>
     <string name="subjectDetails">Subject Details</string>
+    <string name="goToSubjects">Go to subjects</string>
+    <string name="emptyTextSubjectMain">There is no Subject</string>
 </resources>

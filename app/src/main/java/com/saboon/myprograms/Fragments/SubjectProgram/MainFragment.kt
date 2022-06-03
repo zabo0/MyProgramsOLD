@@ -15,6 +15,7 @@ import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSharedPref
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.SHARED_PREF_ID
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentMainBinding
@@ -68,14 +69,11 @@ class MainFragment : Fragment() {
 
         binding.subjectMainRecycler.layoutManager = LinearLayoutManager(context)
 
-
         observer()
         buttons()
-
     }
 
-    fun observer(){
-
+    private fun observer(){
         viewModel.program.observe(viewLifecycleOwner, Observer {
             if (it != null){
                 program = it
@@ -85,17 +83,43 @@ class MainFragment : Fragment() {
 
         viewModel.subjects.observe(viewLifecycleOwner, Observer {
             if (it != null){
-                for (subject in it){
-                    println(subject.subjectName)
-                }
+                binding.subjectMainRecycler.visibility = View.VISIBLE
+                binding.progressBarLoading.visibility = View.GONE
+                binding.linearLayoutEmpty.visibility = View.GONE
+                binding.linearLayoutError.visibility = View.GONE
+            }
+        })
+
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                binding.subjectMainRecycler.visibility = View.GONE
+                binding.progressBarLoading.visibility = View.VISIBLE
+                binding.linearLayoutEmpty.visibility = View.GONE
+                binding.linearLayoutError.visibility = View.GONE
+            }
+        })
+
+        viewModel.empty.observe(viewLifecycleOwner, Observer {
+            if (it){
+                binding.subjectMainRecycler.visibility = View.GONE
+                binding.progressBarLoading.visibility = View.GONE
+                binding.linearLayoutEmpty.visibility = View.VISIBLE
+                binding.linearLayoutError.visibility = View.GONE
+            }
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            if (it){
+                binding.subjectMainRecycler.visibility = View.GONE
+                binding.progressBarLoading.visibility = View.GONE
+                binding.linearLayoutEmpty.visibility = View.GONE
+                binding.linearLayoutError.visibility = View.VISIBLE
             }
         })
     }
 
 
-
-
-    fun buttons(){
+    private fun buttons(){
         binding.subjectMainImageViewGoToAllSubjects.setOnClickListener {
             val actionToSubjects = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
             it.findNavController().navigate(actionToSubjects)
@@ -105,7 +129,14 @@ class MainFragment : Fragment() {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonAddNewSubject.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
+            it.findNavController().navigate(action)
+        }
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
