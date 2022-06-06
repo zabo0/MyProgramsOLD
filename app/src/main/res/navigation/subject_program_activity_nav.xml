@@ -69,5 +69,25 @@
         <argument
             android:name="subjectID"
             app:argType="string" />
+        <action
+            android:id="@+id/action_subjectDetailsFragment_to_addEditSubjectTimeFragment"
+            app:destination="@id/addEditSubjectTimeFragment"
+            app:popUpTo="@id/addEditSubjectTimeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditSubjectTimeFragment"
+        android:name="com.saboon.myprograms.Fragments.SubjectProgram.AddEditSubjectTimeFragment"
+        android:label="fragment_add_edit_subject_time"
+        tools:layout="@layout/fragment_add_edit_subject_time" >
+        <action
+            android:id="@+id/action_addEditSubjectTimeFragment_to_subjectDetailsFragment"
+            app:destination="@id/subjectDetailsFragment" />
+        <argument
+            android:name="subjectTimeID"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="subjectID"
+            app:argType="string" />
     </fragment>
 </navigation>

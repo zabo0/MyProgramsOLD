@@ -18,7 +18,7 @@ interface SubjectTimeDAO {
     suspend fun getSubjectTime(subjectTimeID:String): ModelSubjectTime
 
     @Query("SELECT * FROM ModelSubjectTime WHERE belowSubjectID = :belowSubjectID")
-    suspend fun getSubjectSubjectTime(belowSubjectID:String): ModelSubjectTime
+    suspend fun getSubjectSubjectsTime(belowSubjectID:String): List<ModelSubjectTime>
 
     @Query("DELETE FROM ModelSubjectTime WHERE belowSubjectID = :belowSubjectID")
     suspend fun deleteAllSubjectTimes(belowSubjectID: String)
