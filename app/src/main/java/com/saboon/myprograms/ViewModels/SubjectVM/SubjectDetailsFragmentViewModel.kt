@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
 import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Models.ModelSubjectTime
 import com.saboon.myprograms.ViewModels.BaseViewModel
 import kotlinx.coroutines.launch
 
 class SubjectDetailsFragmentViewModel(application: Application):BaseViewModel(application) {
 
+    var subjectTimes = MutableLiveData<List<ModelSubjectTime>?>()
     var subject = MutableLiveData<ModelSubject>()
     var program = MutableLiveData<ModelProgram>()
 
@@ -23,6 +25,15 @@ class SubjectDetailsFragmentViewModel(application: Application):BaseViewModel(ap
             program.value = prog
         }
 
+    }
+
+    fun getSubjectTimes(subjectID: String){
+        launch {
+            val sbjTimes = DatabaseMyPrograms(getApplication()).subjectTimeDAO().getSubjectSubjectsTime(subjectID)
+            if (sbjTimes.isNotEmpty()){
+                subjectTimes.value = sbjTimes
+            }
+        }
     }
 
     fun deleteSubject(subjectID: String, callback:(Boolean) -> Unit){

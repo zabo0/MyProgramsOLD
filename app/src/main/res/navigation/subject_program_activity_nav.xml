@@ -83,11 +83,11 @@
             android:id="@+id/action_addEditSubjectTimeFragment_to_subjectDetailsFragment"
             app:destination="@id/subjectDetailsFragment" />
         <argument
+            android:name="subjectID"
+            app:argType="string" />
+        <argument
             android:name="subjectTimeID"
             app:argType="string"
             app:nullable="true" />
-        <argument
-            android:name="subjectID"
-            app:argType="string" />
     </fragment>
 </navigation>

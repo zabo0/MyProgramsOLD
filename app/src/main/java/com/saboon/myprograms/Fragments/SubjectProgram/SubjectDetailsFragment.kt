@@ -9,8 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.saboon.myprograms.Adapters.SubjectProgram.SubjectDetailsFragmentRecyclerAdapter
 import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Models.ModelSubjectTime
 import com.saboon.myprograms.R
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectDetailsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectDetailsBinding
@@ -24,6 +28,7 @@ class SubjectDetailsFragment : Fragment() {
     lateinit var viewModel: SubjectDetailsFragmentViewModel
 
     lateinit var subject: ModelSubject
+    lateinit var subjectTimeList: List<ModelSubjectTime>
     lateinit var program: ModelProgram
 
 
@@ -54,6 +59,8 @@ class SubjectDetailsFragment : Fragment() {
             }
         }
 
+        binding.subjectDetailsRecycler.layoutManager = LinearLayoutManager(context)
+
 
         observer()
         buttons()
@@ -64,9 +71,20 @@ class SubjectDetailsFragment : Fragment() {
         viewModel.subject.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 subject = it
+                viewModel.getSubjectTimes(subject.id)
                 binding.subjectDetailsTextViewSubjectName.text = subject.subjectName
                 binding.subjectDetailsTextViewLecturerName.text = subject.lecturerName
                 binding.subjectDetailsTextViewAbsenteeism.text = subject.absenteeism
+            }
+        })
+
+        viewModel.subjectTimes.observe(viewLifecycleOwner, Observer {
+            if (it!=null){
+                subjectTimeList = it
+                binding.subjectDetailsRecycler.adapter = SubjectDetailsFragmentRecyclerAdapter(subjectTimeList)
+                binding.subjectDetailsRecycler.addItemDecoration(
+                    DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+                )
             }
         })
     }
@@ -88,6 +106,11 @@ class SubjectDetailsFragment : Fragment() {
 
         binding.subjectDetailsTextViewSubjectNameGotoBack.setOnClickListener {
             val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
+            it.findNavController().navigate(action)
+        }
+
+        binding.subjectDetailsTextViewAddTime.setOnClickListener {
+            val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToAddEditSubjectTimeFragment(subject.id,null)
             it.findNavController().navigate(action)
         }
     }

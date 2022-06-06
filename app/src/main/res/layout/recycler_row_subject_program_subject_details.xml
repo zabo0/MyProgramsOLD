@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:padding="10dp"
+    android:padding="5dp"
     android:layout_height="wrap_content">
 
 
@@ -39,7 +39,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/subject_details_recyclerRow_textView_count_day"
+            android:id="@+id/subject_details_recyclerRow_textView_day"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -48,34 +48,82 @@
             android:text="Day"
             tools:ignore="NestedWeights" />
 
-        <TextView
-            android:id="@+id/subject_details_recyclerRow_textView_count_time"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:textAlignment="textStart"
             android:layout_weight="1"
-            android:textSize="18sp"
-            android:text="09:00-10:00"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/subject_details_recyclerRow_textView_timeStart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:text="09:00"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:text="-"/>
+
+
+            <TextView
+                android:id="@+id/subject_details_recyclerRow_textView_timeFinish"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:text="10:00"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/subject_details_recyclerRow_textView_count_classTypeOfLesson"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textAlignment="textEnd"
-            android:textSize="13sp"
-            android:text="class / type of lesson"/>
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/subject_details_recyclerRow_textView_class"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textEnd"
+                android:textSize="13sp"
+                android:text="class"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textEnd"
+                android:textSize="13sp"
+                android:text=" / "/>
+
+            <TextView
+                android:id="@+id/subject_details_recyclerRow_textView_typeOfLesson"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAlignment="textEnd"
+                android:textSize="13sp"
+                android:text="type of subject"/>
+        </LinearLayout>
+
+
 
         <TextView
-            android:id="@+id/subject_details_recyclerRow_textView_count_reminder"
+            android:id="@+id/subject_details_recyclerRow_textView_reminder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:textAlignment="textEnd"

@@ -10,22 +10,22 @@ data class ModelSubjectTime(
     val id: String,
 
     @ColumnInfo(name = "day")
-    val day: String?,
+    var day: String?,
 
     @ColumnInfo(name ="timeStart")
-    val timeStart: String?,
+    var timeStart: String?,
 
     @ColumnInfo(name ="timeFinish")
-    val timeFinish: String?,
+    var timeFinish: String?,
 
     @ColumnInfo(name = "typeLesson")
-    val typeOfLesson: String?,
+    var typeOfLesson: String?,
 
     @ColumnInfo(name ="classRoom")
-    val classRoom: String?,
+    var classRoom: String?,
 
     @ColumnInfo(name ="reminderTime")
-    val reminderTime: String?,
+    var reminderTime: String?,
 
     @ColumnInfo(name = "notificationID")
     val notificationID: Int?,

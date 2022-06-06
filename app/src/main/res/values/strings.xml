@@ -36,4 +36,28 @@
     <string name="typeOfSubject">Type of Subject</string>
     <string name="reminderText">Reminder</string>
     <string name="reminderInfoText">You will receive notification when the subject time is approaching</string>
+    <string-array name="Days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <string-array name="reminder">
+        <item>No Reminder</item>
+        <item>On Time</item>
+        <item>5 Minutes ago</item>
+        <item>10 Minutes ago</item>
+        <item>15 Minutes ago</item>
+        <item>30 Minutes ago</item>
+        <item>1 Hour ago</item>
+    </string-array>
+    <string-array name="typeOfSubject">
+        <item>Subject</item>
+        <item>Laboratory</item>
+        <item>Practice</item>
+        <item>Online</item>
+    </string-array>
 </resources>
