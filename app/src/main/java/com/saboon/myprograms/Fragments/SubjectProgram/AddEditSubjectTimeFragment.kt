@@ -1,6 +1,7 @@
 package com.saboon.myprograms.Fragments.SubjectProgram
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.Models.ModelSubjectTime
@@ -16,6 +19,7 @@ import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.IDGenerator
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectTimeFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditSubjectTimeBinding
+import java.util.*
 
 
 class AddEditSubjectTimeFragment : Fragment() {
@@ -93,6 +97,22 @@ class AddEditSubjectTimeFragment : Fragment() {
         //baslagicta gun ve hatirlaticiya default deger verilir(pazartesi ve hatirlatici yok)
         binding.autoCompleteTextViewWhichDay.setText(arrayAdapterDays.getItem(0),false)
         binding.autoCompleteTextViewReminderPicker.setText(arrayAdapterReminder.getItem(0),false)
+
+
+
+        binding.addEditSubjectTimeEditTextStartTimePicker.setOnClickListener {
+            getTime {
+                binding.addEditSubjectTimeEditTextStartTimePicker.setText(it)
+            }
+        }
+
+        binding.addEditSubjectTimeEditTextFinishTimePicker.setOnClickListener {
+            getTime {
+                binding.addEditSubjectTimeEditTextFinishTimePicker.setText(it)
+            }
+        }
+
+
 
 
         observer()
@@ -179,12 +199,12 @@ class AddEditSubjectTimeFragment : Fragment() {
     }
 
     private fun updateSubjectTime(){
-        subjectTime.day = binding.autoCompleteTextViewWhichDay.text.toString()
+        subjectTime.day = requireActivity().resources.getStringArray(R.array.Days).indexOf(binding.autoCompleteTextViewWhichDay.text.toString()).toString()
         subjectTime.classRoom = binding.addEditSubjectTimeEditTextClassroom.text.toString()
         subjectTime.timeStart = binding.addEditSubjectTimeEditTextStartTimePicker.text.toString()
         subjectTime.timeFinish = binding.addEditSubjectTimeEditTextFinishTimePicker.text.toString()
         subjectTime.typeOfLesson = binding.autoCompleteTextViewTypeOfSubject.text.toString()
-        subjectTime.reminderTime = binding.autoCompleteTextViewReminderPicker.text.toString()
+        subjectTime.reminderTime = requireActivity().resources.getStringArray(R.array.reminder).indexOf(binding.autoCompleteTextViewReminderPicker.text.toString()).toString()
     }
 
     private fun showDataInUI(){
@@ -195,6 +215,28 @@ class AddEditSubjectTimeFragment : Fragment() {
         binding.addEditSubjectTimeEditTextFinishTimePicker.setText(subjectTime.timeFinish)
         binding.autoCompleteTextViewTypeOfSubject.setText(subjectTime.typeOfLesson)
         binding.autoCompleteTextViewReminderPicker.setText(arrayAdapterReminder.getItem(subjectTime.reminderTime!!.toInt()), false)
+    }
+
+    private fun getTime(callback:(String)->Unit){
+        val isSystem24Hour = DateFormat.is24HourFormat(requireContext())
+        val clockFormat = if(isSystem24Hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
+
+        var timeText = ""
+
+        val picker = MaterialTimePicker.Builder()
+            .setTimeFormat(clockFormat)
+            .setHour(0)
+            .setMinute(0)
+            .setTitleText("Start Time")
+            .build()
+        picker.show(childFragmentManager, "TAG")
+
+        picker.addOnPositiveButtonClickListener{
+            val hour = picker.hour
+            val min = picker.minute
+            timeText = String.format("%02d:%02d", hour, min)
+            callback(timeText)
+        }
     }
 
     override fun onDestroy() {
