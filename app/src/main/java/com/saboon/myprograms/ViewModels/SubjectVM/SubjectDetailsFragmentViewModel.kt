@@ -43,6 +43,12 @@ class SubjectDetailsFragmentViewModel(application: Application):BaseViewModel(ap
         }
     }
 
+    fun deleteSubjectTimes(subjectID: String){
+        launch {
+            DatabaseMyPrograms(getApplication()).subjectTimeDAO().deleteSubjectSubjectTimes(subjectID)
+        }
+    }
+
 
 
 

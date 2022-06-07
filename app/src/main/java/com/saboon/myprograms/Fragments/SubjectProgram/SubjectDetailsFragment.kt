@@ -96,6 +96,7 @@ class SubjectDetailsFragment : Fragment() {
         }
 
         binding.subjectDetailsImageViewDelete.setOnClickListener { view ->
+            viewModel.deleteSubjectTimes(subject.id)
             viewModel.deleteSubject(subject.id){
                 if(it){
                     val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
