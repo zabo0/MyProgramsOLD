@@ -45,6 +45,13 @@ class AddEditSubjectTimeFragmentViewModel(application: Application):BaseViewMode
         }
     }
 
+    fun deleteSubjectTime(subjectTimeID: String, callback: (Boolean) -> Unit){
+        launch {
+            DatabaseMyPrograms(getApplication()).subjectTimeDAO().deleteSubjectTime(subjectTimeID)
+            callback(true)
+        }
+    }
+
     fun updateSubjectTime(subjectTime: ModelSubjectTime, callback: (Boolean) -> Unit){
         launch {
             DatabaseMyPrograms(getApplication()).subjectTimeDAO().updateSubjectTime(

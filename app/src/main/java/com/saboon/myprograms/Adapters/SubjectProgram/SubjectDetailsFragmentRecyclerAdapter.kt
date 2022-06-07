@@ -34,7 +34,7 @@ class SubjectDetailsFragmentRecyclerAdapter(private val subjectTimeList: List<Mo
         holder.timeFinishText.text = subjectTimeList[position].timeFinish
         holder.classroomText.text = subjectTimeList[position].classRoom
         holder.typeOfSubjectText.text = subjectTimeList[position].typeOfLesson
-        holder.reminderText.text = subjectTimeList[position].reminderTime
+        holder.reminderText.text = holder.itemView.context.resources.getStringArray(R.array.reminder)[subjectTimeList[position].reminderTime!!.toInt()]
 
 
         holder.itemView.setOnClickListener {

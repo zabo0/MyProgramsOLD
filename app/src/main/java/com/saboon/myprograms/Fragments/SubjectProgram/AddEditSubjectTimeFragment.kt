@@ -71,6 +71,7 @@ class AddEditSubjectTimeFragment : Fragment() {
                     if (it != null) {
                         viewModel.getSubjectTime(it)
                         isNewSubjectTime = false
+                        binding.delete.visibility = View.VISIBLE
                     }
                 }
             }
@@ -145,6 +146,18 @@ class AddEditSubjectTimeFragment : Fragment() {
             val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
             it.findNavController().navigate(action)
         }
+
+        binding.addEditSubjectTimeTextViewGoToBack.setOnClickListener {
+            val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+            it.findNavController().navigate(action)
+        }
+
+        binding.delete.setOnClickListener { view ->
+            viewModel.deleteSubjectTime(subjectTime.id){
+                val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+                view.findNavController().navigate(action)
+            }
+        }
     }
 
     private fun newSubjectTime():ModelSubjectTime{
@@ -154,7 +167,7 @@ class AddEditSubjectTimeFragment : Fragment() {
         val startTime = binding.addEditSubjectTimeEditTextStartTimePicker.text.toString()
         val finishTime = binding.addEditSubjectTimeEditTextFinishTimePicker.text.toString()
         val typeOfSubject = binding.autoCompleteTextViewTypeOfSubject.text.toString()
-        val reminderTime = binding.autoCompleteTextViewReminderPicker.text.toString()
+        val reminderTime = requireActivity().resources.getStringArray(R.array.reminder).indexOf(binding.autoCompleteTextViewReminderPicker.text.toString()).toString()
 
         val day_timeStart = "${dayString}_${startTime}"//id icin
         val id = IDGenerator().generateTimeID(program.name,subject.subjectName!!,day_timeStart)
@@ -175,12 +188,13 @@ class AddEditSubjectTimeFragment : Fragment() {
     }
 
     private fun showDataInUI(){
-        binding.autoCompleteTextViewWhichDay.setText(subjectTime.day)
+        binding.autoCompleteTextViewWhichDay.setText(arrayAdapterDays.getItem(subjectTime.day!!.toInt()), false)
+//        binding.autoCompleteTextViewWhichDay.setText(subjectTime.day)
         binding.addEditSubjectTimeEditTextClassroom.setText(subjectTime.classRoom)
         binding.addEditSubjectTimeEditTextStartTimePicker.setText(subjectTime.timeStart)
         binding.addEditSubjectTimeEditTextFinishTimePicker.setText(subjectTime.timeFinish)
         binding.autoCompleteTextViewTypeOfSubject.setText(subjectTime.typeOfLesson)
-        binding.autoCompleteTextViewReminderPicker.setText(subjectTime.reminderTime)
+        binding.autoCompleteTextViewReminderPicker.setText(arrayAdapterReminder.getItem(subjectTime.reminderTime!!.toInt()), false)
     }
 
     override fun onDestroy() {
