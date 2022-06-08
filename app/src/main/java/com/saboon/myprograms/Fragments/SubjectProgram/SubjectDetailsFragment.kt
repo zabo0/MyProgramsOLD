@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,9 @@ import com.saboon.myprograms.Adapters.SubjectProgram.SubjectDetailsFragmentRecyc
 import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.Models.ModelSubjectTime
-import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_FRAGMENT
+import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT
+import com.saboon.myprograms.Utils.FROM_MAIN_FRAGMENT
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectDetailsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectDetailsBinding
 
@@ -30,6 +31,8 @@ class SubjectDetailsFragment : Fragment() {
     lateinit var subject: ModelSubject
     lateinit var subjectTimeList: List<ModelSubjectTime>
     lateinit var program: ModelProgram
+
+    lateinit var from: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,8 +57,11 @@ class SubjectDetailsFragment : Fragment() {
 
         arguments.let {
             if (it!=null){
-                val subjectID = it.getString("subjectID").toString()
+                val subjectID = SubjectDetailsFragmentArgs.fromBundle(it).subjectID
                 viewModel.getSubject(subjectID)
+
+                from = SubjectDetailsFragmentArgs.fromBundle(it).from
+
             }
         }
 
@@ -106,8 +112,22 @@ class SubjectDetailsFragment : Fragment() {
         }
 
         binding.subjectDetailsTextViewSubjectNameGotoBack.setOnClickListener {
-            val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
-            it.findNavController().navigate(action)
+
+
+            when(from){
+                FROM_MAIN_FRAGMENT -> {
+                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToMainFragment()
+                    it.findNavController().navigate(action)
+                }
+                FROM_ALL_SUBJECT_FRAGMENT -> {
+                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
+                    it.findNavController().navigate(action)
+                }
+                FROM_ADD_EDIT_SUBJECT_FRAGMENT -> {
+                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToMainFragment()
+                    it.findNavController().navigate(action)
+                }
+            }
         }
 
         binding.subjectDetailsTextViewAddTime.setOnClickListener {

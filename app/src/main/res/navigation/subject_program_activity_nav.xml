@@ -14,6 +14,10 @@
             android:id="@+id/action_mainFragment_to_subjectsFragment"
             app:destination="@id/subjectsFragment"
             app:popUpTo="@id/subjectsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_subjectDetailsFragment"
+            app:destination="@id/subjectDetailsFragment"
+            app:popUpTo="@id/subjectDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/subjectsFragment"
@@ -73,6 +77,12 @@
             android:id="@+id/action_subjectDetailsFragment_to_addEditSubjectTimeFragment"
             app:destination="@id/addEditSubjectTimeFragment"
             app:popUpTo="@id/addEditSubjectTimeFragment" />
+        <action
+            android:id="@+id/action_subjectDetailsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="from"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addEditSubjectTimeFragment"

@@ -16,6 +16,7 @@ import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.Models.ModelSubjectTime
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
 import com.saboon.myprograms.Utils.IDGenerator
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectTimeFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditSubjectTimeBinding
@@ -149,32 +150,32 @@ class AddEditSubjectTimeFragment : Fragment() {
             if (isNewSubjectTime){
                 viewModel.saveSubjectTime(newSubjectTime()){
                     if (it){
-                        val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+                        val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id, FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
                         view.findNavController().navigate(action)
                     }
                 }
             }else{
                 updateSubjectTime()
                 viewModel.updateSubjectTime(subjectTime){
-                    val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+                    val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
                     view.findNavController().navigate(action)
                 }
             }
         }
 
         binding.buttonCancel.setOnClickListener {
-            val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+            val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
             it.findNavController().navigate(action)
         }
 
         binding.addEditSubjectTimeTextViewGoToBack.setOnClickListener {
-            val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+            val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
             it.findNavController().navigate(action)
         }
 
         binding.delete.setOnClickListener { view ->
             viewModel.deleteSubjectTime(subjectTime.id){
-                val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id)
+                val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
                 view.findNavController().navigate(action)
             }
         }

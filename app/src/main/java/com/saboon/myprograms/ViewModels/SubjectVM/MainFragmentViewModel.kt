@@ -36,15 +36,20 @@ class MainFragmentViewModel(application: Application):BaseViewModel(application)
                 error.value = false
             }else{
                 subjects.value = subjectList
+                subjectTimes.value = subjectTimeList
+
+                loading.value = false
+                empty.value = false
+                error.value = false
 //                if (subjectTimeList.isEmpty()){
-//                    subjectTimes.value = subjectTimeList
-//                    loading.value = false
-//                    empty.value = false
-//                    error.value = false
-//                }else{
 //                    loading.value = false
 //                    empty.value = true
 //                    error.value = false
+//                }else{
+////                    subjectTimes.value = subjectTimeList
+////                    loading.value = false
+////                    empty.value = false
+////                    error.value = false
 //                }
             }
         }

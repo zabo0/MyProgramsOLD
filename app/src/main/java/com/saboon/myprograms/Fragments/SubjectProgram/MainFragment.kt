@@ -9,13 +9,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Activities.MainActivity
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Models.ModelSharedPref
-import com.saboon.myprograms.Models.ModelSubject
-import com.saboon.myprograms.Models.ModelSubjectTime
-import com.saboon.myprograms.R
+import com.saboon.myprograms.Adapters.SubjectProgram.MainFragmentRecyclerAdapter
+import com.saboon.myprograms.Models.*
 import com.saboon.myprograms.Utils.SHARED_PREF_ID
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentMainBinding
@@ -81,17 +79,27 @@ class MainFragment : Fragment() {
             }
         })
 
-        viewModel.subjects.observe(viewLifecycleOwner, Observer {
-            if (it != null){
-                binding.subjectMainRecycler.visibility = View.VISIBLE
-                binding.progressBarLoading.visibility = View.GONE
-                binding.linearLayoutEmpty.visibility = View.GONE
-                binding.linearLayoutError.visibility = View.GONE
+        viewModel.subjects.observe(viewLifecycleOwner, Observer {subjects->
+            if (subjects != null){
+                subjectList = subjects
+                viewModel.subjectTimes.observe(viewLifecycleOwner, Observer { subjectTimes->
+                    if (subjectTimes!= null){
+                        subjectTimeList = subjectTimes
+
+                        binding.subjectMainRecycler.visibility = View.VISIBLE
+                        binding.progressBarLoading.visibility = View.GONE
+                        binding.linearLayoutEmpty.visibility = View.GONE
+                        binding.linearLayoutError.visibility = View.GONE
+
+                        binding.subjectMainRecycler.adapter = MainFragmentRecyclerAdapter(getDataToRecyclerView(subjects,subjectTimes))
+
+                    }
+                })
             }
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
-            if(it != null){
+            if(it){
                 binding.subjectMainRecycler.visibility = View.GONE
                 binding.progressBarLoading.visibility = View.VISIBLE
                 binding.linearLayoutEmpty.visibility = View.GONE
@@ -134,6 +142,31 @@ class MainFragment : Fragment() {
             val action = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
             it.findNavController().navigate(action)
         }
+    }
+
+    private fun getDataToRecyclerView(subjects:List<ModelSubject>, subjectTimes: List<ModelSubjectTime>):ArrayList<ModelSubjectProgramMainSection>{
+        //burasi main recycler view de dersleri gunlere gore ayirabilmek icin var
+        //main recycler viewde ic ice iki tane recycler view var biri gunlere gore ayirmak icin icteki olan ise o gunlerde olan dersleri gostermek icin
+        //bu fonksiyonda yapilan su for dongusu icerisinde haftanin her bir gunune denk gelen sayilar dondurulecek
+        //databaseden cekiler subjectTimelerin icerisinde bu gune esit olan (yani mesela pazartesi gununde olan) butun timeler tek bir listeye eklenerek
+        //section list icerisine kaydediliyor.
+        val sectionList: ArrayList<ModelSubjectProgramMainSection> = arrayListOf()
+        for (day in 0..6){
+            val sbjTimeSectionList: ArrayList<ModelSubjectTime> = arrayListOf()
+
+            for(sbjTime in subjectTimes){
+                if (sbjTime.day == day.toString()){
+                    sbjTimeSectionList.add(sbjTime)
+                }
+            }
+
+            if (sbjTimeSectionList.isNotEmpty()){
+                val section = ModelSubjectProgramMainSection(day,subjects,sbjTimeSectionList)
+                sectionList.add(section)
+            }
+        }
+
+        return sectionList
     }
 
 

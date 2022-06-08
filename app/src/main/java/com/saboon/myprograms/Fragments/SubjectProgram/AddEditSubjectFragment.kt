@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_FRAGMENT
 import com.saboon.myprograms.Utils.IDGenerator
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditSubjectBinding
@@ -93,7 +94,7 @@ class AddEditSubjectFragment : Fragment() {
            if (isNewSubject){
                val newSubject = newSubject()
                viewModel.saveNewSubject(newSubject){
-                   val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(newSubject.id)
+                   val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(newSubject.id, FROM_ADD_EDIT_SUBJECT_FRAGMENT)
                    view.findNavController().navigate(action)
                }
            }else{
@@ -103,7 +104,8 @@ class AddEditSubjectFragment : Fragment() {
                subject.dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
 
                viewModel.updateSubject(subject){
-                   val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id)
+                   val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id,
+                       FROM_ADD_EDIT_SUBJECT_FRAGMENT)
                    view.findNavController().navigate(action)
                }
            }
@@ -114,7 +116,7 @@ class AddEditSubjectFragment : Fragment() {
                 val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectsFragment(program.id)
                 it.findNavController().navigate(action)
             }else{
-                val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id)
+                val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectDetailsFragment(subject.id, FROM_ADD_EDIT_SUBJECT_FRAGMENT)
                 it.findNavController().navigate(action)
             }
         }

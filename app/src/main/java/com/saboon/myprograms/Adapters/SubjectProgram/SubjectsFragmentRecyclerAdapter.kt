@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.saboon.myprograms.Fragments.SubjectProgram.SubjectsFragmentDirections
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT
 
 class SubjectsFragmentRecyclerAdapter(val subjectList: List<ModelSubject>): RecyclerView.Adapter<SubjectsFragmentRecyclerAdapter.SubjectFragmentViewHolder>() {
     class SubjectFragmentViewHolder(view: View):RecyclerView.ViewHolder(view) {
@@ -28,7 +29,8 @@ class SubjectsFragmentRecyclerAdapter(val subjectList: List<ModelSubject>): Recy
         holder.dateEdited.text = subjectList[position].dateEdited
 
         holder.itemView.setOnClickListener {
-            val action = SubjectsFragmentDirections.actionSubjectsFragmentToSubjectDetailsFragment(subjectList[position].id)
+            val action = SubjectsFragmentDirections.actionSubjectsFragmentToSubjectDetailsFragment(subjectList[position].id,
+                FROM_ALL_SUBJECT_FRAGMENT)
             it.findNavController().navigate(action)
         }
     }

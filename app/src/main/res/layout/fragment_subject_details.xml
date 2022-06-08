@@ -159,6 +159,7 @@
             android:id="@+id/subject_details_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:listitem="@layout/recycler_row_subject_program_subject_details"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
