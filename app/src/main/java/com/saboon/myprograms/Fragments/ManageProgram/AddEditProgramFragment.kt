@@ -31,6 +31,7 @@ class AddEditProgramFragment : Fragment() {
     lateinit var viewModel: AddEditProgramViewModel
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -55,8 +56,8 @@ class AddEditProgramFragment : Fragment() {
 
         arguments.let {
             if (it != null) {
-                from = it.getString("from").toString()
-                val programID = it.getString("programID")
+                from = AddEditProgramFragmentArgs.fromBundle(it).from
+                val programID = AddEditProgramFragmentArgs.fromBundle(it).programID
                 if (programID != null) {
                     viewModel.getProgram(programID)
                 }
@@ -106,7 +107,7 @@ class AddEditProgramFragment : Fragment() {
                     val program = ModelProgram(id,name,dateCreated,dateEdited)
 
                     viewModel.storeProgram(program){
-                        val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment(program.id)
+                        val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToManageProgramsFragment()
                         findNavController().navigate(action)
                     }
                 }

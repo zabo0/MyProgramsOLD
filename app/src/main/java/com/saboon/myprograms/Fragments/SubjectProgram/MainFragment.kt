@@ -139,7 +139,7 @@ class MainFragment : Fragment() {
         }
 
         binding.buttonAddNewSubject.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
+            val action = MainFragmentDirections.actionMainFragmentToAddEditSubjectFragment(program.id,null)
             it.findNavController().navigate(action)
         }
     }

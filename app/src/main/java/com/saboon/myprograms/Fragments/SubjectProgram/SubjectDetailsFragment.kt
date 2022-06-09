@@ -15,6 +15,7 @@ import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSubject
 import com.saboon.myprograms.Models.ModelSubjectTime
 import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_FRAGMENT
+import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
 import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT
 import com.saboon.myprograms.Utils.FROM_MAIN_FRAGMENT
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectDetailsFragmentViewModel
@@ -124,6 +125,11 @@ class SubjectDetailsFragment : Fragment() {
                     it.findNavController().navigate(action)
                 }
                 FROM_ADD_EDIT_SUBJECT_FRAGMENT -> {
+                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToMainFragment()
+                    it.findNavController().navigate(action)
+                }
+
+                FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT -> {
                     val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToMainFragment()
                     it.findNavController().navigate(action)
                 }

@@ -54,6 +54,7 @@
         android:id="@+id/subject_main_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         tools:listitem="@layout/recycler_row_subject_program_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +86,7 @@
             android:id="@+id/button_addNewSubject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/goToSubjects"/>
+            android:text="@string/addNewSubject"/>
     </LinearLayout>
 
     <ProgressBar
