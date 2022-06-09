@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue">#006E7F</color>
-    <color name="blue_200">#00A9C3</color>
+    <color name="turquoise">#006E7F</color>
+    <color name="turquoise_200">#00A9C3</color>
 
     <color name="orange">#EC7842</color>
     <color name="orange_200">#E0C4B8</color>
@@ -12,7 +12,16 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#FF0000</color>
-
     <color name="hint">#878787</color>
+
+
+    <color name="yellow">#FFDC00</color>
+    <color name="blue">#0064FF</color>
+    <color name="green">#00AD1A</color>
+    <color name="pink">#FF00FF</color>
+
+
+
+
 </resources>
 

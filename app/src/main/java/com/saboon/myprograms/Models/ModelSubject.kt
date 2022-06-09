@@ -22,7 +22,7 @@ data class ModelSubject(
     var lecturerName: String?,
 
     @ColumnInfo(name = "color")
-    val color: String,
+    var color: String,
 
     @ColumnInfo(name = "absenteeism")
     var absenteeism: String,

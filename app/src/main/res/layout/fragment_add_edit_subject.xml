@@ -49,17 +49,20 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="1"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="@string/editText_subjectTextHint"
             app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_baseline_menu_book_24">
@@ -100,8 +103,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/subject_addEditSubject_editText_maxAbsenteeism"
                 android:layout_width="match_parent"
-                android:inputType="numberDecimal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,9 +112,108 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="10dp"
-            android:background="?attr/colorPrimary" />
+            android:background="?attr/colorPrimary"
+            android:useDefaultMargins="true" />
+
     </LinearLayout>
 
+
+
+    <RadioGroup
+        android:id="@+id/colorPicker_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <RadioGroup
+            android:id="@+id/colorPicker_radioGroup_first"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_red"
+                android:textAlignment="center"
+                android:text="@string/radio_red"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/radio_yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_yellow"
+                android:textAlignment="center"
+                android:text="@string/radio_yellow"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/radio_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_blue"
+                android:textAlignment="center"
+                android:text="@string/radio_blue"
+                android:layout_weight="1"/>
+
+
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/colorPicker_radioGroup_second"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_green"
+                android:textAlignment="center"
+                android:text="@string/radio_green"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/radio_orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_radiobutton_color_picker_orange"
+                android:button="@null"
+                android:text="@string/radio_orange"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/radio_pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_pink"
+                android:textAlignment="center"
+                android:text="@string/radio_pink"
+                android:layout_weight="1"/>
+
+        </RadioGroup>
+
+    </RadioGroup>
 
 
 
@@ -119,27 +221,31 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/button_cancel"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/cancel"
-            style="?attr/materialButtonOutlinedStyle"
             android:layout_margin="5dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="@string/cancel" />
 
         <Button
             android:id="@+id/button_save"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/save"
             android:layout_margin="5dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="@string/save" />
     </LinearLayout>
 
 

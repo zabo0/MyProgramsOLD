@@ -38,6 +38,12 @@
     <string name="reminderInfoText">You will receive notification when the subject time is approaching</string>
     <string name="createNewProgram">Create new program</string>
     <string name="addNewSubject">Add new subject</string>
+    <string name="radio_pink">Pink</string>
+    <string name="radio_orange">Orange</string>
+    <string name="radio_green">Green</string>
+    <string name="radio_blue">Blue</string>
+    <string name="radio_yellow">Yellow</string>
+    <string name="radio_red">Red</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>
