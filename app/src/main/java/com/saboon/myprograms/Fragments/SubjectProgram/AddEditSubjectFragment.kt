@@ -70,16 +70,22 @@ class AddEditSubjectFragment : Fragment() {
             // Check which radio button was clicked
             when (checkedID) {
                 R.id.radio_red -> {
-                    binding.colorPickerRadioGroupSecond.clearCheck()
-                    subjectColor = SUBJECT_COLOR_RED
+                    if (binding.radioRed.isChecked){
+                        binding.colorPickerRadioGroupSecond.clearCheck()
+                        subjectColor = SUBJECT_COLOR_RED
+                    }
                 }
                 R.id.radio_yellow -> {
-                    binding.colorPickerRadioGroupSecond.clearCheck()
-                    subjectColor = SUBJECT_COLOR_YELLOW
+                    if (binding.radioYellow.isChecked){
+                        binding.colorPickerRadioGroupSecond.clearCheck()
+                        subjectColor = SUBJECT_COLOR_YELLOW
+                    }
                 }
                 R.id.radio_blue -> {
-                    binding.colorPickerRadioGroupSecond.clearCheck()
-                    subjectColor = SUBJECT_COLOR_BLUE
+                    if (binding.radioBlue.isChecked){
+                        binding.colorPickerRadioGroupSecond.clearCheck()
+                        subjectColor = SUBJECT_COLOR_BLUE
+                    }
                 }
             }
         }
@@ -88,16 +94,22 @@ class AddEditSubjectFragment : Fragment() {
             // Check which radio button was clicked
             when (checkedID) {
                 R.id.radio_green ->{
-                    binding.colorPickerRadioGroupFirst.clearCheck()
-                    subjectColor = SUBJECT_COLOR_GREEN
+                    if (binding.radioGreen.isChecked){
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                        subjectColor = SUBJECT_COLOR_GREEN
+                    }
                 }
                 R.id.radio_orange -> {
-                    binding.colorPickerRadioGroupFirst.clearCheck()
-                    subjectColor = SUBJECT_COLOR_ORANGE
+                    if (binding.radioOrange.isChecked){
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                        subjectColor = SUBJECT_COLOR_ORANGE
+                    }
                 }
                 R.id.radio_pink -> {
-                    binding.colorPickerRadioGroupFirst.clearCheck()
-                    subjectColor = SUBJECT_COLOR_PINK
+                    if (binding.radioPink.isChecked){
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                        subjectColor = SUBJECT_COLOR_PINK
+                    }
                 }
             }
         }
