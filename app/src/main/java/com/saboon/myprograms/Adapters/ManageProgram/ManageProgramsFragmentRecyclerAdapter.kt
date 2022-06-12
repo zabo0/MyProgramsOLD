@@ -1,5 +1,6 @@
 package com.saboon.myprograms.Adapters.ManageProgram
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
@@ -57,6 +58,7 @@ class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>,
                 if (it){
                     val intent = Intent(view.context, SubjectProgramActivity::class.java)
                     view.context.startActivity(intent)
+                    (holder.itemView.context as Activity).finish()
                 }
             }
         }

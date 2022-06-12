@@ -12,16 +12,13 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_subjectsFragment"
-            app:destination="@id/subjectsFragment"
-            app:popUpTo="@id/subjectsFragment" />
+            app:destination="@id/subjectsFragment" />
         <action
             android:id="@+id/action_mainFragment_to_subjectDetailsFragment"
-            app:destination="@id/subjectDetailsFragment"
-            app:popUpTo="@id/subjectDetailsFragment" />
+            app:destination="@id/subjectDetailsFragment" />
         <action
             android:id="@+id/action_mainFragment_to_addEditSubjectFragment"
-            app:destination="@id/addEditSubjectFragment"
-            app:popUpTo="@id/mainFragment" />
+            app:destination="@id/addEditSubjectFragment" />
     </fragment>
     <fragment
         android:id="@+id/subjectsFragment"
@@ -30,18 +27,18 @@
         tools:layout="@layout/fragment_subjects" >
         <action
             android:id="@+id/action_subjectsFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_subjectsFragment_to_addEditSubjectFragment"
-            app:destination="@id/addEditSubjectFragment"
-            app:popUpTo="@id/addEditSubjectFragment" />
+            app:destination="@id/addEditSubjectFragment" />
         <argument
             android:name="programID"
             app:argType="string" />
         <action
             android:id="@+id/action_subjectsFragment_to_subjectDetailsFragment"
-            app:destination="@id/subjectDetailsFragment"
-            app:popUpTo="@id/subjectDetailsFragment" />
+            app:destination="@id/subjectDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditSubjectFragment"
@@ -58,10 +55,13 @@
         <action
             android:id="@+id/action_addEditSubjectFragment_to_subjectDetailsFragment"
             app:destination="@id/subjectDetailsFragment"
-            app:popUpTo="@id/subjectDetailsFragment" />
+            app:popUpTo="@id/addEditSubjectFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addEditSubjectFragment_to_subjectsFragment"
-            app:destination="@id/subjectsFragment" />
+            app:destination="@id/subjectsFragment"
+            app:popUpTo="@id/subjectsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/subjectDetailsFragment"
@@ -70,7 +70,9 @@
         tools:layout="@layout/fragment_subject_details" >
         <action
             android:id="@+id/action_subjectDetailsFragment_to_subjectsFragment"
-            app:destination="@id/subjectsFragment" />
+            app:destination="@id/subjectsFragment"
+            app:popUpTo="@id/subjectsFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_subjectDetailsFragment_to_addEditSubjectFragment"
             app:destination="@id/addEditSubjectFragment" />
@@ -79,11 +81,12 @@
             app:argType="string" />
         <action
             android:id="@+id/action_subjectDetailsFragment_to_addEditSubjectTimeFragment"
-            app:destination="@id/addEditSubjectTimeFragment"
-            app:popUpTo="@id/addEditSubjectTimeFragment" />
+            app:destination="@id/addEditSubjectTimeFragment" />
         <action
             android:id="@+id/action_subjectDetailsFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="from"
             app:argType="string" />
@@ -95,7 +98,9 @@
         tools:layout="@layout/fragment_add_edit_subject_time" >
         <action
             android:id="@+id/action_addEditSubjectTimeFragment_to_subjectDetailsFragment"
-            app:destination="@id/subjectDetailsFragment" />
+            app:destination="@id/subjectDetailsFragment"
+            app:popUpTo="@id/subjectDetailsFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="subjectID"
             app:argType="string" />

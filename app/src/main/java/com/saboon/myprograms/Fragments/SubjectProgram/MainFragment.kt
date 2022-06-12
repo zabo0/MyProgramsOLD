@@ -135,6 +135,7 @@ class MainFragment : Fragment() {
         binding.subjectMainTextViewChooseProgram.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
+            activity?.finish()
         }
 
         binding.buttonAddNewSubject.setOnClickListener {

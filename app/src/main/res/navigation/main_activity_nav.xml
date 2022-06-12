@@ -12,12 +12,10 @@
         tools:layout="@layout/fragment_manage_programs" >
         <action
             android:id="@+id/action_manageProgramsFragment_to_detailsProgramFragment"
-            app:destination="@id/detailsProgramFragment"
-            app:popUpTo="@id/detailsProgramFragment" />
+            app:destination="@id/detailsProgramFragment" />
         <action
             android:id="@+id/action_manageProgramsFragment_to_addEditProgramFragment"
-            app:destination="@id/addEditProgramFragment"
-            app:popUpTo="@id/addEditProgramFragment" />
+            app:destination="@id/addEditProgramFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsProgramFragment"
@@ -26,11 +24,12 @@
         tools:layout="@layout/fragment_details_program" >
         <action
             android:id="@+id/action_detailsProgramFragment_to_manageProgramsFragment"
-            app:destination="@id/manageProgramsFragment" />
+            app:destination="@id/manageProgramsFragment"
+            app:popUpTo="@id/manageProgramsFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_detailsProgramFragment_to_addEditProgramFragment"
-            app:destination="@id/addEditProgramFragment"
-            app:popUpTo="@id/addEditProgramFragment" />
+            app:destination="@id/addEditProgramFragment" />
         <argument
             android:name="programID"
             app:argType="string" />
@@ -42,10 +41,14 @@
         tools:layout="@layout/fragment_add_edit_program" >
         <action
             android:id="@+id/action_addEditProgramFragment_to_detailsProgramFragment"
-            app:destination="@id/detailsProgramFragment" />
+            app:destination="@id/detailsProgramFragment"
+            app:popUpTo="@id/detailsProgramFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addEditProgramFragment_to_manageProgramsFragment"
-            app:destination="@id/manageProgramsFragment" />
+            app:destination="@id/manageProgramsFragment"
+            app:popUpTo="@id/manageProgramsFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="from"
             app:argType="string" />
