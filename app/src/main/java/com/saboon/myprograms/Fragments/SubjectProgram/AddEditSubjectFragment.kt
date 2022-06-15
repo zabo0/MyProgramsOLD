@@ -29,7 +29,7 @@ class AddEditSubjectFragment : Fragment() {
 
     lateinit var subject : ModelSubject
     lateinit var program : ModelProgram
-    private var subjectColor = SUBJECT_COLOR_RED
+    private var subjectColor = SUBJECT_COLOR_SOFT_RED
 
     var isNewSubject = true
 
@@ -72,7 +72,7 @@ class AddEditSubjectFragment : Fragment() {
                 R.id.radio_red -> {
                     if (binding.radioRed.isChecked){
                         binding.colorPickerRadioGroupSecond.clearCheck()
-                        subjectColor = SUBJECT_COLOR_RED
+                        subjectColor = SUBJECT_COLOR_SOFT_RED
                     }
                 }
                 R.id.radio_yellow -> {
@@ -85,6 +85,12 @@ class AddEditSubjectFragment : Fragment() {
                     if (binding.radioBlue.isChecked){
                         binding.colorPickerRadioGroupSecond.clearCheck()
                         subjectColor = SUBJECT_COLOR_BLUE
+                    }
+                }
+                R.id.radio_brown -> {
+                    if (binding.radioBlue.isChecked){
+                        binding.colorPickerRadioGroupSecond.clearCheck()
+                        subjectColor = SUBJECT_COLOR_BROWN
                     }
                 }
             }
@@ -102,13 +108,20 @@ class AddEditSubjectFragment : Fragment() {
                 R.id.radio_orange -> {
                     if (binding.radioOrange.isChecked){
                         binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_ORANGE
+                        subjectColor = SUBJECT_COLOR_SOFT_ORANGE
                     }
                 }
                 R.id.radio_pink -> {
                     if (binding.radioPink.isChecked){
                         binding.colorPickerRadioGroupFirst.clearCheck()
                         subjectColor = SUBJECT_COLOR_PINK
+                    }
+                }
+
+                R.id.radio_purple -> {
+                    if (binding.radioPink.isChecked){
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                        subjectColor = SUBJECT_COLOR_PURPLE
                     }
                 }
             }
@@ -130,7 +143,7 @@ class AddEditSubjectFragment : Fragment() {
                 binding.subjectAddEditSubjectEditTextMaxAbsenteeism.setText(it.absenteeism)
 
                 when(subject.color){
-                    SUBJECT_COLOR_RED->{
+                    SUBJECT_COLOR_SOFT_RED->{
                         binding.radioRed.isChecked = true
                         binding.colorPickerRadioGroupSecond.clearCheck()
                     }
@@ -142,15 +155,23 @@ class AddEditSubjectFragment : Fragment() {
                         binding.radioBlue.isChecked = true
                         binding.colorPickerRadioGroupSecond.clearCheck()
                     }
+                    SUBJECT_COLOR_BROWN->{
+                        binding.radioOrange.isChecked = true
+                        binding.colorPickerRadioGroupSecond.clearCheck()
+                    }
                     SUBJECT_COLOR_GREEN->{
                         binding.radioGreen.isChecked = true
                         binding.colorPickerRadioGroupFirst.clearCheck()
                     }
-                    SUBJECT_COLOR_ORANGE->{
+                    SUBJECT_COLOR_SOFT_ORANGE->{
                         binding.radioOrange.isChecked = true
                         binding.colorPickerRadioGroupFirst.clearCheck()
                     }
                     SUBJECT_COLOR_PINK->{
+                        binding.radioPink.isChecked = true
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                    }
+                    SUBJECT_COLOR_PURPLE->{
                         binding.radioPink.isChecked = true
                         binding.colorPickerRadioGroupFirst.clearCheck()
                     }
@@ -235,7 +256,7 @@ class AddEditSubjectFragment : Fragment() {
                 R.id.radio_red ->
                     if (checked) {
                         binding.colorPickerRadioGroupSecond.clearCheck()
-                        subjectColor = SUBJECT_COLOR_RED
+                        subjectColor = SUBJECT_COLOR_SOFT_RED
                     }
                 R.id.radio_yellow ->
                     if (checked) {
@@ -255,12 +276,22 @@ class AddEditSubjectFragment : Fragment() {
                 R.id.radio_orange ->
                     if (checked) {
                         binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_ORANGE
+                        subjectColor = SUBJECT_COLOR_SOFT_ORANGE
                     }
                 R.id.radio_pink ->
                     if (checked) {
                         binding.colorPickerRadioGroupFirst.clearCheck()
                         subjectColor = SUBJECT_COLOR_PINK
+                    }
+                R.id.radio_brown ->
+                    if (checked) {
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                        subjectColor = SUBJECT_COLOR_BROWN
+                    }
+                R.id.radio_purple ->
+                    if (checked) {
+                        binding.colorPickerRadioGroupFirst.clearCheck()
+                        subjectColor = SUBJECT_COLOR_PURPLE
                     }
             }
         }

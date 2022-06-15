@@ -44,6 +44,8 @@
     <string name="radio_blue">Blue</string>
     <string name="radio_yellow">Yellow</string>
     <string name="radio_red">Red</string>
+    <string name="radio_brown">Brown</string>
+    <string name="radio_purple">Purple</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>

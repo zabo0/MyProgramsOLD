@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:button="@null"
-                android:background="@drawable/bg_radiobutton_color_picker_red"
+                android:background="@drawable/bg_radiobutton_color_picker_soft_red"
                 android:textAlignment="center"
                 android:text="@string/radio_red"
                 android:layout_weight="1"/>
@@ -165,6 +165,17 @@
                 android:background="@drawable/bg_radiobutton_color_picker_blue"
                 android:textAlignment="center"
                 android:text="@string/radio_blue"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/radio_brown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_brown"
+                android:textAlignment="center"
+                android:text="@string/radio_brown"
                 android:layout_weight="1"/>
 
 
@@ -195,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_radiobutton_color_picker_orange"
+                android:background="@drawable/bg_radiobutton_color_picker_soft_orange"
                 android:button="@null"
                 android:text="@string/radio_orange"
                 android:textAlignment="center" />
@@ -209,6 +220,17 @@
                 android:background="@drawable/bg_radiobutton_color_picker_pink"
                 android:textAlignment="center"
                 android:text="@string/radio_pink"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/radio_purple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:button="@null"
+                android:background="@drawable/bg_radiobutton_color_picker_purple"
+                android:textAlignment="center"
+                android:text="@string/radio_purple"
                 android:layout_weight="1"/>
 
         </RadioGroup>
