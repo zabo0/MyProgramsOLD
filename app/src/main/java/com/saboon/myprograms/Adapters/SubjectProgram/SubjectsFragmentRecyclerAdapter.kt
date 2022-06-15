@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.saboon.myprograms.Fragments.SubjectProgram.SubjectsFragmentDirections
-import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT
 

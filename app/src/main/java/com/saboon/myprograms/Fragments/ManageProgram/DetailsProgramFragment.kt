@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
 import com.saboon.myprograms.ViewModels.ManageProgramVM.DetailsProgramViewModel
 import com.saboon.myprograms.databinding.FragmentDetailsProgramBinding

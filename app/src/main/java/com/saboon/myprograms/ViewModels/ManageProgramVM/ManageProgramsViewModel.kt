@@ -3,8 +3,8 @@ package com.saboon.myprograms.ViewModels.ManageProgramVM
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
-import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSharedPref
+import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.ViewModels.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -12,6 +12,8 @@ class ManageProgramsViewModel(application: Application): BaseViewModel(applicati
 
 
     var programs = MutableLiveData <List<ModelProgram>?>()
+    var program = MutableLiveData<ModelProgram>()
+    val sharedPref = MutableLiveData<ModelSharedPref?>()
     var loading = MutableLiveData<Boolean>()
     var empty = MutableLiveData<Boolean>()
     var error = MutableLiveData<Boolean>()
@@ -36,22 +38,18 @@ class ManageProgramsViewModel(application: Application): BaseViewModel(applicati
         }
     }
 
-    fun getAllProgramsByFilter(filter: String){
-        loading.value = true
+    fun getProgram(programID:String, callback: (Boolean) -> Unit){
         launch {
-            val programList = DatabaseMyPrograms(getApplication()).programDAO().getAllProgramByFilter(filter)
+            val prog = DatabaseMyPrograms(getApplication()).programDAO().getProgram(programID)
+            program.value = prog
+            callback(true)
+        }
+    }
 
-            if (programList.isEmpty()){
-                loading.value = false
-                empty.value = true
-                error.value = false
-            }else{
-                programs.value = programList
-
-                loading.value = false
-                empty.value = false
-                error.value = false
-            }
+    fun getLastProgramID(sharedPrefID:String, callback:(Boolean) -> Unit){
+        launch {
+            sharedPref.value = DatabaseMyPrograms(getApplication()).sharedPrefDAO().getSharedPref(sharedPrefID)
+            callback(true)
         }
     }
 

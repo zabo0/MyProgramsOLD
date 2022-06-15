@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Adapters.SubjectProgram.SubjectsFragmentRecyclerAdapter
-import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectsBinding
 

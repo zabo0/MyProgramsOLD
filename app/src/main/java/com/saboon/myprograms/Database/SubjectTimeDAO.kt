@@ -3,7 +3,7 @@ package com.saboon.myprograms.Database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 
 @Dao
 interface SubjectTimeDAO {

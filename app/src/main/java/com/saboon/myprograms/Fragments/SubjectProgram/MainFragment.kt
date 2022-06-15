@@ -12,7 +12,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Activities.MainActivity
 import com.saboon.myprograms.Adapters.SubjectProgram.MainFragmentRecyclerAdapter
-import com.saboon.myprograms.Models.*
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.Models.Subject.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubjectProgramMainSection
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.Utils.SHARED_PREF_ID
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentMainBinding
@@ -56,9 +59,6 @@ class MainFragment : Fragment() {
                 viewModel.sharedPref.observe(viewLifecycleOwner, Observer { sharedPref ->
                     if (sharedPref != null){
                         viewModel.getData(sharedPref.lastProgramID)
-                    }else{
-                        val intent = Intent(context, MainActivity::class.java)
-                        startActivity(intent)
                     }
                 })
             }

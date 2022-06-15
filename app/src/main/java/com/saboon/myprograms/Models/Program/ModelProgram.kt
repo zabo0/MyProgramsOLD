@@ -1,4 +1,4 @@
-package com.saboon.myprograms.Models
+package com.saboon.myprograms.Models.Program
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -16,5 +16,9 @@ data class ModelProgram(
     var dateCreated: String,
 
     @ColumnInfo(name = "dateEdited")
-    var dateEdited: String
+    var dateEdited: String,
+
+    @ColumnInfo(name = "typeOfProgram")
+    val typeOfProgram: String
+
 )

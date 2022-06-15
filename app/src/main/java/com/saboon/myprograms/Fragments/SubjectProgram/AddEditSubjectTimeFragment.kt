@@ -12,15 +12,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Models.ModelSubject
-import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.Models.Subject.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
 import com.saboon.myprograms.Utils.IDGenerator
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectTimeFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditSubjectTimeBinding
-import java.util.*
 
 
 class AddEditSubjectTimeFragment : Fragment() {
@@ -181,7 +180,7 @@ class AddEditSubjectTimeFragment : Fragment() {
         }
     }
 
-    private fun newSubjectTime():ModelSubjectTime{
+    private fun newSubjectTime(): ModelSubjectTime {
         val dayInt = requireActivity().resources.getStringArray(R.array.Days).indexOf(binding.autoCompleteTextViewWhichDay.text.toString()).toString()
         val dayString = binding.autoCompleteTextViewWhichDay.text.toString() //id icin
         val classroom = binding.addEditSubjectTimeEditTextClassroom.text.toString()

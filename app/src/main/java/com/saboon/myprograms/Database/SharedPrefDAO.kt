@@ -3,7 +3,6 @@ package com.saboon.myprograms.Database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.saboon.myprograms.Models.ModelProgram
 import com.saboon.myprograms.Models.ModelSharedPref
 
 @Dao

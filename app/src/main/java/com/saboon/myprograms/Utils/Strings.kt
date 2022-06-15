@@ -17,3 +17,7 @@ const val SUBJECT_COLOR_SOFT_ORANGE = "#ff9f1c"
 const val SUBJECT_COLOR_PINK = "#F15BB5"
 const val SUBJECT_COLOR_BROWN = "#672F00"
 const val SUBJECT_COLOR_PURPLE = "#9B5DE5"
+
+const val PROGRAM_SUBJECT = "programSubject"
+const val PROGRAM_EXAM = "programExam"
+const val PROGRAM_DIET = "programDiet"

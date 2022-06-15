@@ -9,8 +9,8 @@ import android.widget.RadioButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectFragmentViewModel
@@ -55,9 +55,9 @@ class AddEditSubjectFragment : Fragment() {
 
         arguments.let {
             if (it!=null){
-                val programID = it.getString("programID")!!
+                val programID = AddEditSubjectFragmentArgs.fromBundle(it).programID
                 viewModel.getProgram(programID)
-                val subjectID = it.getString("subjectID")
+                val subjectID = AddEditSubjectFragmentArgs.fromBundle(it).subjectID
                 if (subjectID != null){
                     isNewSubject = false
                     viewModel.getSubject(subjectID)
@@ -232,7 +232,7 @@ class AddEditSubjectFragment : Fragment() {
         }
     }
 
-    private fun newSubject():ModelSubject{
+    private fun newSubject(): ModelSubject {
         val subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
         val lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
         val color = subjectColor
@@ -246,56 +246,56 @@ class AddEditSubjectFragment : Fragment() {
     }
 
 
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                R.id.radio_red ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupSecond.clearCheck()
-                        subjectColor = SUBJECT_COLOR_SOFT_RED
-                    }
-                R.id.radio_yellow ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupSecond.clearCheck()
-                        subjectColor = SUBJECT_COLOR_YELLOW
-                    }
-                R.id.radio_blue ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupSecond.clearCheck()
-                        subjectColor = SUBJECT_COLOR_BLUE
-                    }
-                R.id.radio_green ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_GREEN
-                    }
-                R.id.radio_orange ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_SOFT_ORANGE
-                    }
-                R.id.radio_pink ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_PINK
-                    }
-                R.id.radio_brown ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_BROWN
-                    }
-                R.id.radio_purple ->
-                    if (checked) {
-                        binding.colorPickerRadioGroupFirst.clearCheck()
-                        subjectColor = SUBJECT_COLOR_PURPLE
-                    }
-            }
-        }
-    }
+//    fun onRadioButtonClicked(view: View) {
+//        if (view is RadioButton) {
+//            // Is the button now checked?
+//            val checked = view.isChecked
+//
+//            // Check which radio button was clicked
+//            when (view.getId()) {
+//                R.id.radio_red ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupSecond.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_SOFT_RED
+//                    }
+//                R.id.radio_yellow ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupSecond.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_YELLOW
+//                    }
+//                R.id.radio_blue ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupSecond.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_BLUE
+//                    }
+//                R.id.radio_green ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupFirst.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_GREEN
+//                    }
+//                R.id.radio_orange ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupFirst.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_SOFT_ORANGE
+//                    }
+//                R.id.radio_pink ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupFirst.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_PINK
+//                    }
+//                R.id.radio_brown ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupFirst.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_BROWN
+//                    }
+//                R.id.radio_purple ->
+//                    if (checked) {
+//                        binding.colorPickerRadioGroupFirst.clearCheck()
+//                        subjectColor = SUBJECT_COLOR_PURPLE
+//                    }
+//            }
+//        }
+//    }
 
 
 

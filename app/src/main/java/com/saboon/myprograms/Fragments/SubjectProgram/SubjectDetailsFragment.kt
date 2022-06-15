@@ -2,11 +2,8 @@ package com.saboon.myprograms.Fragments.SubjectProgram
 
 import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.view.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,9 +11,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Adapters.SubjectProgram.SubjectDetailsFragmentRecyclerAdapter
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Models.ModelSubject
-import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.Models.Subject.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_FRAGMENT
 import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
 import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT

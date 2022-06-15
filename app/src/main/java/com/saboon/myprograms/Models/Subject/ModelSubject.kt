@@ -1,4 +1,4 @@
-package com.saboon.myprograms.Models
+package com.saboon.myprograms.Models.Subject
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -7,8 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.saboon.myprograms.Fragments.SubjectProgram.MainFragmentDirections
-import com.saboon.myprograms.Models.ModelSubjectProgramMainSection
+import com.saboon.myprograms.Models.Subject.ModelSubjectProgramMainSection
 import com.saboon.myprograms.R
 
 class MainFragmentRecyclerAdapter(private val sectionList: ArrayList<ModelSubjectProgramMainSection>):RecyclerView.Adapter<MainFragmentRecyclerAdapter.MainFragmentViewHolder>() {

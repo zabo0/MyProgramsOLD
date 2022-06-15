@@ -3,10 +3,10 @@ package com.saboon.myprograms.ViewModels.SubjectVM
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
-import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.ModelSharedPref
-import com.saboon.myprograms.Models.ModelSubject
-import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.Models.Subject.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.ViewModels.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -41,16 +41,6 @@ class MainFragmentViewModel(application: Application):BaseViewModel(application)
                 loading.value = false
                 empty.value = false
                 error.value = false
-//                if (subjectTimeList.isEmpty()){
-//                    loading.value = false
-//                    empty.value = true
-//                    error.value = false
-//                }else{
-////                    subjectTimes.value = subjectTimeList
-////                    loading.value = false
-////                    empty.value = false
-////                    error.value = false
-//                }
             }
         }
     }

@@ -3,7 +3,7 @@ package com.saboon.myprograms.Database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.saboon.myprograms.Models.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubject
 
 
 @Dao

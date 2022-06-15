@@ -1,4 +1,4 @@
-package com.saboon.myprograms.Models
+package com.saboon.myprograms.Models.Subject
 
 data class ModelSubjectProgramMainSection(
     val day: Int,

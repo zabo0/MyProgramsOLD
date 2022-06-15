@@ -3,7 +3,7 @@ package com.saboon.myprograms.Database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.Program.ModelProgram
 
 
 @Dao
@@ -19,7 +19,7 @@ interface ProgramDAO {
     suspend fun getAllProgramByFilter(filter: String): List<ModelProgram>
 
     @Query("SELECT * FROM ModelProgram WHERE id = :programID")
-    suspend fun getProgram(programID:String):ModelProgram
+    suspend fun getProgram(programID:String): ModelProgram
 
     @Query("UPDATE ModelProgram SET name = :newName , dateEdited = :newDateEdited WHERE id = :programID")
     suspend fun updateProgram(programID: String, newName: String, newDateEdited: String)

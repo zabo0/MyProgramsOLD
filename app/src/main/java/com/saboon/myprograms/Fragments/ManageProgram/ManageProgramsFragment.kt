@@ -1,5 +1,7 @@
 package com.saboon.myprograms.Fragments.ManageProgram
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.saboon.myprograms.Activities.MainActivity
+import com.saboon.myprograms.Activities.SubjectProgramActivity
 import com.saboon.myprograms.Adapters.ManageProgram.ManageProgramsFragmentRecyclerAdapter
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Utils.FROM_MANAGE_PROGRAMS
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.ManageProgramVM.ManageProgramsViewModel
 import com.saboon.myprograms.databinding.FragmentManageProgramsBinding
 
@@ -49,12 +53,43 @@ class ManageProgramsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(ManageProgramsViewModel::class.java)
+
+
+//        viewModel.getLastProgramID(SHARED_PREF_ID){
+//            if (it){
+//                viewModel.sharedPref.observe(viewLifecycleOwner, Observer { sharedPref ->
+//                    if (sharedPref != null){
+//                        viewModel.getProgram(sharedPref.lastProgramID){callback->
+//                            if (callback){
+//                                viewModel.program.observe(viewLifecycleOwner, Observer {program ->
+//                                    if (program != null){
+//                                        when(program.typeOfProgram){
+//                                            PROGRAM_SUBJECT -> {
+//                                                val intent = Intent(context, SubjectProgramActivity::class.java)
+//                                                startActivity(intent)
+//                                                (context as Activity).finish()
+//                                            }
+//                                            PROGRAM_EXAM -> {
+//                                                //INTENT TO EXAM
+//                                            }
+//                                            PROGRAM_DIET ->{
+//                                                //intent to diet
+//                                            }
+//                                        }
+//                                    }
+//                                })
+//                            }
+//                        }
+//                    }
+//                })
+//            }
+//        }
+
+
         viewModel.getAllPrograms()
         binding.recyclerViewManageProgramsFragment.layoutManager = LinearLayoutManager(context)
 
         observer()
-
-
         buttons()
     }
 
@@ -73,7 +108,6 @@ class ManageProgramsFragment : Fragment() {
                 binding.recyclerViewManageProgramsFragment.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             }
         })
-
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             if(it) {
                 binding.recyclerViewManageProgramsFragment.visibility = View.GONE

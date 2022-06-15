@@ -5,6 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.saboon.myprograms.Models.*
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.Models.Subject.ModelSubject
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 
 
 @Database(entities = arrayOf(ModelProgram::class, ModelSubject::class, ModelSubjectTime::class, ModelSharedPref::class), version = 2)

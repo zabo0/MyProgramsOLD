@@ -9,10 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.saboon.myprograms.Models.ModelProgram
-import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
-import com.saboon.myprograms.Utils.FROM_MANAGE_PROGRAMS
-import com.saboon.myprograms.Utils.IDGenerator
+import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.ManageProgramVM.AddEditProgramViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditProgramBinding
 import java.text.SimpleDateFormat
@@ -29,7 +28,7 @@ class AddEditProgramFragment : Fragment() {
     lateinit var program: ModelProgram
 
     lateinit var viewModel: AddEditProgramViewModel
-
+    private var typeOfProgram = PROGRAM_SUBJECT
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +59,24 @@ class AddEditProgramFragment : Fragment() {
                 val programID = AddEditProgramFragmentArgs.fromBundle(it).programID
                 if (programID != null) {
                     viewModel.getProgram(programID)
+                    binding.radioSubjectProgram.isEnabled = false
+                    binding.radioExamProgram.isEnabled = false
+                    binding.radioDietProgram.isEnabled = false
+                }
+            }
+        }
+
+        binding.radioGroupTypeOfProgram.setOnCheckedChangeListener { radioGroup, checkedID ->
+            // Check which radio button was clicked
+            when (checkedID) {
+                R.id.radio_subjectProgram ->{
+                    typeOfProgram = PROGRAM_SUBJECT
+                }
+                R.id.radio_examProgram ->{
+                    typeOfProgram = PROGRAM_EXAM
+                }
+                R.id.radio_dietProgram ->{
+                    typeOfProgram = PROGRAM_DIET
                 }
             }
         }
@@ -76,6 +93,17 @@ class AddEditProgramFragment : Fragment() {
             if (it!=null){
                 program = it
                 binding.editTextProgramName.setText(program.name)
+                when(program.typeOfProgram){
+                    PROGRAM_SUBJECT -> {
+                        binding.radioSubjectProgram.isChecked = true
+                    }
+                    PROGRAM_EXAM -> {
+                        binding.radioExamProgram.isChecked = true
+                    }
+                    PROGRAM_DIET -> {
+                        binding.radioDietProgram.isChecked = true
+                    }
+                }
             }
         })
     }
@@ -104,7 +132,7 @@ class AddEditProgramFragment : Fragment() {
                     val dateCreated = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
                     val dateEdited = dateCreated
 
-                    val program = ModelProgram(id,name,dateCreated,dateEdited)
+                    val program = ModelProgram(id,name,dateCreated,dateEdited, typeOfProgram)
 
                     viewModel.storeProgram(program){
                         val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToManageProgramsFragment()

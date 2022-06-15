@@ -3,7 +3,7 @@ package com.saboon.myprograms.ViewModels.ManageProgramVM
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.saboon.myprograms.Database.DatabaseMyPrograms
-import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.ViewModels.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -13,7 +13,7 @@ class AddEditProgramViewModel(application: Application): BaseViewModel(applicati
 
 
 
-    fun storeProgram(program: ModelProgram,  callback: (Boolean) -> Unit){
+    fun storeProgram(program: ModelProgram, callback: (Boolean) -> Unit){
         launch {
             DatabaseMyPrograms(getApplication()).programDAO().insertProgram(program)
             callback(true)

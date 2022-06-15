@@ -71,6 +71,45 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="?attr/colorPrimary"
+            android:useDefaultMargins="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Program type (unchangeable)"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup_typeOfProgram"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_subjectProgram"
+                android:layout_width="match_parent"
+                android:checked="true"
+                android:layout_height="wrap_content"
+                android:text="subject program"/>
+            <RadioButton
+                android:id="@+id/radio_examProgram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="exam program"/>
+            <RadioButton
+                android:id="@+id/radio_dietProgram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="diet program"/>
+
+        </RadioGroup>
+
     </LinearLayout>
 
 

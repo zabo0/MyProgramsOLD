@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.saboon.myprograms.Fragments.SubjectProgram.SubjectDetailsFragmentDirections
-import com.saboon.myprograms.Models.ModelSubjectTime
+import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.R
 
 class SubjectDetailsFragmentRecyclerAdapter(private val subjectTimeList: List<ModelSubjectTime>, private val color: String): RecyclerView.Adapter<SubjectDetailsFragmentRecyclerAdapter.DetailsViewHolder>() {

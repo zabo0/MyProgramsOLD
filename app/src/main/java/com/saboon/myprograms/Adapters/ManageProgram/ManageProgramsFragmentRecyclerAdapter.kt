@@ -2,7 +2,6 @@ package com.saboon.myprograms.Adapters.ManageProgram
 
 import android.app.Activity
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,17 +10,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.saboon.myprograms.Activities.MainActivity
 import com.saboon.myprograms.Activities.SubjectProgramActivity
 import com.saboon.myprograms.Fragments.ManageProgram.ManageProgramsFragmentDirections
-import com.saboon.myprograms.Models.ModelProgram
+import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.ModelSharedPref
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.PROGRAM_DIET
+import com.saboon.myprograms.Utils.PROGRAM_EXAM
+import com.saboon.myprograms.Utils.PROGRAM_SUBJECT
 import com.saboon.myprograms.Utils.SHARED_PREF_ID
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import java.text.SimpleDateFormat
 
-class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>, val application: Application):RecyclerView.Adapter<ManageProgramsFragmentRecyclerAdapter.ManageProgramViewHolder>() {
+class ManageProgramsFragmentRecyclerAdapter(private val programList: List<ModelProgram>, val application: Application):RecyclerView.Adapter<ManageProgramsFragmentRecyclerAdapter.ManageProgramViewHolder>() {
 
     class ManageProgramViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val programName: TextView = view.findViewById(R.id.manage_recycler_textView_programName)
@@ -56,9 +57,19 @@ class ManageProgramsFragmentRecyclerAdapter(val programList: List<ModelProgram>,
             val sharedPref = ModelSharedPref(SHARED_PREF_ID, programList[position].id)
             MainFragmentViewModel(application).setLastProgramID(sharedPref){
                 if (it){
-                    val intent = Intent(view.context, SubjectProgramActivity::class.java)
-                    view.context.startActivity(intent)
-                    (holder.itemView.context as Activity).finish()
+                    when(programList[position].typeOfProgram){
+                        PROGRAM_SUBJECT->{
+                            val intent = Intent(view.context, SubjectProgramActivity::class.java)
+                            view.context.startActivity(intent)
+                            (holder.itemView.context as Activity).finish()
+                        }
+                        PROGRAM_EXAM -> {
+                            //INTENT TO EXAM
+                        }
+                        PROGRAM_DIET ->{
+                            //intent to diet
+                        }
+                    }
                 }
             }
         }
