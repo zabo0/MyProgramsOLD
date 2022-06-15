@@ -1,10 +1,13 @@
 package com.saboon.myprograms.Fragments.SubjectProgram
 
+import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -21,6 +24,7 @@ import com.saboon.myprograms.Utils.FROM_MAIN_FRAGMENT
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectDetailsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectDetailsBinding
 
+
 class SubjectDetailsFragment : Fragment() {
 
 
@@ -34,6 +38,8 @@ class SubjectDetailsFragment : Fragment() {
     lateinit var program: ModelProgram
 
     lateinit var from: String
+
+    lateinit var window: Window
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +61,7 @@ class SubjectDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(SubjectDetailsFragmentViewModel::class.java)
+        window = requireActivity().window
 
         arguments.let {
             if (it!=null){
@@ -79,6 +86,7 @@ class SubjectDetailsFragment : Fragment() {
             if (it!=null){
                 subject = it
                 viewModel.getSubjectTimes(subject.id)
+                makeTheme(subject.color)
                 binding.subjectDetailsTextViewSubjectName.text = subject.subjectName
                 binding.subjectDetailsTextViewLecturerName.text = subject.lecturerName
                 binding.subjectDetailsTextViewAbsenteeism.text = subject.absenteeism
@@ -88,7 +96,7 @@ class SubjectDetailsFragment : Fragment() {
         viewModel.subjectTimes.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 subjectTimeList = it
-                binding.subjectDetailsRecycler.adapter = SubjectDetailsFragmentRecyclerAdapter(subjectTimeList)
+                binding.subjectDetailsRecycler.adapter = SubjectDetailsFragmentRecyclerAdapter(subjectTimeList, subject.color)
                 binding.subjectDetailsRecycler.addItemDecoration(
                     DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
                 )
@@ -139,6 +147,45 @@ class SubjectDetailsFragment : Fragment() {
         binding.subjectDetailsTextViewAddTime.setOnClickListener {
             val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToAddEditSubjectTimeFragment(subject.id,null)
             it.findNavController().navigate(action)
+        }
+    }
+
+    private fun makeTheme(color: String){
+        when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {}
+            Configuration.UI_MODE_NIGHT_NO -> {
+//                binding.linearLayout.setBackgroundColor(Color.parseColor(color))
+//                binding.view.setBackgroundColor(Color.parseColor(color))
+//                binding.subjectDetailsTextViewAddTime.setTextColor(Color.parseColor(color))
+//                binding.subjectDetailsTextViewAbsenteeism.setTextColor(Color.parseColor(color))
+//                binding.textAbsenteeism.setTextColor(Color.parseColor(color))
+//                binding.subjectDetailsTextViewSubjectName.setBackgroundColor(Color.parseColor(color))
+//
+//
+//
+//                window.clearFlags(WindowManager.LayoutParams.FLAGS_CHANGED)
+//                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//                window.statusBarColor = Color.parseColor(color)
+
+
+//                binding.subjectDetailsTextViewSubjectName.compoundDrawables[0].setTint(Color.parseColor(color))
+//                binding.subjectDetailsTextViewLecturerName.compoundDrawables[0].setTint(Color.parseColor(color))
+//                binding.subjectDetailsTextViewAddTime.compoundDrawables[1].setTint(Color.parseColor(color))
+
+                for (drawable in binding.subjectDetailsTextViewSubjectName.compoundDrawables) {
+                    drawable?.setTint(Color.parseColor(color))
+                }
+                for (drawable in binding.subjectDetailsTextViewLecturerName.compoundDrawables) {
+                    drawable?.setTint(Color.parseColor(color))
+                }
+                for (drawable in binding.subjectDetailsTextViewAddTime.compoundDrawables) {
+                    drawable?.setTint(Color.parseColor(color))
+                }
+//                binding.subjectDetailsTextViewAbsenteeism.setTextColor(Color.parseColor(color))
+//                binding.textAbsenteeism.setTextColor(Color.parseColor(color))
+                binding.view.setBackgroundColor(Color.parseColor(color))
+            }
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
         }
     }
 

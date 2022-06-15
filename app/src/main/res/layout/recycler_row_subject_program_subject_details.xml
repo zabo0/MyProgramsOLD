@@ -26,6 +26,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/verticalDivider"
         android:layout_width="1dp"
         android:layout_margin="5dp"
         android:background="?attr/colorPrimary"

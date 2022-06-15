@@ -65,7 +65,7 @@ class ManageProgramsFragment : Fragment() {
             if(it != null) {
                 programList = it
                 binding.recyclerViewManageProgramsFragment.visibility = View.VISIBLE
-                binding.manageEditTextSearch.visibility = View.VISIBLE
+                //binding.manageEditTextSearch.visibility = View.VISIBLE
                 binding.progressBarLoading.visibility = View.GONE
                 binding.linearLayoutEmpty.visibility = View.GONE
                 binding.linearLayoutError.visibility = View.GONE
@@ -77,7 +77,7 @@ class ManageProgramsFragment : Fragment() {
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             if(it) {
                 binding.recyclerViewManageProgramsFragment.visibility = View.GONE
-                binding.manageEditTextSearch.visibility = View.GONE
+                //binding.manageEditTextSearch.visibility = View.GONE
                 binding.progressBarLoading.visibility = View.VISIBLE
                 binding.linearLayoutEmpty.visibility = View.GONE
                 binding.linearLayoutError.visibility = View.GONE
@@ -87,7 +87,7 @@ class ManageProgramsFragment : Fragment() {
         viewModel.empty.observe(viewLifecycleOwner, Observer {
             if(it) {
                 binding.recyclerViewManageProgramsFragment.visibility = View.GONE
-                binding.manageEditTextSearch.visibility = View.GONE
+                //binding.manageEditTextSearch.visibility = View.GONE
                 binding.progressBarLoading.visibility = View.GONE
                 binding.linearLayoutEmpty.visibility = View.VISIBLE
                 binding.linearLayoutError.visibility = View.GONE
@@ -97,7 +97,7 @@ class ManageProgramsFragment : Fragment() {
         viewModel.error.observe(viewLifecycleOwner, Observer {
             if(it) {
                 binding.recyclerViewManageProgramsFragment.visibility = View.GONE
-                binding.manageEditTextSearch.visibility = View.GONE
+                //binding.manageEditTextSearch.visibility = View.GONE
                 binding.progressBarLoading.visibility = View.GONE
                 binding.linearLayoutEmpty.visibility = View.GONE
                 binding.linearLayoutError.visibility = View.VISIBLE

@@ -55,7 +55,7 @@
         <action
             android:id="@+id/action_addEditSubjectFragment_to_subjectDetailsFragment"
             app:destination="@id/subjectDetailsFragment"
-            app:popUpTo="@id/addEditSubjectFragment"
+            app:popUpTo="@id/subjectDetailsFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_addEditSubjectFragment_to_subjectsFragment"

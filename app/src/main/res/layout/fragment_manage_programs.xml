@@ -49,22 +49,22 @@ xmlns:tools="http://schemas.android.com/tools"
     </LinearLayout>
 
 
-    <EditText
-        android:id="@+id/manage_editText_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/bg_search_bar"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:drawableTint="@color/hint"
-        android:hint="@string/search"
-        android:padding="10dp"
-        android:textColor="?attr/colorOnSecondary"
-        android:textColorHint="@color/hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+<!--    <EditText-->
+<!--        android:id="@+id/manage_editText_search"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:background="@drawable/bg_search_bar"-->
+<!--        android:drawableStart="@drawable/ic_baseline_search_24"-->
+<!--        android:drawableTint="@color/hint"-->
+<!--        android:hint="@string/search"-->
+<!--        android:padding="10dp"-->
+<!--        android:textColor="?attr/colorOnSecondary"-->
+<!--        android:textColorHint="@color/hint"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>-->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -72,9 +72,10 @@ xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        tools:listitem="@layout/recycler_row_manage_program"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manage_editText_search" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="10dp"
+        tools:listitem="@layout/recycler_row_manage_program" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

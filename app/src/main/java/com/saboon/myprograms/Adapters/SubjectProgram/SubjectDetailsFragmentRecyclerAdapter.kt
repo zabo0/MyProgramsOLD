@@ -1,8 +1,10 @@
 package com.saboon.myprograms.Adapters.SubjectProgram
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +12,7 @@ import com.saboon.myprograms.Fragments.SubjectProgram.SubjectDetailsFragmentDire
 import com.saboon.myprograms.Models.ModelSubjectTime
 import com.saboon.myprograms.R
 
-class SubjectDetailsFragmentRecyclerAdapter(private val subjectTimeList: List<ModelSubjectTime>): RecyclerView.Adapter<SubjectDetailsFragmentRecyclerAdapter.DetailsViewHolder>() {
+class SubjectDetailsFragmentRecyclerAdapter(private val subjectTimeList: List<ModelSubjectTime>, private val color: String): RecyclerView.Adapter<SubjectDetailsFragmentRecyclerAdapter.DetailsViewHolder>() {
     class DetailsViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val countText:TextView = view.findViewById(R.id.subject_details_recyclerRow_textView_count)
         val dayText: TextView = view.findViewById(R.id.subject_details_recyclerRow_textView_day)
@@ -19,6 +21,7 @@ class SubjectDetailsFragmentRecyclerAdapter(private val subjectTimeList: List<Mo
         val classroomText: TextView = view.findViewById(R.id.subject_details_recyclerRow_textView_class)
         val typeOfSubjectText: TextView = view.findViewById(R.id.subject_details_recyclerRow_textView_typeOfLesson)
         val reminderText: TextView = view.findViewById(R.id.subject_details_recyclerRow_textView_reminder)
+        val divider: LinearLayout = view.findViewById(R.id.verticalDivider)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsViewHolder {
@@ -35,6 +38,7 @@ class SubjectDetailsFragmentRecyclerAdapter(private val subjectTimeList: List<Mo
         holder.classroomText.text = subjectTimeList[position].classRoom
         holder.typeOfSubjectText.text = subjectTimeList[position].typeOfLesson
         holder.reminderText.text = holder.itemView.context.resources.getStringArray(R.array.reminder)[subjectTimeList[position].reminderTime!!.toInt()]
+        holder.divider.setBackgroundColor(Color.parseColor(color))
 
 
         holder.itemView.setOnClickListener {
