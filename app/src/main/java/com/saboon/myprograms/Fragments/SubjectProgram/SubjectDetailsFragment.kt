@@ -86,7 +86,15 @@ class SubjectDetailsFragment : Fragment() {
                 makeTheme(subject.color)
                 binding.subjectDetailsTextViewSubjectName.text = subject.subjectName
                 binding.subjectDetailsTextViewLecturerName.text = subject.lecturerName
-                binding.subjectDetailsTextViewAbsenteeism.text = subject.absenteeism
+                val absenteeism = subject.absenteeism
+                if (absenteeism == "-1"){
+                    binding.subjectDetailsTextViewAbsenteeism.visibility = View.GONE
+                    binding.textAbsenteeism.visibility = View.GONE
+                }else{
+                    binding.subjectDetailsTextViewAbsenteeism.visibility = View.VISIBLE
+                    binding.textAbsenteeism.visibility = View.VISIBLE
+                    binding.subjectDetailsTextViewAbsenteeism.text = subject.absenteeism
+                }
             }
         })
 

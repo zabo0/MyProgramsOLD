@@ -55,36 +55,6 @@ class ManageProgramsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ManageProgramsViewModel::class.java)
 
 
-//        viewModel.getLastProgramID(SHARED_PREF_ID){
-//            if (it){
-//                viewModel.sharedPref.observe(viewLifecycleOwner, Observer { sharedPref ->
-//                    if (sharedPref != null){
-//                        viewModel.getProgram(sharedPref.lastProgramID){callback->
-//                            if (callback){
-//                                viewModel.program.observe(viewLifecycleOwner, Observer {program ->
-//                                    if (program != null){
-//                                        when(program.typeOfProgram){
-//                                            PROGRAM_SUBJECT -> {
-//                                                val intent = Intent(context, SubjectProgramActivity::class.java)
-//                                                startActivity(intent)
-//                                                (context as Activity).finish()
-//                                            }
-//                                            PROGRAM_EXAM -> {
-//                                                //INTENT TO EXAM
-//                                            }
-//                                            PROGRAM_DIET ->{
-//                                                //intent to diet
-//                                            }
-//                                        }
-//                                    }
-//                                })
-//                            }
-//                        }
-//                    }
-//                })
-//            }
-//        }
-
 
         viewModel.getAllPrograms()
         binding.recyclerViewManageProgramsFragment.layoutManager = LinearLayoutManager(context)

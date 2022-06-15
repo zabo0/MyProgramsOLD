@@ -91,22 +91,35 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:hint="@string/absenteeismHint"
-            app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_baseline_done_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/subject_addEditSubject_editText_maxAbsenteeism"
-                android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/subject_addEditSubject_editText_maxAbsenteeism_inputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:layout_marginTop="5dp"
+                android:hint="@string/absenteeismHint"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_baseline_done_24">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/subject_addEditSubject_editText_maxAbsenteeism"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/textAbsenteeism_checkbox"
+                android:layout_width="wrap_content"
+                android:checked="true"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"

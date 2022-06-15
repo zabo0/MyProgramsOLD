@@ -128,6 +128,11 @@ class AddEditSubjectFragment : Fragment() {
         }
 
 
+        binding.textAbsenteeismCheckbox.setOnCheckedChangeListener { compoundButton, isChecked ->
+            binding.subjectAddEditSubjectEditTextMaxAbsenteeismInputLayout.isEnabled = isChecked
+        }
+
+
 
         observer()
         buttons()
@@ -140,7 +145,15 @@ class AddEditSubjectFragment : Fragment() {
                 subject = it
                 binding.subjectAddEditSubjectEditTextSubjectName.setText(it.subjectName)
                 binding.subjectAddEditSubjectEditTextLecturerName.setText(it.lecturerName)
-                binding.subjectAddEditSubjectEditTextMaxAbsenteeism.setText(it.absenteeism)
+                val absenteeism = it.absenteeism
+                if (absenteeism == "-1"){
+                    binding.subjectAddEditSubjectEditTextMaxAbsenteeismInputLayout.isEnabled = false
+                    binding.textAbsenteeismCheckbox.isChecked = false
+                }else{
+                    binding.subjectAddEditSubjectEditTextMaxAbsenteeismInputLayout.isEnabled = true
+                    binding.subjectAddEditSubjectEditTextMaxAbsenteeism.setText(it.absenteeism)
+                    binding.textAbsenteeismCheckbox.isChecked = true
+                }
 
                 when(subject.color){
                     SUBJECT_COLOR_SOFT_RED->{
@@ -199,7 +212,11 @@ class AddEditSubjectFragment : Fragment() {
            }else{
                subject.subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
                subject.lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
-               subject.absenteeism = binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
+               if (binding.textAbsenteeismCheckbox.isChecked){
+                   subject.absenteeism = binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
+               }else{
+                   subject.absenteeism = "-1"
+               }
                subject.dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
                subject.color = subjectColor
 
@@ -236,7 +253,11 @@ class AddEditSubjectFragment : Fragment() {
         val subjectName = binding.subjectAddEditSubjectEditTextSubjectName.text.toString().trimEnd()
         val lecturerName = binding.subjectAddEditSubjectEditTextLecturerName.text.toString().trimEnd()
         val color = subjectColor
-        val maxAbsenteeism = binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
+        val maxAbsenteeism = if (binding.textAbsenteeismCheckbox.isChecked){
+            binding.subjectAddEditSubjectEditTextMaxAbsenteeism.text.toString().trimEnd()
+        }else{
+            "-1"
+        }
         val dateAdded = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
         val dateEdited = dateAdded
         val belowProgID = program.id
@@ -244,59 +265,6 @@ class AddEditSubjectFragment : Fragment() {
 
         return ModelSubject(id,dateAdded,dateEdited,subjectName,lecturerName,color, maxAbsenteeism,belowProgID)
     }
-
-
-//    fun onRadioButtonClicked(view: View) {
-//        if (view is RadioButton) {
-//            // Is the button now checked?
-//            val checked = view.isChecked
-//
-//            // Check which radio button was clicked
-//            when (view.getId()) {
-//                R.id.radio_red ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupSecond.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_SOFT_RED
-//                    }
-//                R.id.radio_yellow ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupSecond.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_YELLOW
-//                    }
-//                R.id.radio_blue ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupSecond.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_BLUE
-//                    }
-//                R.id.radio_green ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupFirst.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_GREEN
-//                    }
-//                R.id.radio_orange ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupFirst.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_SOFT_ORANGE
-//                    }
-//                R.id.radio_pink ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupFirst.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_PINK
-//                    }
-//                R.id.radio_brown ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupFirst.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_BROWN
-//                    }
-//                R.id.radio_purple ->
-//                    if (checked) {
-//                        binding.colorPickerRadioGroupFirst.clearCheck()
-//                        subjectColor = SUBJECT_COLOR_PURPLE
-//                    }
-//            }
-//        }
-//    }
-
 
 
     override fun onDestroy() {
