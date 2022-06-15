@@ -22,8 +22,6 @@ import com.saboon.myprograms.databinding.FragmentManageProgramsBinding
 
 class ManageProgramsFragment : Fragment() {
 
-    // TODO: set search bar
-
     private var _binding: FragmentManageProgramsBinding ?= null
     private val binding get() = _binding!!
 
