@@ -46,6 +46,8 @@
     <string name="radio_red">Red</string>
     <string name="radio_brown">Brown</string>
     <string name="radio_purple">Purple</string>
+    <string name="alertDialog_posButton">Yes</string>
+    <string name="alertDialog_negButton">No</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>

@@ -18,6 +18,7 @@ import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
 import com.saboon.myprograms.Utils.IDGenerator
+import com.saboon.myprograms.Utils.ShowAlertDialog
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectTimeFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditSubjectTimeBinding
 
@@ -173,29 +174,44 @@ class AddEditSubjectTimeFragment : Fragment() {
         }
 
         binding.delete.setOnClickListener { view ->
-            viewModel.deleteSubjectTime(subjectTime.id){
-                val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
-                view.findNavController().navigate(action)
+            ShowAlertDialog(requireActivity()).showDeleteAlert("Delete","Are you sure to delete?"){
+                if (it){
+                    viewModel.deleteSubjectTime(subjectTime.id){
+                        val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
+                        view.findNavController().navigate(action)
+                    }
+                }
             }
         }
     }
 
     private fun newSubjectTime(): ModelSubjectTime {
-        val dayInt = requireActivity().resources.getStringArray(R.array.Days).indexOf(binding.autoCompleteTextViewWhichDay.text.toString()).toString()
+        val dayInt = requireActivity().resources.getStringArray(R.array.Days)
+            .indexOf(binding.autoCompleteTextViewWhichDay.text.toString()).toString()
         val dayString = binding.autoCompleteTextViewWhichDay.text.toString() //id icin
         val classroom = binding.addEditSubjectTimeEditTextClassroom.text.toString()
         val startTime = binding.addEditSubjectTimeEditTextStartTimePicker.text.toString()
         val finishTime = binding.addEditSubjectTimeEditTextFinishTimePicker.text.toString()
         val typeOfSubject = binding.autoCompleteTextViewTypeOfSubject.text.toString()
-        val reminderTime = requireActivity().resources.getStringArray(R.array.reminder).indexOf(binding.autoCompleteTextViewReminderPicker.text.toString()).toString()
+        val reminderTime = requireActivity().resources.getStringArray(R.array.reminder)
+            .indexOf(binding.autoCompleteTextViewReminderPicker.text.toString()).toString()
 
         val day_timeStart = "${dayString}_${startTime}"//id icin
-        val id = IDGenerator().generateTimeID(program.name,subject.subjectName!!,day_timeStart)
+        val id = IDGenerator().generateTimeID(program.name, subject.subjectName!!, day_timeStart)
         val notificationID = IDGenerator().generateNotificationID(id)
 
-        val newSubject = ModelSubjectTime(id,dayInt,startTime,finishTime,typeOfSubject,classroom,reminderTime,notificationID,subject.id,subject.belowProgram)
-
-        return newSubject
+        return ModelSubjectTime(
+            id,
+            dayInt,
+            startTime,
+            finishTime,
+            typeOfSubject,
+            classroom,
+            reminderTime,
+            notificationID,
+            subject.id,
+            subject.belowProgram
+        )
     }
 
     private fun updateSubjectTime(){
@@ -209,7 +225,6 @@ class AddEditSubjectTimeFragment : Fragment() {
 
     private fun showDataInUI(){
         binding.autoCompleteTextViewWhichDay.setText(arrayAdapterDays.getItem(subjectTime.day!!.toInt()), false)
-//        binding.autoCompleteTextViewWhichDay.setText(subjectTime.day)
         binding.addEditSubjectTimeEditTextClassroom.setText(subjectTime.classRoom)
         binding.addEditSubjectTimeEditTextStartTimePicker.setText(subjectTime.timeStart)
         binding.addEditSubjectTimeEditTextFinishTimePicker.setText(subjectTime.timeFinish)

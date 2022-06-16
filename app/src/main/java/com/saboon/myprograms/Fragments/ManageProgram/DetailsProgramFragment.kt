@@ -1,5 +1,6 @@
 package com.saboon.myprograms.Fragments.ManageProgram
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.saboon.myprograms.Models.Program.ModelProgram
+import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
+import com.saboon.myprograms.Utils.ShowAlertDialog
 import com.saboon.myprograms.ViewModels.ManageProgramVM.DetailsProgramViewModel
 import com.saboon.myprograms.databinding.FragmentDetailsProgramBinding
 
@@ -59,7 +62,7 @@ class DetailsProgramFragment : Fragment() {
         buttons()
     }
 
-    fun observer(){
+    private fun observer(){
         viewModel.program.observe(viewLifecycleOwner, Observer {
             if (it != null){
                 program = it
@@ -70,7 +73,7 @@ class DetailsProgramFragment : Fragment() {
         })
     }
 
-    fun buttons(){
+    private fun buttons(){
         binding.textViewDetailsGoToBack.setOnClickListener {
             val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
             it.findNavController().navigate(action)
@@ -81,10 +84,14 @@ class DetailsProgramFragment : Fragment() {
             it.findNavController().navigate(action)
         }
 
-        binding.delete.setOnClickListener {
-            viewModel.deleteProgram(program.id)
-            val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
-            it.findNavController().navigate(action)
+        binding.delete.setOnClickListener {view->
+            ShowAlertDialog(requireActivity()).showDeleteAlert("Delete","Are you sure to delete?"){
+                if (it){
+                    viewModel.deleteProgram(program.id)
+                    val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
+                    view.findNavController().navigate(action)
+                }
+            }
         }
     }
 

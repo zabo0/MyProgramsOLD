@@ -14,10 +14,7 @@ import com.saboon.myprograms.Adapters.SubjectProgram.SubjectDetailsFragmentRecyc
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.Models.Subject.ModelSubjectTime
-import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_FRAGMENT
-import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
-import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT
-import com.saboon.myprograms.Utils.FROM_MAIN_FRAGMENT
+import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectDetailsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectDetailsBinding
 
@@ -116,18 +113,21 @@ class SubjectDetailsFragment : Fragment() {
         }
 
         binding.subjectDetailsImageViewDelete.setOnClickListener { view ->
-            viewModel.deleteSubjectTimes(subject.id)
-            viewModel.deleteSubject(subject.id){
-                if(it){
-                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
-                    view.findNavController().navigate(action)
+
+            ShowAlertDialog(requireActivity()).showDeleteAlert("Delete","Are you sure to delete?"){
+                if (it){
+                    viewModel.deleteSubjectTimes(subject.id)
+                    viewModel.deleteSubject(subject.id){
+                        if(it){
+                            val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
+                            view.findNavController().navigate(action)
+                        }
+                    }
                 }
             }
         }
 
         binding.subjectDetailsTextViewSubjectNameGotoBack.setOnClickListener {
-
-
             when(from){
                 FROM_MAIN_FRAGMENT -> {
                     val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToMainFragment()
@@ -157,26 +157,7 @@ class SubjectDetailsFragment : Fragment() {
 
     private fun makeTheme(color: String){
         when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
-            Configuration.UI_MODE_NIGHT_YES -> {}
-            Configuration.UI_MODE_NIGHT_NO -> {
-//                binding.linearLayout.setBackgroundColor(Color.parseColor(color))
-//                binding.view.setBackgroundColor(Color.parseColor(color))
-//                binding.subjectDetailsTextViewAddTime.setTextColor(Color.parseColor(color))
-//                binding.subjectDetailsTextViewAbsenteeism.setTextColor(Color.parseColor(color))
-//                binding.textAbsenteeism.setTextColor(Color.parseColor(color))
-//                binding.subjectDetailsTextViewSubjectName.setBackgroundColor(Color.parseColor(color))
-//
-//
-//
-//                window.clearFlags(WindowManager.LayoutParams.FLAGS_CHANGED)
-//                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//                window.statusBarColor = Color.parseColor(color)
-
-
-//                binding.subjectDetailsTextViewSubjectName.compoundDrawables[0].setTint(Color.parseColor(color))
-//                binding.subjectDetailsTextViewLecturerName.compoundDrawables[0].setTint(Color.parseColor(color))
-//                binding.subjectDetailsTextViewAddTime.compoundDrawables[1].setTint(Color.parseColor(color))
-
+            Configuration.UI_MODE_NIGHT_YES -> {
                 for (drawable in binding.subjectDetailsTextViewSubjectName.compoundDrawables) {
                     drawable?.setTint(Color.parseColor(color))
                 }
@@ -186,8 +167,18 @@ class SubjectDetailsFragment : Fragment() {
                 for (drawable in binding.subjectDetailsTextViewAddTime.compoundDrawables) {
                     drawable?.setTint(Color.parseColor(color))
                 }
-//                binding.subjectDetailsTextViewAbsenteeism.setTextColor(Color.parseColor(color))
-//                binding.textAbsenteeism.setTextColor(Color.parseColor(color))
+                binding.view.setBackgroundColor(Color.parseColor(color))
+            }
+            Configuration.UI_MODE_NIGHT_NO -> {
+                for (drawable in binding.subjectDetailsTextViewSubjectName.compoundDrawables) {
+                    drawable?.setTint(Color.parseColor(color))
+                }
+                for (drawable in binding.subjectDetailsTextViewLecturerName.compoundDrawables) {
+                    drawable?.setTint(Color.parseColor(color))
+                }
+                for (drawable in binding.subjectDetailsTextViewAddTime.compoundDrawables) {
+                    drawable?.setTint(Color.parseColor(color))
+                }
                 binding.view.setBackgroundColor(Color.parseColor(color))
             }
             Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
