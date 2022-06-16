@@ -21,7 +21,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/A1_dark</item>
         <item name="colorPrimaryVariant">@color/A2_dark</item>
-        <item name="colorOnPrimary">@color/A7_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/A3_dark</item>
         <item name="colorSecondaryVariant">@color/A4</item>

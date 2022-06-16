@@ -115,7 +115,7 @@ class SubjectsFragment : Fragment() {
             it.findNavController().navigate(actionToNew)
         }
 
-        binding.subjectSubjectsTextViewGoToBack.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             val action = SubjectsFragmentDirections.actionSubjectsFragmentToMainFragment()
             it.findNavController().navigate(action)
         }

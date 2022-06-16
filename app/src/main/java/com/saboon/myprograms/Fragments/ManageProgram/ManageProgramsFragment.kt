@@ -109,9 +109,9 @@ class ManageProgramsFragment : Fragment() {
 
 
     fun buttons(){
-        binding.goToSettings.setOnClickListener {
-           //go to settings
-        }
+//        binding.goToSettings.setOnClickListener {
+//           //go to settings
+//        }
 
         binding.buttonAddNewProgram.setOnClickListener {
             val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToAddEditProgramFragment(FROM_MANAGE_PROGRAMS,null)

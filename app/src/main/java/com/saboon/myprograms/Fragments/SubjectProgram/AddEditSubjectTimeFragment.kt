@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.saboon.myprograms.Models.Program.ModelProgram
@@ -76,7 +77,7 @@ class AddEditSubjectTimeFragment : Fragment() {
                     if (it != null) {
                         viewModel.getSubjectTime(it)
                         isNewSubjectTime = false
-                        binding.delete.visibility = View.VISIBLE
+                        binding.topAppBar.menu.findItem(R.id.deleteSubjectTime).isVisible = true
                     }
                 }
             }
@@ -132,7 +133,7 @@ class AddEditSubjectTimeFragment : Fragment() {
             if (it != null){
                 subject = it
                 viewModel.getProgram(subject.belowProgram)
-                binding.addEditSubjectTimeTextViewGoToBack.text = subject.subjectName
+                binding.topAppBar.title = subject.subjectName
             }
         })
 
@@ -168,19 +169,26 @@ class AddEditSubjectTimeFragment : Fragment() {
             it.findNavController().navigate(action)
         }
 
-        binding.addEditSubjectTimeTextViewGoToBack.setOnClickListener {
+
+        binding.topAppBar.setNavigationOnClickListener {
             val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
             it.findNavController().navigate(action)
         }
 
-        binding.delete.setOnClickListener { view ->
-            ShowAlertDialog(requireActivity(), requireContext()).showDeleteAlert("Delete","Are you sure to delete?"){
-                if (it){
-                    viewModel.deleteSubjectTime(subjectTime.id){
-                        val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
-                        view.findNavController().navigate(action)
+        binding.topAppBar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.deleteSubjectTime->{
+                    ShowAlertDialog(requireActivity(), requireContext()).showDeleteAlert("Delete","Are you sure to delete?"){
+                        if (it){
+                            viewModel.deleteSubjectTime(subjectTime.id){
+                                val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)
+                                findNavController().navigate(action)
+                            }
+                        }
                     }
+                    true
                 }
+                else->false
             }
         }
     }

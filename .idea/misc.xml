@@ -8,6 +8,7 @@
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/drawable/bg_radiobutton_color_picker_brown.xml" value="0.267" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/drawable/bg_radiobutton_color_picker_purple.xml" value="0.267" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/drawable/bg_search_bar.xml" value="0.3675" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.267" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/activity_subject_program.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/drop_down_list_item.xml" value="0.33" />
@@ -25,7 +26,11 @@
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_subject_program_main_child.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_subject_program_subject_details.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_subject_program_subjects.xml" value="0.33" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/top_bar_test.xml" value="0.33" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/toop_app_bar_subject_details.xml" value="0.26506024096385544" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar_subject_add_edit_time.xml" value="0.26506024096385544" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar_subject_main.xml" value="0.26506024096385544" />
       </map>
     </option>
   </component>

@@ -48,6 +48,12 @@
     <string name="radio_purple">Purple</string>
     <string name="alertDialog_posButton">Yes</string>
     <string name="alertDialog_negButton">No</string>
+    <string name="programName">Program Name</string>
+    <string name="allSubjects">All Subjects</string>
+    <string name="editSubject">Edit Subject</string>
+    <string name="deleteSubject">Delete Subject</string>
+    <string name="subjectName">Subject Name</string>
+    <string name="deleteSubjectTime">Delete Subject Time</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>

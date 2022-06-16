@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Activities.MainActivity
 import com.saboon.myprograms.Adapters.SubjectProgram.MainFragmentRecyclerAdapter
@@ -16,6 +17,7 @@ import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.Models.Subject.ModelSubjectProgramMainSection
 import com.saboon.myprograms.Models.Subject.ModelSubjectTime
+import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.SHARED_PREF_ID
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentMainBinding
@@ -74,7 +76,7 @@ class MainFragment : Fragment() {
         viewModel.program.observe(viewLifecycleOwner, Observer {
             if (it != null){
                 program = it
-                binding.subjectMainTextViewChooseProgram.text = program.name
+                binding.topAppBar.title = program.name
             }
         })
 
@@ -127,12 +129,19 @@ class MainFragment : Fragment() {
 
 
     private fun buttons(){
-        binding.subjectMainImageViewGoToAllSubjects.setOnClickListener {
-            val actionToSubjects = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
-            it.findNavController().navigate(actionToSubjects)
+
+        binding.topAppBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.goToAllSubject -> {
+                    val actionToSubjects = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
+                    findNavController().navigate(actionToSubjects)
+                    true
+                }
+                else -> false
+            }
         }
 
-        binding.subjectMainTextViewChooseProgram.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
             activity?.finish()

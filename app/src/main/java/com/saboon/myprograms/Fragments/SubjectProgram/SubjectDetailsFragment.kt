@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Adapters.SubjectProgram.SubjectDetailsFragmentRecyclerAdapter
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.Models.Subject.ModelSubjectTime
+import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.SubjectVM.SubjectDetailsFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentSubjectDetailsBinding
@@ -107,27 +109,34 @@ class SubjectDetailsFragment : Fragment() {
     }
 
     private fun buttons(){
-        binding.subjectDetailsImageViewEdit.setOnClickListener {
-            val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToAddEditSubjectFragment(subject.belowProgram,subject.id)
-            it.findNavController().navigate(action)
-        }
 
-        binding.subjectDetailsImageViewDelete.setOnClickListener { view ->
 
-            ShowAlertDialog(requireActivity(),requireContext()).showDeleteAlert("Delete","Are you sure to delete?"){
-                if (it){
-                    viewModel.deleteSubjectTimes(subject.id)
-                    viewModel.deleteSubject(subject.id){
-                        if(it){
-                            val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
-                            view.findNavController().navigate(action)
+        binding.topAppBar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.editSubject->{
+                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToAddEditSubjectFragment(subject.belowProgram,subject.id)
+                    findNavController().navigate(action)
+                    true
+                }
+                R.id.deleteSubject->{
+                    ShowAlertDialog(requireActivity(),requireContext()).showDeleteAlert("Delete","Are you sure to delete?"){
+                        if (it){
+                            viewModel.deleteSubjectTimes(subject.id)
+                            viewModel.deleteSubject(subject.id){
+                                if(it){
+                                    val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToSubjectsFragment(subject.belowProgram)
+                                    findNavController().navigate(action)
+                                }
+                            }
                         }
                     }
+                    true
                 }
+                else -> false
             }
         }
 
-        binding.subjectDetailsTextViewSubjectNameGotoBack.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             when(from){
                 FROM_MAIN_FRAGMENT -> {
                     val action = SubjectDetailsFragmentDirections.actionSubjectDetailsFragmentToMainFragment()
