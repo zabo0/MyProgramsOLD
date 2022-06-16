@@ -174,7 +174,7 @@ class AddEditSubjectTimeFragment : Fragment() {
         }
 
         binding.delete.setOnClickListener { view ->
-            ShowAlertDialog(requireActivity()).showDeleteAlert("Delete","Are you sure to delete?"){
+            ShowAlertDialog(requireActivity(), requireContext()).showDeleteAlert("Delete","Are you sure to delete?"){
                 if (it){
                     viewModel.deleteSubjectTime(subjectTime.id){
                         val action = AddEditSubjectTimeFragmentDirections.actionAddEditSubjectTimeFragmentToSubjectDetailsFragment(subject.id,FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT)

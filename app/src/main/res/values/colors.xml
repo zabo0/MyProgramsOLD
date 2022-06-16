@@ -6,13 +6,40 @@
     <color name="orange">#EC7842</color>
     <color name="orange_200">#E0C4B8</color>
 
-    <color name="night">#424242</color>
+    <color name="dark_night">#424242</color>
+    <color name="light_night">#656565</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#FF0000</color>
     <color name="hint">#878787</color>
+
+
+    <color name="A1">#6200EE</color>
+    <color name="A2">#3700B3</color>
+    <color name="A3">#03DAC6</color>
+    <color name="A4">#018786</color>
+    <color name="A5">#FFFFFF</color>
+    <color name="A6">#FFFFFF</color>
+    <color name="A7">#C51162</color>
+    <color name="A8">#FFFFFF</color>
+    <color name="A9">#000000</color>
+    <color name="A10">#000000</color>
+    <color name="A11">#000000</color>
+    <color name="A12">#FFFFFF</color>
+
+    <color name="A1_dark">#BB86FC</color>
+    <color name="A2_dark">#3700B3</color>
+    <color name="A3_dark">#03DAC6</color>
+    <color name="A4_dark">#121212</color>
+    <color name="A5_dark">#121212</color>
+    <color name="A6_dark">#CF6679</color>
+    <color name="A7_dark">#000000</color>
+    <color name="A8_dark">#000000</color>
+    <color name="A9_dark">#FFFFFF</color>
+    <color name="A10_dark">#FFFFFF</color>
+    <color name="A11_dark">#000000</color>
 
 
     <color name="yellow">#FEE440</color>

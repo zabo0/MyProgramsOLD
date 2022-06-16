@@ -1,17 +1,45 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MyPrograms" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/dark_night</item>-->
+<!--        <item name="colorPrimaryVariant">@color/black</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/light_night</item>-->
+<!--        <item name="colorSecondaryVariant">@color/black</item>-->
+<!--        <item name="colorOnSecondary">@color/white</item>-->
+
+<!--&lt;!&ndash;        <item name="colorOnSurface">@color/light_night</item>&ndash;&gt;-->
+
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor">?attr/colorPrimary</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+
+
+
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/night</item>
-        <item name="colorPrimaryVariant">@color/black</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/A1_dark</item>
+        <item name="colorPrimaryVariant">@color/A2_dark</item>
+        <item name="colorOnPrimary">@color/A7_dark</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/night</item>
-        <item name="colorSecondaryVariant">@color/black</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/A3_dark</item>
+        <item name="colorSecondaryVariant">@color/A4</item>
+        <item name="colorOnSecondary">@color/A8_dark</item>
+
+        <item name="background">@color/A4_dark</item>
+        <item name="colorOnBackground">@color/A9_dark</item>
+        <item name="colorSurface">@color/A5_dark</item>
+        <item name="colorOnSurface">@color/A10_dark</item>
+        <item name="colorError">@color/A6_dark</item>
+        <item name="colorOnError">@color/A11_dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
 
     </style>
+
+
+
+
 </resources>

@@ -1,19 +1,39 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MyPrograms" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/turquoise</item>-->
+<!--        <item name="colorPrimaryVariant">@color/turquoise_200</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/orange</item>-->
+<!--        <item name="colorSecondaryVariant">@color/orange_200</item>-->
+<!--        <item name="colorOnSecondary">@color/white</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor">?attr/colorPrimary</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+
+
+
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/turquoise</item>
-        <item name="colorPrimaryVariant">@color/turquoise_200</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/A1</item>
+        <item name="colorPrimaryVariant">@color/A2</item>
+        <item name="colorOnPrimary">@color/A8</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/orange</item>
-        <item name="colorSecondaryVariant">@color/orange_200</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/A3</item>
+        <item name="colorSecondaryVariant">@color/A4</item>
+        <item name="colorOnSecondary">@color/A9</item>
+
+        <item name="background">@color/A5</item>
+        <item name="colorOnBackground">@color/A10</item>
+        <item name="colorSurface">@color/A6</item>
+        <item name="colorOnSurface">@color/A11</item>
+        <item name="colorError">@color/A7</item>
+        <item name="colorOnError">@color/A12</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
 
     </style>
-
 
 </resources>

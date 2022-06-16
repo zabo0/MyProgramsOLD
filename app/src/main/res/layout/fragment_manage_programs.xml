@@ -49,24 +49,6 @@ xmlns:tools="http://schemas.android.com/tools"
     </LinearLayout>
 
 
-<!--    <EditText-->
-<!--        android:id="@+id/manage_editText_search"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:background="@drawable/bg_search_bar"-->
-<!--        android:drawableStart="@drawable/ic_baseline_search_24"-->
-<!--        android:drawableTint="@color/hint"-->
-<!--        android:hint="@string/search"-->
-<!--        android:padding="10dp"-->
-<!--        android:textColor="?attr/colorOnSecondary"-->
-<!--        android:textColorHint="@color/hint"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>-->
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_manageProgramsFragment"
         android:layout_width="match_parent"

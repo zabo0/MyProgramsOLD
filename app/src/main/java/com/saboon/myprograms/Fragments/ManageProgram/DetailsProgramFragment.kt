@@ -85,7 +85,7 @@ class DetailsProgramFragment : Fragment() {
         }
 
         binding.delete.setOnClickListener {view->
-            ShowAlertDialog(requireActivity()).showDeleteAlert("Delete","Are you sure to delete?"){
+            ShowAlertDialog(requireActivity(),requireContext()).showDeleteAlertDialog("Delete","Are you sure to delete?"){
                 if (it){
                     viewModel.deleteProgram(program.id)
                     val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()

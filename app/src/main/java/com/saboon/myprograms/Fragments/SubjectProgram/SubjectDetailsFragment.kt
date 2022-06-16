@@ -114,7 +114,7 @@ class SubjectDetailsFragment : Fragment() {
 
         binding.subjectDetailsImageViewDelete.setOnClickListener { view ->
 
-            ShowAlertDialog(requireActivity()).showDeleteAlert("Delete","Are you sure to delete?"){
+            ShowAlertDialog(requireActivity(),requireContext()).showDeleteAlert("Delete","Are you sure to delete?"){
                 if (it){
                     viewModel.deleteSubjectTimes(subject.id)
                     viewModel.deleteSubject(subject.id){
