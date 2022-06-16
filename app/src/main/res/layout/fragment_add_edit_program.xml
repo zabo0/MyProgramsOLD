@@ -7,46 +7,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.ManageProgram.AddEditProgramFragment">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/colorPrimary"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView_addEdit_goToBack"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:text="@string/addEditProgram"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="22sp"
-            app:drawableStartCompat="@drawable/ic_baseline_arrow_back_24"
-            app:drawableTint="?attr/colorOnPrimary" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:title="@string/addNewProgram" />
 
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:orientation="horizontal">
-
-            <!--            <ImageView-->
-            <!--                android:id="@+id/edit"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center_vertical"-->
-            <!--                android:layout_marginEnd="15dp"-->
-            <!--                android:src="@drawable/ic_baseline_edit_24"-->
-            <!--                app:tint="?attr/colorOnPrimary" />-->
-        </LinearLayout>
-    </LinearLayout>
-
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,6 +41,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_programName"
                 android:layout_width="match_parent"
+                android:inputType="textCapSentences"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>

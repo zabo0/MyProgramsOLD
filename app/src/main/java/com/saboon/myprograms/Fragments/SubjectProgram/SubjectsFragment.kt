@@ -109,7 +109,7 @@ class SubjectsFragment : Fragment() {
 
 
 
-    fun buttons(){
+    private fun buttons(){
         binding.fab.setOnClickListener {
             val actionToNew = SubjectsFragmentDirections.actionSubjectsFragmentToAddEditSubjectFragment(programID,null)
             it.findNavController().navigate(actionToNew)
@@ -118,6 +118,11 @@ class SubjectsFragment : Fragment() {
         binding.topAppBar.setNavigationOnClickListener {
             val action = SubjectsFragmentDirections.actionSubjectsFragmentToMainFragment()
             it.findNavController().navigate(action)
+        }
+
+        binding.buttonAddNewSubject.setOnClickListener {
+            val actionToNew = SubjectsFragmentDirections.actionSubjectsFragmentToAddEditSubjectFragment(programID,null)
+            it.findNavController().navigate(actionToNew)
         }
     }
 

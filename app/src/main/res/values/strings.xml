@@ -25,7 +25,7 @@
     <string name="editText_subjectTextHint">Subject Name</string>
     <string name="editText_lecturerTextHint">Lecturer Name</string>
     <string name="absenteeismHint">Absenteeism</string>
-    <string name="absenteeismText">Absenteeism:</string>
+    <string name="absenteeismText">Absenteeism:\u0020</string>
     <string name="subjectDetails">Subject Details</string>
     <string name="goToSubjects">Go to subjects</string>
     <string name="emptyTextSubjectMain">There is no Subject</string>
@@ -54,6 +54,7 @@
     <string name="deleteSubject">Delete Subject</string>
     <string name="subjectName">Subject Name</string>
     <string name="deleteSubjectTime">Delete Subject Time</string>
+    <string name="editProgram">Edit Program</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>

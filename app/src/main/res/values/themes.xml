@@ -20,8 +20,8 @@
         <item name="colorPrimaryVariant">@color/A2</item>
         <item name="colorOnPrimary">@color/A8</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/A3</item>
-        <item name="colorSecondaryVariant">@color/A4</item>
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorSecondaryVariant">@color/orange_200</item>
         <item name="colorOnSecondary">@color/A9</item>
 
         <item name="background">@color/A5</item>

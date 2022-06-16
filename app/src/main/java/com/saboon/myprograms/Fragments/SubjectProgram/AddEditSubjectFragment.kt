@@ -88,7 +88,7 @@ class AddEditSubjectFragment : Fragment() {
                     }
                 }
                 R.id.radio_brown -> {
-                    if (binding.radioBlue.isChecked){
+                    if (binding.radioBrown.isChecked){
                         binding.colorPickerRadioGroupSecond.clearCheck()
                         subjectColor = SUBJECT_COLOR_BROWN
                     }
@@ -119,7 +119,7 @@ class AddEditSubjectFragment : Fragment() {
                 }
 
                 R.id.radio_purple -> {
-                    if (binding.radioPink.isChecked){
+                    if (binding.radioPurple.isChecked){
                         binding.colorPickerRadioGroupFirst.clearCheck()
                         subjectColor = SUBJECT_COLOR_PURPLE
                     }
@@ -228,7 +228,7 @@ class AddEditSubjectFragment : Fragment() {
            }
         }
 
-        binding.textViewAddEditSubjectGoToBack.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             if (isNewSubject){
                 val action = AddEditSubjectFragmentDirections.actionAddEditSubjectFragmentToSubjectsFragment(program.id)
                 it.findNavController().navigate(action)

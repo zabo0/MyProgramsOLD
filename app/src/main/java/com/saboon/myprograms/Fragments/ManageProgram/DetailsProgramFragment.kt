@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.saboon.myprograms.Fragments.SubjectProgram.SubjectDetailsFragmentDirections
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
@@ -66,7 +68,7 @@ class DetailsProgramFragment : Fragment() {
         viewModel.program.observe(viewLifecycleOwner, Observer {
             if (it != null){
                 program = it
-                binding.textViewDetailsGoToBack.text = program.name
+                binding.topAppBar.title = program.name
                 binding.textViewProgramDateAdded.text = program.dateCreated
                 binding.textViewProgramDateEdited.text = program.dateEdited
             }
@@ -74,23 +76,29 @@ class DetailsProgramFragment : Fragment() {
     }
 
     private fun buttons(){
-        binding.textViewDetailsGoToBack.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
             it.findNavController().navigate(action)
         }
 
-        binding.edit.setOnClickListener {
-            val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS_PROGRAM, program.id)
-            it.findNavController().navigate(action)
-        }
-
-        binding.delete.setOnClickListener {view->
-            ShowAlertDialog(requireActivity(),requireContext()).showDeleteAlertDialog("Delete","Are you sure to delete?"){
-                if (it){
-                    viewModel.deleteProgram(program.id)
-                    val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
-                    view.findNavController().navigate(action)
+        binding.topAppBar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.editSubject->{
+                    val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS_PROGRAM, program.id)
+                    findNavController().navigate(action)
+                    true
                 }
+                R.id.deleteSubject->{
+                    ShowAlertDialog(requireActivity(),requireContext()).showDeleteAlertDialog("Delete","Are you sure to delete?"){
+                        if (it){
+                            viewModel.deleteProgram(program.id)
+                            val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToManageProgramsFragment()
+                            findNavController().navigate(action)
+                        }
+                    }
+                    true
+                }
+                else -> false
             }
         }
     }

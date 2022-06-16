@@ -27,7 +27,7 @@ class AddEditProgramFragment : Fragment() {
 
     lateinit var program: ModelProgram
 
-    lateinit var viewModel: AddEditProgramViewModel
+    private lateinit var viewModel: AddEditProgramViewModel
     private var typeOfProgram = PROGRAM_SUBJECT
 
 
@@ -59,6 +59,7 @@ class AddEditProgramFragment : Fragment() {
                 val programID = AddEditProgramFragmentArgs.fromBundle(it).programID
                 if (programID != null) {
                     viewModel.getProgram(programID)
+                    binding.topAppBar.title = resources.getString(R.string.editProgram)
                     binding.radioSubjectProgram.isEnabled = false
                     binding.radioExamProgram.isEnabled = false
                     binding.radioDietProgram.isEnabled = false
@@ -88,7 +89,7 @@ class AddEditProgramFragment : Fragment() {
         buttons()
     }
 
-    fun observer(){
+    private fun observer(){
         viewModel.program.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 program = it
@@ -109,8 +110,9 @@ class AddEditProgramFragment : Fragment() {
     }
 
 
-    fun buttons(){
-        binding.textViewAddEditGoToBack.setOnClickListener {
+    private fun buttons(){
+
+        binding.topAppBar.setNavigationOnClickListener {
             when(from){
                 FROM_MANAGE_PROGRAMS -> {
                     val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToManageProgramsFragment()
