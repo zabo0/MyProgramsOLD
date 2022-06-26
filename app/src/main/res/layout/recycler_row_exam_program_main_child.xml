@@ -14,7 +14,7 @@
         android:padding="10dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/subject_main_child_recycler_textView_startTime"
+            android:id="@+id/exam_main_child_recycler_textView_startTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12:00"
@@ -22,7 +22,7 @@
             android:textSize="17sp"
             android:textStyle="bold"/>
         <TextView
-            android:id="@+id/subject_main_child_recycler_textView_finishTime"
+            android:id="@+id/exam_main_child_recycler_textView_finishTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/subject_main_child_recycler_divider"
+        android:id="@+id/exam_main_child_recycler_divider"
         android:layout_width="2dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
@@ -55,7 +55,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/subject_main_child_recycler_textView_subjectName"
+                android:id="@+id/exam_main_child_recycler_textView_examName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:textSize="18sp"
@@ -63,14 +63,14 @@
                 android:ellipsize="end"
                 android:layout_weight="2"
                 android:textStyle="bold"
-                android:text="Subject Name"/>
+                android:text="Exam Name"/>
             <TextView
-                android:id="@+id/subject_main_child_recycler_textView_typeOfSubject"
+                android:id="@+id/exam_main_child_recycler_textView_typeOfExam"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAlignment="textEnd"
-                android:text="type of subject"/>
+                android:text="type of exam"/>
 
 
         </LinearLayout>
@@ -81,22 +81,26 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/subject_main_child_recycler_textView_lecturerName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@string/targetPointText"/>
+            <TextView
+                android:id="@+id/exam_main_child_recycler_textView_targetPoint"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:layout_weight="1"
-                android:text="Lecturer Name"/>
+                android:text=": 60"/>
             <TextView
-                android:id="@+id/subject_main_child_recycler_textView_classroom"
+                android:id="@+id/exam_main_child_recycler_textView_classroom"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAlignment="textEnd"
                 android:text="classRoom"/>
-
-
         </LinearLayout>
 
     </LinearLayout>

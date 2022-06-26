@@ -13,7 +13,7 @@ import com.saboon.myprograms.R
 class MainFragmentRecyclerAdapter(private val sectionList: ArrayList<ModelSubjectProgramMainSection>):RecyclerView.Adapter<MainFragmentRecyclerAdapter.MainFragmentViewHolder>() {
 
     class MainFragmentViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val sectionText: TextView = view.findViewById(R.id.sectionDay)
+        val sectionText: TextView = view.findViewById(R.id.sectionSubjectDay)
         val childRecycler: RecyclerView = view.findViewById(R.id.childRecyclerView)
     }
 

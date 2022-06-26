@@ -26,6 +26,8 @@ data class ModelExam(
     var typeOfExam: String?,
     @ColumnInfo(name = "classroom")
     var classroom: String?,
+    @ColumnInfo(name = "targetPoint")
+    var targetPoint: String,
     @ColumnInfo(name = "reminderTime")
     var reminderTime: String,
     @ColumnInfo(name = "notificationID")

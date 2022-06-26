@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.saboon.myprograms.Fragments.SubjectProgram.MainFragment"
+        android:name="com.saboon.myprograms.Fragments.SubjectProgram.SubjectMainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_subject_main" >
         <action
             android:id="@+id/action_mainFragment_to_subjectsFragment"
             app:destination="@id/subjectsFragment" />

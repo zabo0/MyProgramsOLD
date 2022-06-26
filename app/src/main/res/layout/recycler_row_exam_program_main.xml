@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/sectionSubjectDay"
+            android:id="@+id/sectionExamDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pazartesi"
@@ -26,7 +26,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/recycler_row_subject_program_main_child"
+        tools:listitem="@layout/recycler_row_exam_program_main_child"
         tools:itemCount="3"
         android:id="@+id/childRecyclerView"/>
 

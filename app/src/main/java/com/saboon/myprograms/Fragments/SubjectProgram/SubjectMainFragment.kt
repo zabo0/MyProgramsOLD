@@ -23,7 +23,7 @@ import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentMainBinding
 
 
-class MainFragment : Fragment() {
+class SubjectMainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding ?= null
     private val binding get() = _binding!!
@@ -77,6 +77,7 @@ class MainFragment : Fragment() {
             if (it != null){
                 program = it
                 binding.topAppBar.title = program.name
+                binding.topAppBar.subtitle = program.typeOfProgram
             }
         })
 

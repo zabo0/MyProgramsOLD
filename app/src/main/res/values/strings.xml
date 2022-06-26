@@ -55,6 +55,11 @@
     <string name="subjectName">Subject Name</string>
     <string name="deleteSubjectTime">Delete Subject Time</string>
     <string name="editProgram">Edit Program</string>
+    <string name="emptyTextExamMain">There is no Exam</string>
+    <string name="addNewExam">Add New Exam</string>
+    <string name="targetPointText">Target Point</string>
+    <string name="typeOfExam">Type Of Exam</string>
+    <string name="typeOfProgram">Type Of Program</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>
