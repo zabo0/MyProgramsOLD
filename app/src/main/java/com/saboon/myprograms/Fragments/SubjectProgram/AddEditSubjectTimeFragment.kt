@@ -1,12 +1,19 @@
 package com.saboon.myprograms.Fragments.SubjectProgram
 
+import android.app.AlarmManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
+import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -16,12 +23,14 @@ import com.google.android.material.timepicker.TimeFormat
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.Models.Subject.ModelSubjectTime
+import com.saboon.myprograms.Notifications.AlarmReceiver
 import com.saboon.myprograms.R
 import com.saboon.myprograms.Utils.FROM_ADD_EDIT_SUBJECT_TIME_FRAGMENT
 import com.saboon.myprograms.Utils.IDGenerator
 import com.saboon.myprograms.Utils.ShowAlertDialog
 import com.saboon.myprograms.ViewModels.SubjectVM.AddEditSubjectTimeFragmentViewModel
 import com.saboon.myprograms.databinding.FragmentAddEditSubjectTimeBinding
+import java.util.*
 
 
 class AddEditSubjectTimeFragment : Fragment() {
@@ -162,6 +171,10 @@ class AddEditSubjectTimeFragment : Fragment() {
                     view.findNavController().navigate(action)
                 }
             }
+
+//            createNotificationChannel()
+//            scheduleNotification(1923)
+
         }
 
         binding.buttonCancel.setOnClickListener {
@@ -260,6 +273,47 @@ class AddEditSubjectTimeFragment : Fragment() {
             timeText = String.format("%02d:%02d", hour, min)
             callback(timeText)
         }
+    }
+
+
+    // TODO: finish notifications
+    private fun createNotificationChannel()
+    {
+        val name = "channel_name"
+        val descriptionText = "channel_description"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("channelID", name, importance).apply {
+            description = descriptionText
+        }
+        // Register the channel with the system
+        val notificationManager:NotificationManager = context?.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+    }
+
+    private fun scheduleNotification(notificationID: Int){
+
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 21)
+        calendar.set(Calendar.MINUTE, 28)
+        calendar.set(Calendar.SECOND, 0)
+
+        if (Calendar.getInstance().after(calendar)) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+
+        val titleExtra = "titleExtra2"
+        val messageExtra = "messageExtra2"
+
+        val intent = Intent(context, AlarmReceiver::class.java)
+        intent.putExtra("TitleExtra",titleExtra)
+        intent.putExtra("MessageExtra", messageExtra)
+        intent.putExtra("notificationID", notificationID)
+
+
+        val pendingIntent = PendingIntent.getBroadcast(context, notificationID,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,1000*60*10, pendingIntent)
     }
 
     override fun onDestroy() {

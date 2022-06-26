@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.saboon.myprograms">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,6 +30,8 @@
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true"/>
+        <receiver android:name=".Notifications.AlarmReceiver"
+            android:enabled="true"/>
     </application>
 
 </manifest>
