@@ -25,7 +25,12 @@ interface SubjectDAO {
     suspend fun deleteSubject(subjectID: String)
 
     @Query("UPDATE ModelSubject SET subjectName= :newSubjectName, lecturerName = :newLecturerName, color = :newColor, dateEdited = :newDateEdited, absenteeism = :newAbsenteeism WHERE id = :subjectID ")
-    suspend fun updateSubject(subjectID:String, newSubjectName:String, newLecturerName:String, newColor:String, newAbsenteeism: String, newDateEdited:String)
+    suspend fun updateSubject(subjectID:String,
+                              newSubjectName:String,
+                              newLecturerName:String,
+                              newColor:String,
+                              newAbsenteeism: String,
+                              newDateEdited:String)
 
     @Query("UPDATE ModelSubject SET absenteeism = :newAbsenteeism WHERE id = :subjectID")
     suspend fun updateAbsenteeism(subjectID: String, newAbsenteeism:String)

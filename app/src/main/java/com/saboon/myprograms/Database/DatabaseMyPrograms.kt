@@ -18,6 +18,7 @@ abstract class DatabaseMyPrograms: RoomDatabase() {
     abstract fun subjectDAO() : SubjectDAO
     abstract fun subjectTimeDAO(): SubjectTimeDAO
     abstract fun sharedPrefDAO(): SharedPrefDAO
+    abstract fun examDAO(): ExamDAO
 
 
     //\\--SINGLETON--//\\
