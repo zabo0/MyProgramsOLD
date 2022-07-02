@@ -11,7 +11,7 @@ interface ExamDAO {
     @Insert
     suspend fun insert(exam: ModelExam)
 
-    @Query("SELECT * FROM ModelExam WHERE belowProgramID = :belowProgramID")
+    @Query("SELECT * FROM ModelExam WHERE belowProgramID = :belowProgramID ORDER BY day ASC, timeStart ASC")
     suspend fun getAllExams(belowProgramID: String): List<ModelExam>
 
     @Query("SELECT * FROM ModelExam WHERE id = :examID")
@@ -25,7 +25,7 @@ interface ExamDAO {
         examID: String,
         newExamName: String,
         newColor: String,
-        newDay: String,
+        newDay: Long,
         newTimeStart: String,
         newTimeFinish: String,
         newTypeOfExam: String,
@@ -34,7 +34,7 @@ interface ExamDAO {
         newPoint: String,
         newIsDone: Boolean,
         newReminderTime: String,
-        newDateEdited: String
+        newDateEdited: Long
     )
 
     @Query("UPDATE ModelExam SET isDone =:newIsDone WHERE id =:examID")

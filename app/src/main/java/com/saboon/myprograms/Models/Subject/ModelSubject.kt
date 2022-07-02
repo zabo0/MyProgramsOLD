@@ -10,10 +10,10 @@ data class ModelSubject(
     val id: String,
 
     @ColumnInfo(name = "dateAdded")
-    val dateAdded: String,
+    val dateAdded: Long,
 
     @ColumnInfo(name = "dateEdited")
-    var dateEdited: String,
+    var dateEdited: Long,
 
     @ColumnInfo(name = "subjectName")
     var subjectName: String?,

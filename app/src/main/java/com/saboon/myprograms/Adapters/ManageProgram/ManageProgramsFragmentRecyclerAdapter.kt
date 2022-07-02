@@ -17,10 +17,7 @@ import com.saboon.myprograms.Fragments.ManageProgram.ManageProgramsFragmentDirec
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.Models.ModelSharedPref
 import com.saboon.myprograms.R
-import com.saboon.myprograms.Utils.PROGRAM_DIET
-import com.saboon.myprograms.Utils.PROGRAM_EXAM
-import com.saboon.myprograms.Utils.PROGRAM_SUBJECT
-import com.saboon.myprograms.Utils.SHARED_PREF_ID
+import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
 import java.text.SimpleDateFormat
 
@@ -40,14 +37,7 @@ class ManageProgramsFragmentRecyclerAdapter(private val programList: List<ModelP
     override fun onBindViewHolder(holder: ManageProgramViewHolder, position: Int) {
         holder.programName.text = programList[position].name
 
-        //gelen tarih verisi soyle dd.MM.yyyy-HH:mm:ss
-        //sadece tarih kismini almak icin parcalayip dd MMMM yyyy formatina ceviriyoruz
-
-        val dateEdited = SimpleDateFormat("dd MMMM yyyy")
-            .format(SimpleDateFormat("dd.MM.yyyy")
-                .parse(programList[position].dateEdited.split("-")[0]))
-
-        holder.editedDate.text = dateEdited
+        holder.editedDate.text = DayConverter().getDay(programList[position].dateEdited)
 
         holder.goToDetails.setOnClickListener {
             val action = ManageProgramsFragmentDirections.actionManageProgramsFragmentToDetailsProgramFragment(programList[position].id)

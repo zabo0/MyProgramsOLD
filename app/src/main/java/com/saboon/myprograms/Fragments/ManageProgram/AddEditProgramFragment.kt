@@ -131,7 +131,7 @@ class AddEditProgramFragment : Fragment() {
                 FROM_MANAGE_PROGRAMS -> {
                     val name = binding.editTextProgramName.text.toString().trimEnd()
                     val id = IDGenerator().generateProgramID(name)
-                    val dateCreated = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+                    val dateCreated = Calendar.getInstance().timeInMillis
                     val dateEdited = dateCreated
 
                     val program = ModelProgram(id,name,dateCreated,dateEdited, typeOfProgram)

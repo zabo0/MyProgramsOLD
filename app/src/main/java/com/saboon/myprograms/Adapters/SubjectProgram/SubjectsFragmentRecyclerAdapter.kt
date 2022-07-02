@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.saboon.myprograms.Fragments.SubjectProgram.SubjectsFragmentDirections
 import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.DayConverter
 import com.saboon.myprograms.Utils.FROM_ALL_SUBJECT_FRAGMENT
 
 class SubjectsFragmentRecyclerAdapter(val subjectList: List<ModelSubject>): RecyclerView.Adapter<SubjectsFragmentRecyclerAdapter.SubjectFragmentViewHolder>() {
@@ -26,7 +27,7 @@ class SubjectsFragmentRecyclerAdapter(val subjectList: List<ModelSubject>): Recy
     override fun onBindViewHolder(holder: SubjectFragmentViewHolder, position: Int) {
         holder.lecturerName.text = subjectList[position].lecturerName
         holder.subjectName.text = subjectList[position].subjectName
-        holder.dateEdited.text = subjectList[position].dateEdited
+        holder.dateEdited.text = DayConverter().getDay(subjectList[position].dateEdited)
 
         holder.itemView.setOnClickListener {
             val action = SubjectsFragmentDirections.actionSubjectsFragmentToSubjectDetailsFragment(subjectList[position].id,

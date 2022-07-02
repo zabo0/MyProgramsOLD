@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.DayConverter
 import com.saboon.myprograms.Utils.FROM_DETAILS
 import com.saboon.myprograms.Utils.ShowAlertDialog
 import com.saboon.myprograms.ViewModels.ManageProgramVM.DetailsProgramViewModel
@@ -67,8 +68,8 @@ class DetailsProgramFragment : Fragment() {
             if (it != null){
                 program = it
                 binding.topAppBar.title = program.name
-                binding.textViewProgramDateAdded.text = program.dateCreated
-                binding.textViewProgramDateEdited.text = program.dateEdited
+                binding.textViewProgramDateAdded.text = DayConverter().getDay(program.dateCreated)
+                binding.textViewProgramDateEdited.text = DayConverter().getDay(program.dateEdited)
             }
         })
     }

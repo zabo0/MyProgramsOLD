@@ -8,25 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saboon.myprograms.Activities.MainActivity
 import com.saboon.myprograms.Adapters.ExamProgram.ExamMainFragmentRecyclerAdapter
-import com.saboon.myprograms.Adapters.SubjectProgram.MainFragmentRecyclerAdapter
-import com.saboon.myprograms.Fragments.SubjectProgram.SubjectMainFragmentDirections
 import com.saboon.myprograms.Models.Exam.ModelExam
 import com.saboon.myprograms.Models.Exam.ModelExamProgramMainSection
 import com.saboon.myprograms.Models.Program.ModelProgram
-import com.saboon.myprograms.Models.Subject.ModelSubject
-import com.saboon.myprograms.Models.Subject.ModelSubjectProgramMainSection
-import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.R
-import com.saboon.myprograms.Utils.PROGRAM_DIET
-import com.saboon.myprograms.Utils.PROGRAM_EXAM
-import com.saboon.myprograms.Utils.PROGRAM_SUBJECT
-import com.saboon.myprograms.Utils.SHARED_PREF_ID
+import com.saboon.myprograms.Utils.*
 import com.saboon.myprograms.ViewModels.ExamVM.ExamMainViewModel
 import com.saboon.myprograms.databinding.FragmentExamMainBinding
 
@@ -159,25 +150,28 @@ class ExamMainFragment : Fragment() {
 
 
     private fun getDataToRecyclerView(exams:List<ModelExam>):List<ModelExamProgramMainSection>{
-        //burasi main recycler view de dersleri gunlere gore ayirabilmek icin var
-        //main recycler viewde ic ice iki tane recycler view var biri gunlere gore ayirmak icin icteki olan ise o gunlerde olan dersleri gostermek icin
-        //bu fonksiyonda yapilan su for dongusu icerisinde haftanin her bir gunune denk gelen sayilar dondurulecek
-        //databaseden cekiler subjectTimelerin icerisinde bu gune esit olan (yani mesela pazartesi gununde olan) butun timeler tek bir listeye eklenerek
-        //section list icerisine kaydediliyor.
         val sectionList: ArrayList<ModelExamProgramMainSection> = arrayListOf()
-        for (day in 0..6){
-            val examListToSection: ArrayList<ModelExam> = arrayListOf()
 
-            for(exam in exams){
-                if (exam.day == day.toString()){
-                    examListToSection.add(exam)
+        var fromIndex = 0
+        var toIndex = 0
+
+        while (fromIndex < exams.size){
+            while (exams[fromIndex].day == exams[toIndex].day){
+                toIndex++
+                if (toIndex>=exams.size){
+                    break
                 }
             }
+            val examListToSection: ArrayList<ModelExam> = arrayListOf()
+            val subExams = exams.subList(fromIndex,toIndex)
+            examListToSection.addAll(subExams)
 
             if (examListToSection.isNotEmpty()){
-                val section = ModelExamProgramMainSection(day,examListToSection)
+                val section = ModelExamProgramMainSection(DayConverter().getDay(exams[fromIndex].day),examListToSection)
                 sectionList.add(section)
             }
+
+            fromIndex = toIndex
         }
 
         return sectionList

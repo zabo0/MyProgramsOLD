@@ -81,7 +81,7 @@ class ExamDetailsFragment : Fragment() {
                 exam = it
                 makeTheme(exam.color)
                 binding.examDetailsTextViewExamName.text = exam.examName
-                binding.examDetailsTextViewWhichDay.text = requireContext().resources.getStringArray(R.array.Days)[exam.day.toInt()]
+                binding.examDetailsTextViewWhichDay.text = DayConverter().getDay(exam.day)
                 binding.examDetailsTextViewClassroom.text = exam.classroom
                 binding.examDetailsTextViewStartTime.text = exam.timeStart
                 binding.examDetailsTextViewFinishTime.text = exam.timeFinish

@@ -10,6 +10,7 @@ import com.saboon.myprograms.Fragments.ExamProgram.AllExamsFragment
 import com.saboon.myprograms.Fragments.ExamProgram.AllExamsFragmentDirections
 import com.saboon.myprograms.Models.Exam.ModelExam
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.DayConverter
 import com.saboon.myprograms.Utils.FROM_ALL_EXAMS_FRAGMENT
 import com.saboon.myprograms.Utils.FROM_MAIN_FRAGMENT
 
@@ -28,7 +29,7 @@ class AllExamsFragmentRecyclerAdapter(val examList:List<ModelExam>): RecyclerVie
     override fun onBindViewHolder(holder: AllExamFragmentViewHolder, position: Int) {
         holder.examName.text = examList[position].examName
         holder.targetPoint.text = examList[position].targetPoint
-        holder.dateEdited.text = examList[position].dateEdited
+        holder.dateEdited.text = DayConverter().getDay(examList[position].dateEdited)
 
 
         holder.itemView.setOnClickListener {

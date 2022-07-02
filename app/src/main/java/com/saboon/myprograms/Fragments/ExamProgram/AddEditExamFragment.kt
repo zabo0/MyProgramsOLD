@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.saboon.myprograms.Fragments.SubjectProgram.AddEditSubjectFragmentDirections
@@ -32,6 +33,7 @@ class AddEditExamFragment : Fragment() {
     lateinit var exam : ModelExam
     lateinit var program : ModelProgram
     private var examColor = COLOR_SOFT_RED
+    private var examDay: Long = 0
 
     lateinit var arrayAdapterDays: ArrayAdapter<String>
     lateinit var arrayAdapterReminder: ArrayAdapter<String>
@@ -74,9 +76,9 @@ class AddEditExamFragment : Fragment() {
             }
         }
 
-        val dayItems = resources.getStringArray(R.array.Days)
-        arrayAdapterDays = ArrayAdapter(requireContext(), R.layout.drop_down_list_item,dayItems)
-        binding.autoCompleteTextViewWhichDay.setAdapter(arrayAdapterDays)
+//        val dayItems = resources.getStringArray(R.array.Days)
+//        arrayAdapterDays = ArrayAdapter(requireContext(), R.layout.drop_down_list_item,dayItems)
+//        binding.autoCompleteTextViewWhichDay.setAdapter(arrayAdapterDays)
 
         val reminderItems = resources.getStringArray(R.array.reminder)
         arrayAdapterReminder = ArrayAdapter(requireContext(), R.layout.drop_down_list_item, reminderItems)
@@ -87,7 +89,7 @@ class AddEditExamFragment : Fragment() {
         binding.autoCompleteTextViewTypeOfExam.setAdapter(arrayAdapterTypeOfSubject)
 
         //baslagicta gun ve hatirlaticiya default deger verilir(pazartesi ve hatirlatici yok)
-        binding.autoCompleteTextViewWhichDay.setText(arrayAdapterDays.getItem(0),false)
+        //binding.addEditExamTextInputLayoutDayPicker.setText(arrayAdapterDays.getItem(0),false)
         binding.autoCompleteTextViewReminderPicker.setText(arrayAdapterReminder.getItem(0),false)
 
 
@@ -152,6 +154,14 @@ class AddEditExamFragment : Fragment() {
             }
         }
 
+        binding.examAddEditExamEditTextDayPicker.setOnClickListener {
+            getDay {
+                examDay = it!!
+                val date = DayConverter().getDay(examDay)
+                binding.examAddEditExamEditTextDayPicker.setText(date)
+            }
+        }
+
         binding.examAddEditExamEditTextStartTimePicker.setOnClickListener {
             getTime {
                 binding.examAddEditExamEditTextStartTimePicker.setText(it)
@@ -166,7 +176,6 @@ class AddEditExamFragment : Fragment() {
 
         observer()
         buttons()
-
     }
 
     private fun buttons() {
@@ -220,7 +229,7 @@ class AddEditExamFragment : Fragment() {
     private fun newExam(): ModelExam {
         val examName = binding.examAddEditExamEditTextExamName.text.toString().trimEnd()
         val color = examColor
-        val day = requireActivity().resources.getStringArray(R.array.Days).indexOf(binding.autoCompleteTextViewWhichDay.text.toString()).toString()
+        val day = examDay
         val classroom = binding.examAddEditExamEditTextClassroom.text.toString().trimEnd()
         val startTime = binding.examAddEditExamEditTextStartTimePicker.text.toString().trimEnd()
         val finisTime = binding.examAddEditExamEditTextFinishTimePicker.text.toString().trimEnd()
@@ -233,7 +242,7 @@ class AddEditExamFragment : Fragment() {
         val reminder = requireActivity().resources.getStringArray(R.array.reminder).indexOf(binding.autoCompleteTextViewReminderPicker.text.toString()).toString()
         val isDone = binding.isExamDone.isChecked
 
-        val dateAdded = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+        val dateAdded = Calendar.getInstance().timeInMillis
         val dateEdited = dateAdded
         val belowProgID = program.id
         val id = IDGenerator().generateExamID(program.name,examName)
@@ -245,7 +254,7 @@ class AddEditExamFragment : Fragment() {
     private fun updateExam(){
         exam.examName = binding.examAddEditExamEditTextExamName.text.toString().trimEnd()
         exam.color = examColor
-        exam.day = requireActivity().resources.getStringArray(R.array.Days).indexOf(binding.autoCompleteTextViewWhichDay.text.toString()).toString()
+        exam.day = examDay
         exam.classroom = binding.examAddEditExamEditTextClassroom.text.toString().trimEnd()
         exam.timeStart = binding.examAddEditExamEditTextStartTimePicker.text.toString().trimEnd()
         exam.timeFinish = binding.examAddEditExamEditTextFinishTimePicker.text.toString().trimEnd()
@@ -259,7 +268,7 @@ class AddEditExamFragment : Fragment() {
             exam.point = "-1"
         }
         exam.reminderTime = requireActivity().resources.getStringArray(R.array.reminder).indexOf(binding.autoCompleteTextViewReminderPicker.text.toString()).toString()
-        exam.dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+        exam.dateEdited = Calendar.getInstance().timeInMillis
     }
 
 
@@ -268,7 +277,7 @@ class AddEditExamFragment : Fragment() {
             if( it!= null){
                 exam = it
                 binding.examAddEditExamEditTextExamName.setText(exam.examName)
-                binding.autoCompleteTextViewWhichDay.setText(arrayAdapterDays.getItem(exam.day.toInt()), false)
+                binding.examAddEditExamEditTextDayPicker.setText(DayConverter().getDay(exam.day))
                 binding.examAddEditExamEditTextClassroom.setText(exam.classroom)
                 binding.examAddEditExamEditTextStartTimePicker.setText(exam.timeStart)
                 binding.examAddEditExamEditTextFinishTimePicker.setText(exam.timeFinish)
@@ -343,6 +352,20 @@ class AddEditExamFragment : Fragment() {
             val min = picker.minute
             timeText = String.format("%02d:%02d", hour, min)
             callback(timeText)
+        }
+    }
+
+    private fun getDay(callback: (Long?) -> Unit){
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setTitleText("Select Date")
+                .build()
+
+        datePicker.show(childFragmentManager, "tag")
+
+        datePicker.addOnPositiveButtonClickListener {
+            val date = datePicker.selection
+            callback(date)
         }
     }
 

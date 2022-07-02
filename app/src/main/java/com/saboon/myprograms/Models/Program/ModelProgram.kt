@@ -13,10 +13,10 @@ data class ModelProgram(
     var name: String,
 
     @ColumnInfo(name = "dateAdded")
-    var dateCreated: String,
+    var dateCreated: Long,
 
     @ColumnInfo(name = "dateEdited")
-    var dateEdited: String,
+    var dateEdited: Long,
 
     @ColumnInfo(name = "typeOfProgram")
     val typeOfProgram: String

@@ -9,15 +9,15 @@ data class ModelExam(
     @PrimaryKey
     val id: String,
     @ColumnInfo(name = "dateCreated")
-    val dateCreated: String,
+    val dateCreated: Long,
     @ColumnInfo(name = "dateEdited")
-    var dateEdited: String,
+    var dateEdited: Long,
     @ColumnInfo(name = "examName")
     var examName: String?,
     @ColumnInfo(name = "color")
     var color: String,
     @ColumnInfo(name = "day")
-    var day: String,
+    var day: Long,
     @ColumnInfo(name = "timeStart")
     var timeStart: String?,
     @ColumnInfo(name = "timeFinish")

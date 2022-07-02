@@ -216,16 +216,16 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/addEditSubjectTime_textInputLayout_dayPicker"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/whichDayText">
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView_whichDay"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/exam_addEditExam_editText_dayPicker"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:focusableInTouchMode="false"
                     android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>

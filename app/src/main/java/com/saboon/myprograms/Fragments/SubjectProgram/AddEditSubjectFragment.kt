@@ -214,7 +214,7 @@ class AddEditSubjectFragment : Fragment() {
                }else{
                    subject.absenteeism = "-1"
                }
-               subject.dateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+               subject.dateEdited = Calendar.getInstance().timeInMillis
                subject.color = subjectColor
 
                viewModel.updateSubject(subject){
@@ -255,7 +255,7 @@ class AddEditSubjectFragment : Fragment() {
         }else{
             "-1"
         }
-        val dateAdded = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
+        val dateAdded = Calendar.getInstance().timeInMillis
         val dateEdited = dateAdded
         val belowProgID = program.id
         val id = IDGenerator().generateSubjectID(program.name,subjectName)

@@ -30,7 +30,7 @@ interface SubjectDAO {
                               newLecturerName:String,
                               newColor:String,
                               newAbsenteeism: String,
-                              newDateEdited:String)
+                              newDateEdited:Long)
 
     @Query("UPDATE ModelSubject SET absenteeism = :newAbsenteeism WHERE id = :subjectID")
     suspend fun updateAbsenteeism(subjectID: String, newAbsenteeism:String)

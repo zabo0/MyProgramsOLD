@@ -32,7 +32,7 @@ class ExamMainFragmentRecyclerAdapter(private val sectionList: List<ModelExamPro
         holder: ExamMainFragmentRecyclerAdapterViewHolder,
         position: Int
     ) {
-        holder.sectionText.text = holder.itemView.context.resources.getStringArray(R.array.Days)[sectionList[position].day]
+        holder.sectionText.text = sectionList[position].day
 
         holder.childRecycler.layoutManager = LinearLayoutManager(holder.itemView.context)
         holder.childRecycler.adapter = ExamMainFragmentChildRecyclerAdapter(sectionList[position].exams)
