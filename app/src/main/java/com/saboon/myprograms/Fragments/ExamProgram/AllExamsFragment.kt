@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.saboon.myprograms.R
-import com.saboon.myprograms.databinding.FragmentExamMainBinding
+import com.saboon.myprograms.databinding.FragmentAllExamsBinding
+import com.saboon.myprograms.databinding.FragmentSubjectsBinding
 
+class AllExamsFragment : Fragment() {
 
-class ExamMainFragment : Fragment() {
-
-    private var _binding: FragmentExamMainBinding?=null
+    private var _binding: FragmentAllExamsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +24,8 @@ class ExamMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_exam_main, container, false)
-        _binding = FragmentExamMainBinding.inflate(inflater,container,false)
+        //return inflater.inflate(R.layout.fragment_all_exams, container, false)
+        _binding = FragmentAllExamsBinding.inflate(inflater,container,false)
         return binding.root
     }
 

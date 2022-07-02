@@ -18,14 +18,17 @@ import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.Models.Subject.ModelSubjectProgramMainSection
 import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.R
+import com.saboon.myprograms.Utils.PROGRAM_DIET
+import com.saboon.myprograms.Utils.PROGRAM_EXAM
+import com.saboon.myprograms.Utils.PROGRAM_SUBJECT
 import com.saboon.myprograms.Utils.SHARED_PREF_ID
 import com.saboon.myprograms.ViewModels.SubjectVM.MainFragmentViewModel
-import com.saboon.myprograms.databinding.FragmentMainBinding
+import com.saboon.myprograms.databinding.FragmentSubjectMainBinding
 
 
 class SubjectMainFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding ?= null
+    private var _binding: FragmentSubjectMainBinding?= null
     private val binding get() = _binding!!
 
     lateinit var viewModel: MainFragmentViewModel
@@ -45,7 +48,7 @@ class SubjectMainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_main, container, false)
-        _binding = FragmentMainBinding.inflate(inflater,container,false)
+        _binding = FragmentSubjectMainBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -77,7 +80,11 @@ class SubjectMainFragment : Fragment() {
             if (it != null){
                 program = it
                 binding.topAppBar.title = program.name
-                binding.topAppBar.subtitle = program.typeOfProgram
+                when(program.typeOfProgram){
+                    PROGRAM_SUBJECT -> {binding.topAppBar.subtitle = "Subject Program"}
+                    PROGRAM_EXAM -> {binding.topAppBar.subtitle = "Exam Program"}
+                    PROGRAM_DIET -> {binding.topAppBar.subtitle = "Diet Program"}
+                }
             }
         })
 
@@ -134,7 +141,7 @@ class SubjectMainFragment : Fragment() {
         binding.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.goToAllSubject -> {
-                    val actionToSubjects = MainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
+                    val actionToSubjects = SubjectMainFragmentDirections.actionMainFragmentToSubjectsFragment(program.id)
                     findNavController().navigate(actionToSubjects)
                     true
                 }
@@ -149,7 +156,7 @@ class SubjectMainFragment : Fragment() {
         }
 
         binding.buttonAddNewSubject.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToAddEditSubjectFragment(program.id,null)
+            val action = SubjectMainFragmentDirections.actionMainFragmentToAddEditSubjectFragment(program.id,null)
             it.findNavController().navigate(action)
         }
     }

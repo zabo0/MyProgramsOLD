@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.saboon.myprograms.Fragments.SubjectProgram.MainFragmentDirections
+import com.saboon.myprograms.Fragments.SubjectProgram.SubjectMainFragmentDirections
 import com.saboon.myprograms.Models.Subject.ModelSubject
 import com.saboon.myprograms.Models.Subject.ModelSubjectTime
 import com.saboon.myprograms.R
@@ -41,7 +41,7 @@ class MainFragmentChildRecyclerAdapter(private val subjects: List<ModelSubject>,
 
 
         holder.itemView.setOnClickListener {view->
-            val action = MainFragmentDirections.actionMainFragmentToSubjectDetailsFragment(subjects[subjects.indexOfFirst { it.id == subjectTimes[position].belowSubjectID }].id,
+            val action = SubjectMainFragmentDirections.actionMainFragmentToSubjectDetailsFragment(subjects[subjects.indexOfFirst { it.id == subjectTimes[position].belowSubjectID }].id,
                 FROM_MAIN_FRAGMENT)
             view.findNavController().navigate(action)
         }

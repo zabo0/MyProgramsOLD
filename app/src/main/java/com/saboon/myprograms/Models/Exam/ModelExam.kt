@@ -30,8 +30,11 @@ data class ModelExam(
     var targetPoint: String,
     @ColumnInfo(name = "reminderTime")
     var reminderTime: String,
+    @ColumnInfo(name = "isDone")
+    var isDone: Boolean,
     @ColumnInfo(name = "notificationID")
     val notificationID: String?,
     @ColumnInfo(name = "belowProgramID")
     val belowProgramID: String
+
 )

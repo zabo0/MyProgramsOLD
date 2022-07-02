@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.saboon.myprograms">
 
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyPrograms"
         tools:targetApi="31">
         <activity
+            android:name=".ExamProgramActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.BridgeActivity"
             android:exported="true">
             <intent-filter>
@@ -26,12 +29,14 @@
         </activity>
         <activity
             android:name=".Activities.SubjectProgramActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Activities.MainActivity"
-            android:exported="true"/>
-        <receiver android:name=".Notifications.AlarmReceiver"
-            android:enabled="true"/>
+            android:exported="true" />
+
+        <receiver
+            android:name=".Notifications.AlarmReceiver"
+            android:enabled="true" />
     </application>
 
 </manifest>
