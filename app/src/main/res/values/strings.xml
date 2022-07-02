@@ -57,7 +57,7 @@
     <string name="editProgram">Edit Program</string>
     <string name="emptyTextExamMain">There is no Exam</string>
     <string name="addNewExam">Add New Exam</string>
-    <string name="targetPointText">Target Point</string>
+    <string name="targetPointText">Target Point:\u0020</string>
     <string name="typeOfExam">Type Of Exam</string>
     <string name="typeOfProgram">Type Of Program</string>
     <string name="allExams">All Exams</string>
@@ -66,6 +66,7 @@
     <string name="examDetails">Exam Details</string>
     <string name="examFinished">Done</string>
     <string name="examNotFinished">Not Done</string>
+    <string name="point">Point:\u0020</string>
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>

@@ -60,7 +60,7 @@ class MainFragmentViewModel(application: Application):BaseViewModel(application)
         }
     }
 
-    fun deleteLastProgram(sharedPref: ModelSharedPref){
+    private fun deleteLastProgram(sharedPref: ModelSharedPref){
         launch {
             DatabaseMyPrograms(getApplication()).sharedPrefDAO().deleteLastProgramID(sharedPref.id)
         }

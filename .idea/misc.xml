@@ -19,7 +19,7 @@
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_add_edit_subject_time.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_all_exams.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_details_program.xml" value="0.25" />
-        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_exam_details.xml" value="0.33" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_exam_details.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_exam_main.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_main.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_manage_programs.xml" value="0.25" />
@@ -27,10 +27,12 @@
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_subject_main.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/fragment_subjects.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/manage_program_recycler_row.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_exam_program_all_exams.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_exam_program_exams.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_exam_program_main.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_exam_program_main_child.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_manage_program.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_section_days.xml" value="0.25" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_subject_program_main.xml" value="0.2633726201269266" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_subject_program_main_child.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/recycler_row_subject_program_subject_details.xml" value="0.33" />
@@ -38,6 +40,7 @@
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/layout/top_bar_test.xml" value="0.33" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/toop_app_bar_subject_details.xml" value="0.26506024096385544" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar_exam_main.xml" value="0.26506024096385544" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar_subject_add_edit_time.xml" value="0.26506024096385544" />
         <entry key="..\:/Users/Sabahattin/Desktop/projects/Android/MyPrograms/MyPrograms/app/src/main/res/menu/top_app_bar_subject_main.xml" value="0.26506024096385544" />
       </map>

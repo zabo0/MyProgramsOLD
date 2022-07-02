@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MyPrograms"
         tools:targetApi="31">
         <activity
-            android:name=".ExamProgramActivity"
+            android:name=".Activities.ExamProgramActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.BridgeActivity"

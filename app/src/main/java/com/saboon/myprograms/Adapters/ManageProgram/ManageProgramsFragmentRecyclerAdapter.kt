@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.saboon.myprograms.Activities.ExamProgramActivity
 import com.saboon.myprograms.Activities.SubjectProgramActivity
 import com.saboon.myprograms.Fragments.ManageProgram.ManageProgramsFragmentDirections
 import com.saboon.myprograms.Models.Program.ModelProgram
@@ -65,7 +66,9 @@ class ManageProgramsFragmentRecyclerAdapter(private val programList: List<ModelP
                             (holder.itemView.context as Activity).finish()
                         }
                         PROGRAM_EXAM -> {
-                            //INTENT TO EXAM
+                            val intent = Intent(view.context, ExamProgramActivity::class.java)
+                            view.context.startActivity(intent)
+                            (holder.itemView.context as Activity).finish()
                         }
                         PROGRAM_DIET ->{
                             //intent to diet

@@ -33,7 +33,7 @@ class SubjectDetailsFragment : Fragment() {
     lateinit var subjectTimeList: List<ModelSubjectTime>
     lateinit var program: ModelProgram
 
-    lateinit var from: String
+    private var from = 0
 
     lateinit var window: Window
 

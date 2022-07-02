@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
-        tools:listitem="@layout/recycler_row_subject_program_main" />
+        tools:listitem="@layout/recycler_row_section_days" />
 
 
 

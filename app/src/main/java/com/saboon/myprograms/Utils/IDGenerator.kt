@@ -30,11 +30,19 @@ class IDGenerator {
         return id
     }
 
-    fun generateNotificationID(timeID: String): Int{
+    fun generateExamID(programName: String, examName: String): String{
+        val progName = programName.filter { !it.isWhitespace() }
+        val exmName = examName.filter { !it.isWhitespace() }
+        val randomID = UUID.randomUUID().toString()
+        val id = "${exmName}_${progName}_${randomID}"
+        return id
+    }
 
-        val sizeOfTimeID = timeID.length
+    fun generateNotificationID(id: String): Int{
+
+        val sizeOfID = id.length
         val random = (0..1000).random()
-        val id = sizeOfTimeID + random
+        val id = sizeOfID + random
 
         return id
     }

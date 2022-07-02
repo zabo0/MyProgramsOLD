@@ -1,6 +1,5 @@
 package com.saboon.myprograms.Fragments.ManageProgram
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.saboon.myprograms.Fragments.SubjectProgram.SubjectDetailsFragmentDirections
 import com.saboon.myprograms.Models.Program.ModelProgram
 import com.saboon.myprograms.R
-import com.saboon.myprograms.Utils.FROM_DETAILS_PROGRAM
+import com.saboon.myprograms.Utils.FROM_DETAILS
 import com.saboon.myprograms.Utils.ShowAlertDialog
 import com.saboon.myprograms.ViewModels.ManageProgramVM.DetailsProgramViewModel
 import com.saboon.myprograms.databinding.FragmentDetailsProgramBinding
@@ -84,7 +82,7 @@ class DetailsProgramFragment : Fragment() {
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.editSubject->{
-                    val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS_PROGRAM, program.id)
+                    val action = DetailsProgramFragmentDirections.actionDetailsProgramFragmentToAddEditProgramFragment(FROM_DETAILS, program.id)
                     findNavController().navigate(action)
                     true
                 }

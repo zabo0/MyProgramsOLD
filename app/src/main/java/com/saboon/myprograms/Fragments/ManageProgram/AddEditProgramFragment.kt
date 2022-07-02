@@ -23,7 +23,7 @@ class AddEditProgramFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-    private lateinit var from: String
+    private var from = 0
 
     lateinit var program: ModelProgram
 
@@ -119,7 +119,7 @@ class AddEditProgramFragment : Fragment() {
                     it.findNavController().navigate(action)
                 }
 
-                FROM_DETAILS_PROGRAM -> {
+                FROM_DETAILS -> {
                     val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment(program.id)
                     it.findNavController().navigate(action)
                 }
@@ -142,7 +142,7 @@ class AddEditProgramFragment : Fragment() {
                     }
                 }
 
-                FROM_DETAILS_PROGRAM -> {
+                FROM_DETAILS -> {
                     val newName = binding.editTextProgramName.text.toString().trimEnd()
                     val newDateEdited = SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(Calendar.getInstance().time)
 
@@ -162,7 +162,7 @@ class AddEditProgramFragment : Fragment() {
                     it.findNavController().navigate(action)
                 }
 
-                FROM_DETAILS_PROGRAM -> {
+                FROM_DETAILS -> {
                     val action = AddEditProgramFragmentDirections.actionAddEditProgramFragmentToDetailsProgramFragment(program.id)
                     it.findNavController().navigate(action)
                 }

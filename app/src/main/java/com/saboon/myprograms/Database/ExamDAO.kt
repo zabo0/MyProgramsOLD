@@ -20,7 +20,7 @@ interface ExamDAO {
     @Query("DELETE FROM ModelExam WHERE id = :examID")
     suspend fun deleteExam(examID: String)
 
-    @Query("UPDATE ModelExam SET examName = :newExamName ,color =:newColor, day = :newDay, timeStart =:newTimeStart, timeFinish = :newTimeFinish, typeOfExam =:newTypeOfExam, classroom =:newClassroom, targetPoint=:newTargetPoint,reminderTime =:newReminderTime WHERE id=:examID ")
+    @Query("UPDATE ModelExam SET examName = :newExamName ,color =:newColor, day = :newDay, timeStart =:newTimeStart, timeFinish = :newTimeFinish, typeOfExam =:newTypeOfExam, classroom =:newClassroom, targetPoint=:newTargetPoint,point =:newPoint,isDone =:newIsDone, reminderTime =:newReminderTime, dateEdited  =:newDateEdited WHERE id=:examID ")
     suspend fun updateExam(
         examID: String,
         newExamName: String,
@@ -31,7 +31,10 @@ interface ExamDAO {
         newTypeOfExam: String,
         newClassroom: String,
         newTargetPoint: String,
+        newPoint: String,
+        newIsDone: Boolean,
         newReminderTime: String,
+        newDateEdited: String
     )
 
     @Query("UPDATE ModelExam SET isDone =:newIsDone WHERE id =:examID")

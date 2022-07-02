@@ -88,12 +88,35 @@
                 android:text="@string/targetPointText"/>
             <TextView
                 android:id="@+id/exam_main_child_recycler_textView_targetPoint"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:layout_weight="1"
-                android:text=": 60"/>
+                android:text="60"/>
+
+            <LinearLayout
+                android:id="@+id/layoutPoint"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/exam_main_child_recycler_textView_pointText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@string/point"/>
+                <TextView
+                    android:id="@+id/exam_main_child_recycler_textView_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="60"/>
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/exam_main_child_recycler_textView_classroom"
                 android:layout_width="0dp"

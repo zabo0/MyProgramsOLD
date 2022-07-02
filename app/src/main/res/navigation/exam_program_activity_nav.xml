@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exam_program_activity_nav"
+    app:startDestination="@id/examMainFragment">
+
+    <fragment
+        android:id="@+id/examMainFragment"
+        android:name="com.saboon.myprograms.Fragments.ExamProgram.ExamMainFragment"
+        android:label="fragment_exam_main"
+        tools:layout="@layout/fragment_exam_main" >
+        <action
+            android:id="@+id/action_examMainFragment_to_allExamsFragment"
+            app:destination="@id/allExamsFragment" />
+        <action
+            android:id="@+id/action_examMainFragment_to_examDetailsFragment"
+            app:destination="@id/examDetailsFragment" />
+        <action
+            android:id="@+id/action_examMainFragment_to_addEditExamFragment"
+            app:destination="@id/addEditExamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditExamFragment"
+        android:name="com.saboon.myprograms.Fragments.ExamProgram.AddEditExamFragment"
+        android:label="fragment_add_edit_exam"
+        tools:layout="@layout/fragment_add_edit_exam" >
+        <action
+            android:id="@+id/action_addEditExamFragment_to_allExamsFragment"
+            app:destination="@id/allExamsFragment"
+            app:popUpTo="@id/allExamsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addEditExamFragment_to_examDetailsFragment"
+            app:destination="@id/examDetailsFragment"
+            app:popUpTo="@id/examDetailsFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="programID"
+            app:argType="string" />
+        <argument
+            android:name="examID"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/allExamsFragment"
+        android:name="com.saboon.myprograms.Fragments.ExamProgram.AllExamsFragment"
+        android:label="fragment_all_exams"
+        tools:layout="@layout/fragment_all_exams" >
+        <action
+            android:id="@+id/action_allExamsFragment_to_examDetailsFragment"
+            app:destination="@id/examDetailsFragment" />
+        <action
+            android:id="@+id/action_allExamsFragment_to_addEditExamFragment"
+            app:destination="@id/addEditExamFragment" />
+        <action
+            android:id="@+id/action_allExamsFragment_to_examMainFragment"
+            app:destination="@id/examMainFragment"
+            app:popUpTo="@id/examMainFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="programID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/examDetailsFragment"
+        android:name="com.saboon.myprograms.Fragments.ExamProgram.ExamDetailsFragment"
+        android:label="fragment_exam_details"
+        tools:layout="@layout/fragment_exam_details" >
+        <action
+            android:id="@+id/action_examDetailsFragment_to_addEditExamFragment"
+            app:destination="@id/addEditExamFragment" />
+        <action
+            android:id="@+id/action_examDetailsFragment_to_allExamsFragment"
+            app:destination="@id/allExamsFragment"
+            app:popUpTo="@id/allExamsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_examDetailsFragment_to_examMainFragment"
+            app:destination="@id/examMainFragment"
+            app:popUpTo="@id/examMainFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="examID"
+            app:argType="string" />
+        <argument
+            android:name="from"
+            app:argType="integer" />
+    </fragment>
+</navigation>

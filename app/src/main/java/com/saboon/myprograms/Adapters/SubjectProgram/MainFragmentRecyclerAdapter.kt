@@ -13,12 +13,12 @@ import com.saboon.myprograms.R
 class MainFragmentRecyclerAdapter(private val sectionList: ArrayList<ModelSubjectProgramMainSection>):RecyclerView.Adapter<MainFragmentRecyclerAdapter.MainFragmentViewHolder>() {
 
     class MainFragmentViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val sectionText: TextView = view.findViewById(R.id.sectionSubjectDay)
+        val sectionText: TextView = view.findViewById(R.id.sectionDay)
         val childRecycler: RecyclerView = view.findViewById(R.id.childRecyclerView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainFragmentViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row_subject_program_main,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row_section_days,parent,false)
         return MainFragmentViewHolder(view)
     }
 

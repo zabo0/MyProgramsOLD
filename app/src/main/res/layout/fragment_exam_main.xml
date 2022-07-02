@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             app:subtitle="@string/typeOfProgram"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar_subject_main"
+            app:menu="@menu/top_app_bar_exam_main"
             app:navigationIcon="@drawable/ic_baseline_keyboard_arrow_down_24"
             app:title="@string/programName" />
 
@@ -29,11 +29,10 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subject_main_recycler"
+        android:id="@+id/exam_main_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/recycler_row_exam_program_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout3" />
@@ -60,7 +59,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button_addNewSubject"
+            android:id="@+id/button_addNewExam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addNewExam"/>

@@ -48,7 +48,7 @@ class SubjectsFragment : Fragment() {
 
         arguments.let {
             if (it!=null){
-                programID = it.getString("programID").toString()
+                programID =SubjectsFragmentArgs.fromBundle(it).programID
             }
         }
 

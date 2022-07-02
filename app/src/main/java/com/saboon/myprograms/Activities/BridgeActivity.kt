@@ -41,7 +41,10 @@ class BridgeActivity : AppCompatActivity() {
                                                 finish()
                                             }
                                             PROGRAM_EXAM -> {
-                                                //INTENT TO EXAM
+                                                val intent =
+                                                    Intent(this, ExamProgramActivity::class.java)
+                                                startActivity(intent)
+                                                finish()
                                             }
                                             PROGRAM_DIET -> {
                                                 //intent to diet
